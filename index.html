@@ -17,6 +17,7 @@
   --text:#EDEDF5; --text2:#9A9AB0; --text3:#5C5C72;
   --accent:#7C6FF7; --accent-glow:rgba(124,111,247,0.35);
   --danger:#FF5B5B; --success:#34D399; --warn:#FBBF24; --info:#38BDF8;
+  --pink:#F472B6; --orange:#FB923C;
   --gradient-1:linear-gradient(135deg,#7C6FF7,#5B8DEF);
   --font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
   --radius:16px; --radius-sm:10px;
@@ -29,7 +30,6 @@ body{
   display:flex;flex-direction:column;height:100vh;user-select:none;-webkit-user-select:none;
   background-image:radial-gradient(ellipse 80% 80% at 50% -20%,rgba(124,111,247,0.08),transparent),radial-gradient(ellipse 60% 60% at 90% 80%,rgba(91,141,239,0.06),transparent);
 }
-
 /* ===== HEADER ===== */
 header{
   padding:14px 16px;padding-top:calc(14px + var(--safe-t));
@@ -37,32 +37,14 @@ header{
   background:linear-gradient(180deg,var(--bg) 60%,transparent);
 }
 header .logo{display:flex;align-items:center;gap:10px}
-header .logo-icon{
-  width:38px;height:38px;border-radius:12px;background:var(--gradient-1);
-  display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;
-  box-shadow:0 4px 16px var(--accent-glow);
-}
+header .logo-icon{width:38px;height:38px;border-radius:12px;background:var(--gradient-1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;box-shadow:0 4px 16px var(--accent-glow)}
 header h1{font-size:1.3rem;font-weight:700;letter-spacing:-0.3px}
 header .right{display:flex;align-items:center;gap:8px}
-header .icon-btn{
-  width:36px;height:36px;border-radius:10px;border:1px solid var(--border);
-  background:var(--surface);cursor:pointer;font-size:1rem;
-  display:flex;align-items:center;justify-content:center;transition:all 0.2s;
-}
+header .icon-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
 header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 
-/* ===== POMODORO BAR ===== */
-.pomo-bar{
-  margin:0 16px 10px;padding:14px 16px;border-radius:var(--radius);
-  background:linear-gradient(135deg,rgba(124,111,247,0.12),rgba(91,141,239,0.08));
-  border:1px solid rgba(124,111,247,0.25);display:none;
-  align-items:center;gap:12px;flex-shrink:0;position:relative;overflow:hidden;
-}
-.pomo-bar::after{
-  content:"";position:absolute;bottom:0;left:0;height:3px;
-  background:var(--gradient-1);transition:width 0s linear;
-  width:100%;
-}
+/* ===== POMODORO ===== */
+.pomo-bar{margin:0 16px 10px;padding:14px 16px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(124,111,247,0.12),rgba(91,141,239,0.08));border:1px solid rgba(124,111,247,0.25);display:none;align-items:center;gap:12px;flex-shrink:0}
 .pomo-bar.on{display:flex}
 .pomo-bar .pomo-ring{width:44px;height:44px;flex-shrink:0}
 .pomo-bar .pomo-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
@@ -77,26 +59,38 @@ header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 .pomo-bar .pomo-actions .skip-btn{color:var(--warn);border-color:rgba(251,191,36,0.3)}
 .pomo-bar .pomo-actions .stop-btn{color:var(--danger);border-color:rgba(255,91,91,0.3)}
 
-/* ===== TODAY PROGRESS ===== */
-.daily-progress{
-  margin:0 16px 10px;padding:10px 14px;border-radius:var(--radius-sm);
-  background:var(--surface);border:1px solid var(--border);
-  display:flex;align-items:center;gap:10px;flex-shrink:0;
+.pomo-settings{display:none;margin:0 16px 8px;padding:12px 14px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);flex-shrink:0;align-items:center;gap:8px;flex-wrap:wrap}
+.pomo-settings.show{display:flex}
+.pomo-settings label{font-size:0.68rem;color:var(--text2);white-space:nowrap}
+.pomo-settings input{width:50px;padding:6px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:0.8rem;text-align:center;outline:none}
+.pomo-settings input:focus{border-color:var(--accent)}
+.pomo-settings button{padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:0.68rem;cursor:pointer}
+
+/* ===== BOTTOM NAV ===== */
+.nav-bar{display:flex;flex-shrink:0;border-top:1px solid var(--border);background:var(--bg);padding-bottom:var(--safe-b)}
+.nav-bar button{
+  flex:1;padding:12px 0 8px;border:none;background:transparent;color:var(--text3);
+  font-family:var(--font);font-size:0.72rem;cursor:pointer;transition:all 0.2s;
+  display:flex;flex-direction:column;align-items:center;gap:3px
 }
+.nav-bar button .nav-icon{font-size:1.2rem;transition:all 0.2s}
+.nav-bar button.on{color:var(--accent)}
+.nav-bar button.on .nav-icon{transform:scale(1.1)}
+.nav-bar button:active .nav-icon{transform:scale(0.9)}
+
+/* ===== TASK MODE ===== */
+.mode-task,.mode-expense{display:none;flex-direction:column;flex:1;overflow:hidden}
+.mode-task.show,.mode-expense.show{display:flex}
+
+.daily-progress{margin:0 16px 10px;padding:10px 14px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-shrink:0}
 .daily-progress .dp-info{flex:1;min-width:0}
 .daily-progress .dp-title{font-size:0.72rem;color:var(--text2);font-weight:500}
 .daily-progress .dp-count{font-size:0.85rem;font-weight:700;margin-top:1px}
 .daily-progress .dp-bar-wrap{width:80px;height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
 .daily-progress .dp-bar{height:100%;background:var(--gradient-1);border-radius:3px;transition:width 0.4s ease}
 
-/* ===== STATS ===== */
 .stats{display:flex;gap:8px;padding:0 16px 10px;flex-shrink:0}
-.stat-card{
-  flex:1;background:var(--surface);border-radius:var(--radius-sm);
-  padding:10px 8px;text-align:center;border:1px solid var(--border);
-  cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;
-  -webkit-tap-highlight-color:transparent;
-}
+.stat-card{flex:1;background:var(--surface);border-radius:var(--radius-sm);padding:10px 8px;text-align:center;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden}
 .stat-card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient-1);opacity:0;transition:opacity 0.3s}
 .stat-card:active{transform:scale(0.96)}
 .stat-card.active::after{opacity:1}
@@ -107,52 +101,28 @@ header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 .stat-card:nth-child(3) .num{color:var(--success)}
 .stat-card:nth-child(4) .num{color:#F472B6}
 
-/* ===== SEARCH & TABS ===== */
 .toolbar{display:flex;gap:8px;padding:0 16px 8px;flex-shrink:0;align-items:center}
-.search-wrap{
-  display:none;flex:1;align-items:center;gap:6px;
-  background:var(--surface);border-radius:20px;border:1.5px solid var(--border);padding:6px 12px;
-}
+.search-wrap{display:none;flex:1;align-items:center;gap:6px;background:var(--surface);border-radius:20px;border:1.5px solid var(--border);padding:6px 12px}
 .search-wrap.show{display:flex}
-.search-wrap input{
-  flex:1;border:none;background:transparent;color:var(--text);
-  font-family:var(--font);font-size:0.82rem;outline:none;padding:4px 0;
-}
+.search-wrap input{flex:1;border:none;background:transparent;color:var(--text);font-family:var(--font);font-size:0.82rem;outline:none;padding:4px 0}
 .search-wrap input::placeholder{color:var(--text3)}
 .search-wrap .clear-search{width:24px;height:24px;border-radius:50%;border:none;background:var(--text3);color:var(--bg);cursor:pointer;font-size:0.65rem;display:flex;align-items:center;justify-content:center}
-.toolbar .sort-btn{
-  padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);
-  color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;white-space:nowrap;transition:all 0.15s;
-}
+.toolbar .sort-btn{padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;white-space:nowrap;transition:all 0.15s}
 .toolbar .sort-btn:active{background:var(--surface2)}
 
 .tabs{display:flex;padding:0 16px;gap:4px;flex-shrink:0}
-.tabs button{
-  padding:7px 14px;border-radius:20px;border:none;background:transparent;
-  color:var(--text2);font-family:var(--font);font-size:0.76rem;cursor:pointer;
-  transition:all 0.2s;font-weight:500;white-space:nowrap;
-}
+.tabs button{padding:7px 14px;border-radius:20px;border:none;background:transparent;color:var(--text2);font-family:var(--font);font-size:0.76rem;cursor:pointer;transition:all 0.2s;font-weight:500;white-space:nowrap}
 .tabs button.on{background:var(--surface2);color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,0.3)}
 
-/* ===== CATEGORY FILTER ===== */
 .cat-filter{display:flex;gap:6px;padding:6px 16px 8px;flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .cat-filter::-webkit-scrollbar{display:none}
-.cat-filter button{
-  padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;
-  color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;white-space:nowrap;transition:all 0.2s;
-  flex-shrink:0;
-}
+.cat-filter button{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;white-space:nowrap;transition:all 0.2s;flex-shrink:0}
 .cat-filter button.on{background:var(--accent);border-color:var(--accent);color:#fff}
 .cat-filter button .dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px;vertical-align:middle}
 .cat-dot-work{background:#7C6FF7}.cat-dot-study{background:#FBBF24}.cat-dot-life{background:#34D399}.cat-dot-other{background:#9A9AB0}
 
-/* ===== ADD ROW ===== */
 .add-row{display:flex;gap:8px;padding:8px 16px 12px;flex-shrink:0}
-.add-row .input-wrap{
-  flex:1;display:flex;align-items:center;gap:6px;
-  background:var(--surface);border-radius:var(--radius);border:1.5px solid var(--border);
-  padding:4px 4px 4px 14px;transition:all 0.25s;
-}
+.add-row .input-wrap{flex:1;display:flex;align-items:center;gap:6px;background:var(--surface);border-radius:var(--radius);border:1.5px solid var(--border);padding:4px 4px 4px 14px;transition:all 0.25s}
 .add-row .input-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(124,111,247,0.1)}
 .add-row input{flex:1;border:none;background:transparent;color:var(--text);font-family:var(--font);font-size:0.88rem;outline:none;min-width:0;padding:8px 0}
 .add-row input::placeholder{color:var(--text3)}
@@ -161,41 +131,23 @@ header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 .add-row .btn-add{width:48px;height:48px;border-radius:var(--radius-sm);border:none;background:var(--gradient-1);color:#fff;font-size:1.3rem;cursor:pointer;flex-shrink:0;box-shadow:0 4px 14px var(--accent-glow);transition:all 0.2s;display:flex;align-items:center;justify-content:center}
 .add-row .btn-add:active{transform:scale(0.92);filter:brightness(1.15)}
 
-/* ===== LIST ===== */
-.list-wrap{flex:1;overflow-y:auto;padding:0 16px;padding-bottom:var(--safe-b);-webkit-overflow-scrolling:touch}
+/* Task list */
+.list-wrap{flex:1;overflow-y:auto;padding:0 16px;padding-bottom:4px;-webkit-overflow-scrolling:touch}
 .list-wrap::-webkit-scrollbar{display:none}
-
 .empty{display:flex;flex-direction:column;align-items:center;padding:50px 20px}
 .empty .illu{width:90px;height:90px;margin-bottom:12px;opacity:0.5}
 .empty .msg{font-size:0.9rem;color:var(--text3);font-weight:500;margin-bottom:4px}
 .empty .sub{font-size:0.72rem;color:var(--text3);opacity:0.5}
 
-/* Task card */
 .task-wrap{position:relative;margin-bottom:8px;overflow:hidden;border-radius:var(--radius)}
-.task-wrap .swipe-bg{
-  position:absolute;inset:0;border-radius:var(--radius);
-  display:flex;align-items:center;justify-content:flex-end;padding-right:20px;
-  font-size:0.75rem;font-weight:700;z-index:0;
-  background:linear-gradient(135deg,rgba(255,91,91,0.3),rgba(249,115,22,0.2));
-  color:var(--danger);
-}
-.task{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  transition:transform 0.25s cubic-bezier(.4,0,.2,1);position:relative;z-index:1;
-  touch-action:pan-y;
-}
+.task-wrap .swipe-bg{position:absolute;inset:0;border-radius:var(--radius);display:flex;align-items:center;justify-content:flex-end;padding-right:20px;font-size:0.75rem;font-weight:700;z-index:0;background:linear-gradient(135deg,rgba(255,91,91,0.3),rgba(249,115,22,0.2));color:var(--danger)}
+.task{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);transition:transform 0.25s cubic-bezier(.4,0,.2,1);position:relative;z-index:1;touch-action:pan-y}
 .task-inner{display:flex;align-items:flex-start;gap:10px;padding:14px}
 .task.overdue{border-left:3px solid var(--danger)}
-
-.check{
-  width:24px;height:24px;border-radius:50%;flex-shrink:0;margin-top:1px;
-  border:2px solid var(--border);cursor:pointer;display:flex;
-  align-items:center;justify-content:center;transition:all 0.3s cubic-bezier(.4,0,.2,1);
-}
+.check{width:24px;height:24px;border-radius:50%;flex-shrink:0;margin-top:1px;border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s cubic-bezier(.4,0,.2,1)}
 .check.checked{background:var(--success);border-color:var(--success);animation:popIn 0.35s cubic-bezier(.4,0,.2,1)}
 @keyframes popIn{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
 .check.checked::after{content:"✓";color:#fff;font-size:0.7rem;font-weight:700}
-
 .task-body{flex:1;min-width:0;cursor:pointer}
 .txt{font-size:0.88rem;font-weight:500;line-height:1.4;word-break:break-word}
 .meta{display:flex;gap:5px;margin-top:4px;flex-wrap:wrap;font-size:0.66rem;align-items:center}
@@ -214,23 +166,14 @@ header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 @keyframes glitch{0%,100%{opacity:1}50%{opacity:0.55}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-/* Subtasks */
 .subtasks{margin-top:6px}
-.subtask{
-  display:flex;align-items:center;gap:6px;padding:3px 0;font-size:0.76rem;color:var(--text2);
-}
-.subtask .sub-check{
-  width:18px;height:18px;border-radius:4px;border:1.5px solid var(--text3);flex-shrink:0;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;
-}
+.subtask{display:flex;align-items:center;gap:6px;padding:3px 0;font-size:0.76rem;color:var(--text2)}
+.subtask .sub-check{width:18px;height:18px;border-radius:4px;border:1.5px solid var(--text3);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
 .subtask .sub-check.done{background:var(--success);border-color:var(--success)}
 .subtask .sub-check.done::after{content:"✓";color:#fff;font-size:0.5rem;font-weight:700}
 .subtask .sub-text{flex:1}
 .subtask.done .sub-text{text-decoration:line-through;color:var(--text3)}
-.subtask .sub-del{font-size:0.6rem;color:var(--text3);cursor:pointer;opacity:0;transition:opacity 0.2s;padding:2px}
-.subtask:hover .sub-del{opacity:1}
 
-/* Actions */
 .actions{display:flex;gap:2px;flex-shrink:0}
 .actions button{width:32px;height:32px;border-radius:50%;border:none;cursor:pointer;font-size:0.8rem;background:transparent;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
 .actions button:active{transform:scale(0.85)}
@@ -239,30 +182,65 @@ header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 .actions .btn-del{color:var(--text3)}
 .actions .btn-del:active{color:var(--danger);background:rgba(255,91,91,0.1)}
 
-/* ===== UNDO TOAST ===== */
-.undo-toast{
-  position:fixed;bottom:calc(var(--safe-b) + 80px);left:50%;transform:translateX(-50%);z-index:300;
-  background:var(--surface);border:1px solid var(--border);padding:10px 18px;border-radius:20px;
-  font-size:0.8rem;display:none;gap:10px;align-items:center;
-  box-shadow:0 8px 32px rgba(0,0,0,0.5);animation:fadeUp 0.3s ease-out;
-}
-.undo-toast.show{display:flex}
-.undo-toast button{background:var(--accent);color:#fff;border:none;padding:4px 12px;border-radius:12px;font-family:var(--font);font-size:0.72rem;cursor:pointer;font-weight:600}
-@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+/* ===== EXPENSE MODE ===== */
+.month-summary{display:flex;gap:8px;padding:0 16px 10px;flex-shrink:0}
+.month-card{flex:1;background:var(--surface);border-radius:var(--radius-sm);padding:14px;border:1px solid var(--border);text-align:center}
+.month-card .mc-val{font-size:1.5rem;font-weight:800;letter-spacing:-1px}
+.month-card .mc-lbl{font-size:0.65rem;color:var(--text2);margin-top:2px}
+.month-card.income .mc-val{color:var(--success)}
+.month-card.expense .mc-val{color:var(--danger)}
+.month-card.balance .mc-val{color:var(--accent)}
 
-/* ===== BOTTOM BAR ===== */
-.bot-bar{display:flex;gap:8px;padding:10px 16px;padding-bottom:calc(10px + var(--safe-b));border-top:1px solid var(--border);flex-shrink:0}
-.bot-bar button{flex:1;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.74rem;cursor:pointer;transition:all 0.2s;font-weight:500}
-.bot-bar button:active{background:var(--surface2);color:var(--text)}
+.month-nav{display:flex;align-items:center;gap:10px;padding:0 16px 8px;flex-shrink:0;justify-content:center}
+.month-nav button{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:0.9rem;transition:all 0.2s}
+.month-nav button:active{background:var(--surface2)}
+.month-nav .mn-label{font-size:0.85rem;font-weight:700;min-width:80px;text-align:center}
+
+.exp-breakdown{padding:0 16px 8px;flex-shrink:0}
+.exp-breakdown .cat-bar{margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.exp-breakdown .cat-bar .cb-icon{width:28px;text-align:center;font-size:0.7rem;flex-shrink:0}
+.exp-breakdown .cat-bar .cb-name{width:36px;font-size:0.68rem;color:var(--text2);flex-shrink:0}
+.exp-breakdown .cat-bar .cb-track{flex:1;height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
+.exp-breakdown .cat-bar .cb-fill{height:100%;border-radius:3px;transition:width 0.4s ease}
+.exp-breakdown .cat-bar .cb-amt{width:50px;text-align:right;font-size:0.72rem;font-weight:600;font-variant-numeric:tabular-nums;flex-shrink:0;color:var(--text2)}
+
+.exp-add-row{display:flex;gap:6px;padding:8px 16px 8px;flex-shrink:0;align-items:center}
+.exp-add-row .amt-input{width:90px;padding:10px 12px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:1.2rem;font-weight:700;outline:none;text-align:center}
+.exp-add-row .amt-input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(124,111,247,0.1)}
+.exp-add-row .amt-input::placeholder{color:var(--text3);font-weight:400;font-size:0.85rem}
+.exp-add-row .exp-cat-btn{padding:8px 12px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.78rem;white-space:nowrap;font-family:var(--font);color:var(--text);transition:all 0.15s;flex-shrink:0}
+.exp-add-row .exp-cat-btn:active{background:var(--surface2)}
+.exp-add-row .add-exp-btn{width:48px;height:48px;border-radius:var(--radius-sm);border:none;background:linear-gradient(135deg,#F472B6,#FB923C);color:#fff;font-size:1.3rem;cursor:pointer;flex-shrink:0;box-shadow:0 4px 14px rgba(244,114,182,0.35);transition:all 0.2s;display:flex;align-items:center;justify-content:center}
+.exp-add-row .add-exp-btn:active{transform:scale(0.92);filter:brightness(1.15)}
+
+.exp-list{flex:1;overflow-y:auto;padding:0 16px 4px;-webkit-overflow-scrolling:touch}
+.exp-list::-webkit-scrollbar{display:none}
+.exp-date-group{margin-bottom:12px}
+.exp-date-label{font-size:0.7rem;color:var(--text3);padding:4px 0 6px;font-weight:600}
+.exp-item{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--surface);border-radius:var(--radius-sm);margin-bottom:6px;border:1px solid var(--border)}
+.exp-item .ei-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
+.exp-item .ei-info{flex:1;min-width:0}
+.exp-item .ei-name{font-size:0.85rem;font-weight:500}
+.exp-item .ei-note{font-size:0.68rem;color:var(--text3);margin-top:1px}
+.exp-item .ei-amt{font-weight:700;font-size:0.95rem;flex-shrink:0;font-variant-numeric:tabular-nums}
+.exp-item .ei-amt.in{color:var(--success)}.exp-item .ei-amt.out{color:var(--danger)}
+.exp-item .ei-cat{font-size:0.6rem;color:var(--text3);flex-shrink:0;text-align:right}
+.exp-item .ei-del{width:24px;height:24px;border-radius:50%;border:none;background:transparent;color:var(--text3);cursor:pointer;font-size:0.65rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.exp-item:active .ei-del{opacity:1}
+
+.exp-bottom-bar{display:flex;gap:8px;padding:8px 16px;border-top:1px solid var(--border);flex-shrink:0}
+.exp-bottom-bar button{flex:1;padding:8px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.72rem;cursor:pointer;transition:all 0.2s;font-weight:500}
+.exp-bottom-bar button:active{background:var(--surface2);color:var(--text)}
+
+/* ===== BOTTOM BAR (task mode) ===== */
+.task-bot-bar{display:flex;gap:8px;padding:10px 16px;border-top:1px solid var(--border);flex-shrink:0}
+.task-bot-bar button{flex:1;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.74rem;cursor:pointer;transition:all 0.2s;font-weight:500}
+.task-bot-bar button:active{background:var(--surface2);color:var(--text)}
 
 /* ===== SHEET ===== */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;justify-content:center;align-items:flex-end;backdrop-filter:blur(4px)}
 .overlay.show{display:flex}
-.sheet{
-  width:100%;max-width:500px;background:var(--surface);border-radius:24px 24px 0 0;
-  padding:8px 20px 24px;padding-bottom:calc(24px + var(--safe-b));
-  animation:slideUp 0.3s cubic-bezier(.4,0,.2,1);border-top:1px solid var(--border);max-height:90vh;overflow-y:auto;
-}
+.sheet{width:100%;max-width:500px;background:var(--surface);border-radius:24px 24px 0 0;padding:8px 20px 24px;padding-bottom:calc(24px + var(--safe-b));animation:slideUp 0.3s cubic-bezier(.4,0,.2,1);border-top:1px solid var(--border);max-height:90vh;overflow-y:auto}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .sheet .handle{width:36px;height:4px;border-radius:2px;background:var(--text3);margin:12px auto 16px;opacity:0.3}
 .sheet h3{font-size:1.05rem;font-weight:700;margin-bottom:16px}
@@ -270,13 +248,6 @@ header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 .sheet .row label{width:44px;flex-shrink:0;font-size:0.76rem;color:var(--text2);font-weight:500}
 .sheet input,.sheet select{flex:1;padding:10px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:0.88rem;outline:none}
 .sheet input:focus,.sheet select:focus{border-color:var(--accent)}
-.sheet .chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.sheet .chip-row span{font-size:0.76rem;color:var(--text2);font-weight:500;margin-right:4px;align-self:center}
-.sheet .chip{
-  padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:transparent;
-  color:var(--text2);font-size:0.76rem;cursor:pointer;transition:all 0.2s;
-}
-.sheet .chip.selected{border-color:var(--accent);background:rgba(124,111,247,0.1);color:var(--accent);font-weight:600}
 .sheet .subtask-row{display:flex;gap:6px;margin-bottom:6px;align-items:center}
 .sheet .subtask-row input{flex:1;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:0.82rem;outline:none}
 .sheet .subtask-row input:focus{border-color:var(--accent)}
@@ -288,22 +259,26 @@ header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 .sheet .btn-cancel{flex:1;padding:13px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:transparent;color:var(--text2);font-size:0.9rem;cursor:pointer;font-family:var(--font)}
 .sheet .btn-danger{flex:1;padding:13px;border-radius:var(--radius-sm);border:none;background:rgba(255,91,91,0.1);color:var(--danger);font-size:0.9rem;cursor:pointer;font-family:var(--font);font-weight:600}
 
-/* ===== POMO SETTINGS ===== */
-.pomo-settings{display:none;margin:0 16px 8px;padding:12px 14px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);flex-shrink:0;align-items:center;gap:8px;flex-wrap:wrap}
-.pomo-settings.show{display:flex}
-.pomo-settings label{font-size:0.68rem;color:var(--text2);white-space:nowrap}
-.pomo-settings input{width:50px;padding:6px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:0.8rem;text-align:center;outline:none}
-.pomo-settings input:focus{border-color:var(--accent)}
-.pomo-settings button{padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:0.68rem;cursor:pointer}
+/* ===== UNDO TOAST ===== */
+.undo-toast{position:fixed;bottom:calc(var(--safe-b) + 90px);left:50%;transform:translateX(-50%);z-index:300;background:var(--surface);border:1px solid var(--border);padding:10px 18px;border-radius:20px;font-size:0.8rem;display:none;gap:10px;align-items:center;box-shadow:0 8px 32px rgba(0,0,0,0.5);animation:fadeUp 0.3s ease-out}
+.undo-toast.show{display:flex}
+.undo-toast button{background:var(--accent);color:#fff;border:none;padding:4px 12px;border-radius:12px;font-family:var(--font);font-size:0.72rem;cursor:pointer;font-weight:600}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
-/* ===== INSTALL TOAST ===== */
-.install-toast{
-  position:fixed;top:calc(var(--safe-t) + 50px);left:50%;transform:translateX(-50%);z-index:300;
-  background:var(--surface);border:1px solid var(--border);padding:10px 20px;border-radius:20px;
-  font-size:0.8rem;cursor:pointer;display:none;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,0.5);animation:toastIn 0.3s ease-out;
-}
+.install-toast{position:fixed;top:calc(var(--safe-t) + 50px);left:50%;transform:translateX(-50%);z-index:300;background:var(--surface);border:1px solid var(--border);padding:10px 20px;border-radius:20px;font-size:0.8rem;cursor:pointer;display:none;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,0.5);animation:toastIn 0.3s ease-out}
 @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 .install-toast.on{display:block}
+
+/* Expense cat colors */
+.e-cat-food{background:rgba(251,191,36,0.15);color:#FBBF24}
+.e-cat-transport{background:rgba(56,189,248,0.15);color:#38BDF8}
+.e-cat-shop{background:rgba(244,114,182,0.15);color:#F472B6}
+.e-cat-entertain{background:rgba(52,211,153,0.15);color:#34D399}
+.e-cat-bills{background:rgba(124,111,247,0.15);color:#7C6FF7}
+.e-cat-health{background:rgba(255,91,91,0.15);color:#FF5B5B}
+.e-cat-housing{background:rgba(251,146,60,0.15);color:#FB923C}
+.e-cat-income{background:rgba(52,211,153,0.15);color:#34D399}
+.e-cat-other-exp{background:rgba(154,154,176,0.15);color:#9A9AB0}
 </style>
 </head>
 <body>
@@ -313,529 +288,412 @@ header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 
 <!-- HEADER -->
 <header>
-  <div class="logo"><div class="logo-icon">✓</div><h1>任务清单</h1></div>
+  <div class="logo"><div class="logo-icon" id="logo-icon">✓</div><h1 id="header-title">任务清单</h1></div>
   <div class="right">
-    <button class="icon-btn" onclick="toggleSearch()" title="搜索">🔍</button>
+    <button class="icon-btn" id="btn-search" onclick="toggleSearch()" title="搜索">🔍</button>
     <button class="icon-btn" onclick="togglePomoSettings()" title="番茄钟设置">⚙️</button>
-    <div style="text-align:right">
-      <div style="font-size:1.1rem;font-weight:700;font-variant-numeric:tabular-nums" id="live-time">00:00</div>
-      <div style="font-size:0.7rem;color:var(--text2)" id="live-date">周一 1/1</div>
-    </div>
+    <div style="text-align:right"><div style="font-size:1.1rem;font-weight:700;font-variant-numeric:tabular-nums" id="live-time">00:00</div><div style="font-size:0.7rem;color:var(--text2)" id="live-date">周一 1/1</div></div>
   </div>
 </header>
 
 <!-- POMODORO BAR -->
 <div class="pomo-bar" id="pomo-bar">
-  <div class="pomo-ring">
-    <svg viewBox="0 0 44 44">
-      <circle class="bg" cx="22" cy="22" r="18"/>
-      <circle class="fg" id="pomo-circle" cx="22" cy="22" r="18" stroke-dasharray="113.1" stroke-dashoffset="0"/>
-    </svg>
-  </div>
-  <div class="pomo-info">
-    <div class="pomo-timer" id="pomo-timer">25:00</div>
-    <div class="pomo-label" id="pomo-task-label">专注中</div>
-  </div>
-  <div class="pomo-actions">
-    <button class="skip-btn" onclick="skipPomo()" title="跳过">⏭</button>
-    <button class="stop-btn" onclick="stopPomo()" title="停止">✕</button>
-  </div>
+  <div class="pomo-ring"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fg" id="pomo-circle" cx="22" cy="22" r="18" stroke-dasharray="113.1" stroke-dashoffset="0"/></svg></div>
+  <div class="pomo-info"><div class="pomo-timer" id="pomo-timer">25:00</div><div class="pomo-label" id="pomo-task-label">专注中</div></div>
+  <div class="pomo-actions"><button class="skip-btn" onclick="skipPomo()">⏭</button><button class="stop-btn" onclick="stopPomo()">✕</button></div>
 </div>
-
-<!-- POMODORO SETTINGS -->
 <div class="pomo-settings" id="pomo-settings">
-  <label>🍅 专注</label><input type="number" id="set-work" value="25" min="1" max="120"> <label>分</label>
-  <label>☕ 休息</label><input type="number" id="set-break" value="5" min="1" max="60"> <label>分</label>
+  <label>🍅 专注</label><input type="number" id="set-work" value="25" min="1" max="120"><label>分</label>
+  <label>☕ 休息</label><input type="number" id="set-break" value="5" min="1" max="60"><label>分</label>
   <button onclick="savePomoSettings()">保存</button>
 </div>
 
-<!-- TODAY PROGRESS -->
-<div class="daily-progress">
-  <div class="dp-info">
-    <div class="dp-title">📅 今日进度</div>
-    <div class="dp-count" id="dp-text">0 / 0 已完成</div>
+<!-- ===== TASK MODE ===== -->
+<div class="mode-task show" id="mode-task">
+  <div class="daily-progress"><div class="dp-info"><div class="dp-title">📅 今日进度</div><div class="dp-count" id="dp-text">0 / 0 已完成</div></div><div class="dp-bar-wrap"><div class="dp-bar" id="dp-bar" style="width:0%"></div></div></div>
+  <div class="stats">
+    <div class="stat-card active" onclick="switchTab('all')" id="card-all"><div class="num" id="s-total">0</div><div class="lbl">全部</div></div>
+    <div class="stat-card" onclick="switchTab('active')" id="card-active"><div class="num" id="s-active">0</div><div class="lbl">待办</div></div>
+    <div class="stat-card" onclick="switchTab('done')" id="card-done"><div class="num" id="s-done">0</div><div class="lbl">完成</div></div>
+    <div class="stat-card"><div class="num" id="s-pomo">0</div><div class="lbl">🍅 番茄</div></div>
   </div>
-  <div class="dp-bar-wrap"><div class="dp-bar" id="dp-bar" style="width:0%"></div></div>
-</div>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat-card active" onclick="switchTab('all')" id="card-all"><div class="num" id="s-total">0</div><div class="lbl">全部</div></div>
-  <div class="stat-card" onclick="switchTab('active')" id="card-active"><div class="num" id="s-active">0</div><div class="lbl">待办</div></div>
-  <div class="stat-card" onclick="switchTab('done')" id="card-done"><div class="num" id="s-done">0</div><div class="lbl">完成</div></div>
-  <div class="stat-card"><div class="num" id="s-pomo">0</div><div class="lbl">🍅 番茄</div></div>
-</div>
-
-<!-- SEARCH -->
-<div class="toolbar">
-  <div class="search-wrap" id="search-wrap">
-    <input id="search-input" placeholder="搜索任务..." oninput="render()">
-    <button class="clear-search" onclick="clearSearch()">✕</button>
+  <div class="toolbar">
+    <div class="search-wrap" id="search-wrap"><input id="search-input" placeholder="搜索任务..." oninput="render()"><button class="clear-search" onclick="clearSearch()">✕</button></div>
+    <button class="sort-btn" onclick="cycleSort()" id="sort-btn">🕐 最新</button>
   </div>
-  <button class="sort-btn" onclick="cycleSort()" id="sort-btn">🕐 最新</button>
-</div>
-
-<!-- TABS -->
-<div class="tabs">
-  <button class="on" onclick="switchTab('all')" id="tab-all">全部</button>
-  <button onclick="switchTab('today')" id="tab-today">📅 今日</button>
-  <button onclick="switchTab('active')" id="tab-active">⏳ 待办</button>
-  <button onclick="switchTab('done')" id="tab-done">✅ 完成</button>
-</div>
-
-<!-- CATEGORY FILTER -->
-<div class="cat-filter" id="cat-filter">
-  <button class="on" onclick="setCat('all')" id="cat-all">📋 全部</button>
-  <button onclick="setCat('work')" id="cat-work"><span class="dot cat-dot-work"></span>工作</button>
-  <button onclick="setCat('study')" id="cat-study"><span class="dot cat-dot-study"></span>学习</button>
-  <button onclick="setCat('life')" id="cat-life"><span class="dot cat-dot-life"></span>生活</button>
-  <button onclick="setCat('other')" id="cat-other"><span class="dot cat-dot-other"></span>其他</button>
-</div>
-
-<!-- ADD ROW -->
-<div class="add-row">
-  <div class="input-wrap">
-    <input id="task-input" placeholder="输入任务，支持「今天/明天」…" enterkeyhint="done">
-    <button class="chip-btn" id="btn-cat" onclick="cycleCat()" title="分类">💼</button>
-    <button class="chip-btn" id="btn-prio" onclick="cyclePrio()" title="优先级">🟡</button>
-    <button class="chip-btn" id="btn-repeat" onclick="cycleRepeat()" title="重复" style="font-size:0.7rem">1×</button>
+  <div class="tabs">
+    <button class="on" onclick="switchTab('all')" id="tab-all">全部</button><button onclick="switchTab('today')" id="tab-today">📅 今日</button><button onclick="switchTab('active')" id="tab-active">⏳ 待办</button><button onclick="switchTab('done')" id="tab-done">✅ 完成</button>
   </div>
-  <button class="btn-add" onclick="addTask()">＋</button>
+  <div class="cat-filter" id="cat-filter">
+    <button class="on" onclick="setCat('all')" id="cat-all">📋 全部</button>
+    <button onclick="setCat('work')" id="cat-work"><span class="dot cat-dot-work"></span>工作</button>
+    <button onclick="setCat('study')" id="cat-study"><span class="dot cat-dot-study"></span>学习</button>
+    <button onclick="setCat('life')" id="cat-life"><span class="dot cat-dot-life"></span>生活</button>
+    <button onclick="setCat('other')" id="cat-other"><span class="dot cat-dot-other"></span>其他</button>
+  </div>
+  <div class="add-row">
+    <div class="input-wrap">
+      <input id="task-input" placeholder="输入任务，支持「今天/明天」…" enterkeyhint="done">
+      <button class="chip-btn" id="btn-cat" onclick="cycleCat()" title="分类">💼</button>
+      <button class="chip-btn" id="btn-prio" onclick="cyclePrio()" title="优先级">🟡</button>
+      <button class="chip-btn" id="btn-repeat" onclick="cycleRepeat()" title="重复" style="font-size:0.7rem">1×</button>
+    </div>
+    <button class="btn-add" onclick="addTask()">＋</button>
+  </div>
+  <div class="list-wrap" id="list"></div>
+  <div class="task-bot-bar">
+    <button onclick="batchClearDone()">🗑 清除完成</button><button onclick="batchReschedule()">🔄 重置过期</button><button onclick="exportAllData()">📤 导出</button><button onclick="importAllData()">📥 导入</button>
+  </div>
 </div>
 
-<!-- LIST -->
-<div class="list-wrap" id="list"></div>
-
-<!-- BOTTOM -->
-<div class="bot-bar">
-  <button onclick="batchClearDone()">🗑 清除完成</button>
-  <button onclick="batchReschedule()">🔄 重置过期</button>
-  <button onclick="exportData()">📤 导出</button>
-  <button onclick="importData()">📥 导入</button>
+<!-- ===== EXPENSE MODE ===== -->
+<div class="mode-expense" id="mode-expense">
+  <div class="month-summary">
+    <div class="month-card income"><div class="mc-val" id="mc-income">¥0</div><div class="mc-lbl">💰 收入</div></div>
+    <div class="month-card expense"><div class="mc-val" id="mc-expense">¥0</div><div class="mc-lbl">💸 支出</div></div>
+    <div class="month-card balance"><div class="mc-val" id="mc-balance">¥0</div><div class="mc-lbl">📊 结余</div></div>
+  </div>
+  <div class="month-nav">
+    <button onclick="changeExpMonth(-1)">◀</button><div class="mn-label" id="exp-month-label">2026年7月</div><button onclick="changeExpMonth(1)">▶</button>
+  </div>
+  <div class="exp-breakdown" id="exp-breakdown"></div>
+  <div class="exp-add-row">
+    <input type="number" class="amt-input" id="exp-amount" placeholder="金额" enterkeyhint="done" step="0.01" min="0">
+    <button class="exp-cat-btn" id="exp-cat-btn" onclick="cycleExpCat()">🍔 餐饮</button>
+    <button class="exp-cat-btn" id="exp-type-btn" onclick="cycleExpType()" style="font-size:0.7rem">💸 支出</button>
+    <button class="add-exp-btn" onclick="addExpense()">＋</button>
+  </div>
+  <div class="exp-list" id="exp-list"></div>
+  <div class="exp-bottom-bar">
+    <button onclick="switchExpMode('month')" id="eb-month">📅 本月</button>
+    <button onclick="switchExpMode('all')" id="eb-all">📋 全部</button>
+    <button onclick="exportAllData()">📤 导出</button>
+  </div>
 </div>
 
-<!-- UNDO TOAST -->
-<div class="undo-toast" id="undo-toast">
-  <span id="undo-msg">已删除</span>
-  <button onclick="undoDelete()">撤销</button>
+<!-- BOTTOM NAV -->
+<div class="nav-bar">
+  <button class="on" onclick="switchMode('task')" id="nav-task"><span class="nav-icon">📋</span>任务</button>
+  <button onclick="switchMode('expense')" id="nav-expense"><span class="nav-icon">💰</span>记账</button>
 </div>
 
-<!-- EDIT SHEET -->
+<!-- EDIT TASK SHEET -->
 <div class="overlay" id="edit-sheet">
   <div class="sheet">
-    <div class="handle"></div>
-    <h3>✏️ 编辑任务</h3>
+    <div class="handle"></div><h3>✏️ 编辑任务</h3>
     <div class="row"><label>内容</label><input id="e-text" placeholder="任务内容"></div>
     <div class="row"><label>截止</label><input type="date" id="e-due"></div>
-    <div class="row"><label>优先级</label>
-      <select id="e-prio"><option value="high">🔴 高</option><option value="mid">🟡 中</option><option value="low">🟢 低</option></select>
-    </div>
-    <div class="row"><label>分类</label>
-      <select id="e-cat"><option value="work">💼 工作</option><option value="study">📚 学习</option><option value="life">🏠 生活</option><option value="other">📌 其他</option></select>
-    </div>
-    <div class="row"><label>重复</label>
-      <select id="e-repeat"><option value="">不重复</option><option value="daily">🔄 每日</option><option value="weekly">🔄 每周</option><option value="monthly">🔄 每月</option></select>
-    </div>
-    <div style="font-size:0.76rem;color:var(--text2);font-weight:500;margin-bottom:6px">📝 子任务</div>
-    <div id="subtask-list"></div>
-    <span class="add-sub" onclick="addSubtaskField()">+ 添加子任务</span>
-    <div class="btn-row">
-      <button class="btn-save" onclick="saveEdit()">💾 保存</button>
-      <button class="btn-danger" onclick="deleteFromEdit()">🗑 删除</button>
-    </div>
+    <div class="row"><label>优先级</label><select id="e-prio"><option value="high">🔴 高</option><option value="mid">🟡 中</option><option value="low">🟢 低</option></select></div>
+    <div class="row"><label>分类</label><select id="e-cat"><option value="work">💼 工作</option><option value="study">📚 学习</option><option value="life">🏠 生活</option><option value="other">📌 其他</option></select></div>
+    <div class="row"><label>重复</label><select id="e-repeat"><option value="">不重复</option><option value="daily">🔄 每日</option><option value="weekly">🔄 每周</option><option value="monthly">🔄 每月</option></select></div>
+    <div style="font-size:0.76rem;color:var(--text2);font-weight:500;margin-bottom:6px">📝 子任务</div><div id="subtask-list"></div><span class="add-sub" onclick="addSubtaskField()">+ 添加子任务</span>
+    <div class="btn-row"><button class="btn-save" onclick="saveEdit()">💾 保存</button><button class="btn-danger" onclick="deleteFromEdit()">🗑 删除</button></div>
     <button class="btn-cancel" onclick="closeEdit()" style="width:100%;margin-top:8px">取消</button>
   </div>
 </div>
 
+<!-- UNDO TOAST -->
+<div class="undo-toast" id="undo-toast"><span id="undo-msg">已删除</span><button onclick="undoDelete()">撤销</button></div>
+
 <script>
 // ==================== DATA ====================
-const KEY="todo-pwa-v3";
-let DB={tasks:[],pomos:0,workTime:25,breakTime:5};
-
+const KEY="todo-pwa-v4";
+let DB={tasks:[],expenses:[],pomos:0,workTime:25,breakTime:5};
 function save(){localStorage.setItem(KEY,JSON.stringify(DB))}
-function load(){
-  try{var d=JSON.parse(localStorage.getItem(KEY));if(d){DB=d;if(!DB.workTime)DB.workTime=25;if(!DB.breakTime)DB.breakTime=5}}catch(e){}
-}
+function load(){try{var d=JSON.parse(localStorage.getItem(KEY));if(d){DB=d;if(!DB.workTime)DB.workTime=25;if(!DB.breakTime)DB.breakTime=5;if(!DB.expenses)DB.expenses=[];DB.expenses=DB.expenses.map(function(e){if(!e.type)e.type='expense';return e})}}catch(e){}}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
 
-// ==================== ADD STATE ====================
+// ==================== MODE SWITCH ====================
+let appMode="task";
+function switchMode(m){
+  appMode=m;
+  document.getElementById("mode-task").classList.toggle("show",m==="task");
+  document.getElementById("mode-expense").classList.toggle("show",m==="expense");
+  document.getElementById("nav-task").classList.toggle("on",m==="task");
+  document.getElementById("nav-expense").classList.toggle("on",m==="expense");
+  document.getElementById("header-title").textContent=m==="task"?"任务清单":"消费记账";
+  document.getElementById("logo-icon").textContent=m==="task"?"✓":"¥";
+  document.getElementById("btn-search").style.display=m==="task"?"":"none";
+  if(m==="task")render();else renderExpenses();
+}
+function toggleSearch(){
+  var w=document.getElementById("search-wrap");w.classList.toggle("show");
+  if(w.classList.contains("show")){document.getElementById("search-input").focus()}else{searchQuery="";document.getElementById("search-input").value="";render()}
+}
+
+// ==================== TASK STATE ====================
 let addCat="work",addPrio="mid",addRepeat="";
-let catEmoji={work:"💼",study:"📚",life:"🏠",other:"📌"};
-let priEmoji={high:"🔴",mid:"🟡",low:"🟢"};
-let repeatEmoji={"":"1×",daily:"🔄",weekly:"🔁",monthly:"🔂"};
-let catNames={work:"工作",study:"学习",life:"生活",other:"其他"};
-let priNames={high:"高",mid:"中",low:"低"};
+var catEmoji={work:"💼",study:"📚",life:"🏠",other:"📌"};
+var priEmoji={high:"🔴",mid:"🟡",low:"🟢"};
+var repeatEmoji={"":"1×",daily:"🔄",weekly:"🔁",monthly:"🔂"};
+var catNames={work:"工作",study:"学习",life:"生活",other:"其他"};
+var priNames={high:"高",mid:"中",low:"低"};
 
-function cycleCat(){
-  var o=["work","study","life","other"],i=o.indexOf(addCat);
-  addCat=o[(i+1)%4];document.getElementById("btn-cat").textContent=catEmoji[addCat];
-}
-function cyclePrio(){
-  var o=["mid","high","low"],i=o.indexOf(addPrio);
-  addPrio=o[(i+1)%3];document.getElementById("btn-prio").textContent=priEmoji[addPrio];
-}
-function cycleRepeat(){
-  var o=["","daily","weekly","monthly"],i=o.indexOf(addRepeat);
-  addRepeat=o[(i+1)%4];document.getElementById("btn-repeat").textContent=repeatEmoji[addRepeat];
-}
+function cycleCat(){var o=["work","study","life","other"],i=o.indexOf(addCat);addCat=o[(i+1)%4];document.getElementById("btn-cat").textContent=catEmoji[addCat]}
+function cyclePrio(){var o=["mid","high","low"],i=o.indexOf(addPrio);addPrio=o[(i+1)%3];document.getElementById("btn-prio").textContent=priEmoji[addPrio]}
+function cycleRepeat(){var o=["","daily","weekly","monthly"],i=o.indexOf(addRepeat);addRepeat=o[(i+1)%4];document.getElementById("btn-repeat").textContent=repeatEmoji[addRepeat]}
 
-// ==================== ADD TASK ====================
+// ==================== TASK CRUD ====================
 function addTask(){
   var inp=document.getElementById("task-input"),txt=inp.value.trim();
-  if(!txt)return;
-  var due="",today=new Date().toISOString().split("T")[0];
+  if(!txt)return;var due="",today=new Date().toISOString().split("T")[0];
   if(/今天/.test(txt)){due=today;txt=txt.replace(/今天/g,"").trim()}
   else if(/明天/.test(txt)){var t=new Date();t.setDate(t.getDate()+1);due=t.toISOString().split("T")[0];txt=txt.replace(/明天/g,"").trim()}
   else if(/后天/.test(txt)){var t=new Date();t.setDate(t.getDate()+2);due=t.toISOString().split("T")[0];txt=txt.replace(/后天/g,"").trim()}
-  DB.tasks.push({
-    id:uid(),text:txt||inp.value.trim(),category:addCat,priority:addPrio,
-    repeat:addRepeat,due:due,done:false,subtasks:[],createdAt:new Date().toISOString()
-  });
+  DB.tasks.push({id:uid(),text:txt||inp.value.trim(),category:addCat,priority:addPrio,repeat:addRepeat,due:due,done:false,subtasks:[],createdAt:new Date().toISOString()});
   save();inp.value="";addCat="work";addPrio="mid";addRepeat="";
-  document.getElementById("btn-cat").textContent="💼";
-  document.getElementById("btn-prio").textContent="🟡";
-  document.getElementById("btn-repeat").textContent="1×";
+  document.getElementById("btn-cat").textContent="💼";document.getElementById("btn-prio").textContent="🟡";document.getElementById("btn-repeat").textContent="1×";
   render();vibrate(10);
 }
-
-// ==================== TOGGLE / DELETE ====================
 function toggleTask(id){
   var t=DB.tasks.find(function(x){return x.id===id});
   if(t){t.done=!t.done;if(t.done&&t.repeat)handleRepeat(t);save();render();vibrate(t.done?20:10)}
 }
-
 function handleRepeat(t){
-  var today=new Date().toISOString().split("T")[0];
-  var next="";
-  if(t.repeat==="daily"){
-    var d=new Date();d.setDate(d.getDate()+1);next=d.toISOString().split("T")[0];
-  }else if(t.repeat==="weekly"){
-    var d=new Date();d.setDate(d.getDate()+7);next=d.toISOString().split("T")[0];
-  }else if(t.repeat==="monthly"){
-    var d=new Date();d.setMonth(d.getMonth()+1);next=d.toISOString().split("T")[0];
-  }
-  if(next){
-    DB.tasks.push({
-      id:uid(),text:t.text,category:t.category,priority:t.priority,
-      repeat:t.repeat,due:next,done:false,subtasks:JSON.parse(JSON.stringify(t.subtasks)),
-      createdAt:new Date().toISOString()
-    });
-  }
+  var today=new Date().toISOString().split("T")[0],next="";
+  if(t.repeat==="daily"){var d=new Date();d.setDate(d.getDate()+1);next=d.toISOString().split("T")[0]}
+  else if(t.repeat==="weekly"){var d=new Date();d.setDate(d.getDate()+7);next=d.toISOString().split("T")[0]}
+  else if(t.repeat==="monthly"){var d=new Date();d.setMonth(d.getMonth()+1);next=d.toISOString().split("T")[0]}
+  if(next)DB.tasks.push({id:uid(),text:t.text,category:t.category,priority:t.priority,repeat:t.repeat,due:next,done:false,subtasks:JSON.parse(JSON.stringify(t.subtasks)),createdAt:new Date().toISOString()});
 }
-
 var lastDeleted=null,undoTimer=null;
 function deleteTask(id){
   var idx=-1;for(var i=0;i<DB.tasks.length;i++){if(DB.tasks[i].id===id){idx=i;break}}
-  if(idx===-1)return;
-  lastDeleted={task:DB.tasks[idx],index:idx};DB.tasks.splice(idx,1);
-  if(pomoId===id)stopPomo();
-  save();render();vibrate(30);
-  clearTimeout(undoTimer);
-  document.getElementById("undo-msg").textContent="已删除: "+lastDeleted.task.text.slice(0,15);
+  if(idx===-1)return;lastDeleted={task:DB.tasks[idx],index:idx};DB.tasks.splice(idx,1);
+  if(pomoId===id)stopPomo();save();render();vibrate(30);showUndo("已删除: "+lastDeleted.task.text.slice(0,15));
+}
+function undoDelete(){
+  if(!lastDeleted)return;
+  if(lastDeleted.task){DB.tasks.splice(lastDeleted.index,0,lastDeleted.task)}
+  else if(lastDeleted.expense){DB.expenses.splice(lastDeleted.index,0,lastDeleted.expense)}
+  lastDeleted=null;save();if(appMode==="task")render();else renderExpenses();
+  document.getElementById("undo-toast").classList.remove("show");
+}
+function showUndo(msg){
+  clearTimeout(undoTimer);document.getElementById("undo-msg").textContent=msg;
   document.getElementById("undo-toast").classList.add("show");
   undoTimer=setTimeout(function(){lastDeleted=null;document.getElementById("undo-toast").classList.remove("show")},4000);
 }
+function toggleSub(id,si){var t=DB.tasks.find(function(x){return x.id===id});if(t&&t.subtasks[si]){t.subtasks[si].done=!t.subtasks[si].done;save();render()}}
 
-function undoDelete(){
-  if(!lastDeleted)return;
-  DB.tasks.splice(lastDeleted.index,0,lastDeleted.task);
-  lastDeleted=null;save();render();
-  document.getElementById("undo-toast").classList.remove("show");
-}
-
-// ==================== SUBTASKS ====================
-function toggleSub(taskId,si){
-  var t=DB.tasks.find(function(x){return x.id===taskId});
-  if(t&&t.subtasks[si]){t.subtasks[si].done=!t.subtasks[si].done;save();render()}
-}
-
-// ==================== EDIT SHEET ====================
+// Edit task
 var editingId=null,tempSubtasks=[];
-function openEdit(id){
-  var t=DB.tasks.find(function(x){return x.id===id});
-  if(!t)return;editingId=id;
-  document.getElementById("e-text").value=t.text;
-  document.getElementById("e-due").value=t.due;
-  document.getElementById("e-prio").value=t.priority;
-  document.getElementById("e-cat").value=t.category;
-  document.getElementById("e-repeat").value=t.repeat||"";
-  tempSubtasks=t.subtasks?t.subtasks.map(function(s){return{text:s.text,done:s.done}}):[];
-  renderSubtasks();
-  document.getElementById("edit-sheet").classList.add("show");
-}
+function openEdit(id){var t=DB.tasks.find(function(x){return x.id===id});if(!t)return;editingId=id;document.getElementById("e-text").value=t.text;document.getElementById("e-due").value=t.due;document.getElementById("e-prio").value=t.priority;document.getElementById("e-cat").value=t.category;document.getElementById("e-repeat").value=t.repeat||"";tempSubtasks=t.subtasks?t.subtasks.map(function(s){return{text:s.text,done:s.done}}):[];renderSubtasks();document.getElementById("edit-sheet").classList.add("show")}
 function closeEdit(){editingId=null;document.getElementById("edit-sheet").classList.remove("show");tempSubtasks=[]}
 function addSubtaskField(){tempSubtasks.push({text:"",done:false});renderSubtasks()}
 function removeSubtaskField(i){tempSubtasks.splice(i,1);renderSubtasks()}
-function renderSubtasks(){
-  var el=document.getElementById("subtask-list");
-  el.innerHTML=tempSubtasks.map(function(s,i){
-    return'<div class="subtask-row"><input value="'+escAttr(s.text)+'" oninput="tempSubtasks['+i+"].text=this.value"+'" placeholder="子任务 '+(i+1)+'"><button class="rm-sub" onclick="removeSubtaskField('+i+')">✕</button></div>';
-  }).join("");
-}
-
-function saveEdit(){
-  if(!editingId)return;
-  var t=DB.tasks.find(function(x){return x.id===editingId});
-  if(!t)return;
-  t.text=document.getElementById("e-text").value.trim()||t.text;
-  t.due=document.getElementById("e-due").value;
-  t.priority=document.getElementById("e-prio").value;
-  t.category=document.getElementById("e-cat").value;
-  t.repeat=document.getElementById("e-repeat").value||"";
-  t.subtasks=tempSubtasks.filter(function(s){return s.text.trim()});
-  save();closeEdit();render();
-}
-
-function deleteFromEdit(){
-  if(!editingId)return;
-  deleteTask(editingId);closeEdit();
-}
+function renderSubtasks(){var el=document.getElementById("subtask-list");el.innerHTML=tempSubtasks.map(function(s,i){return'<div class="subtask-row"><input value="'+escAttr(s.text)+'" oninput="tempSubtasks['+i+"].text=this.value"+'" placeholder="子任务 '+(i+1)+'"><button class="rm-sub" onclick="removeSubtaskField('+i+')">✕</button></div>'}).join("")}
+function saveEdit(){if(!editingId)return;var t=DB.tasks.find(function(x){return x.id===editingId});if(!t)return;t.text=document.getElementById("e-text").value.trim()||t.text;t.due=document.getElementById("e-due").value;t.priority=document.getElementById("e-prio").value;t.category=document.getElementById("e-cat").value;t.repeat=document.getElementById("e-repeat").value||"";t.subtasks=tempSubtasks.filter(function(s){return s.text.trim()});save();closeEdit();render()}
+function deleteFromEdit(){if(!editingId)return;deleteTask(editingId);closeEdit()}
 
 // ==================== POMODORO ====================
 var pomoId=null,pomoInt=null,pomoLeft=0,pomoBreak=false,CIRC=113.1;
-function getWork(){return(DB.workTime||25)*60}
-function getBreak(){return(DB.breakTime||5)*60}
-
-function startPomo(id){
-  var t=DB.tasks.find(function(x){return x.id===id});
-  if(!t||t.done)return;
-  if(pomoInt)stopPomo();
-  pomoId=id;pomoBreak=false;pomoLeft=getWork();
-  document.getElementById("pomo-bar").classList.add("on");
-  document.getElementById("pomo-task-label").textContent=t.text;
-  updatePomoUI();render();
-  pomoInt=setInterval(function(){
-    pomoLeft--;updatePomoUI();
-    if(pomoLeft<=0){
-      if(!pomoBreak){DB.pomos++;save();pomoBreak=true;pomoLeft=getBreak();document.getElementById("pomo-task-label").textContent="☕ 休息";notify("🍅 番茄完成！","休息一下吧");vibrate([200,100,200])}
-      else{pomoBreak=false;pomoLeft=getWork();document.getElementById("pomo-task-label").textContent=t.text}
-      updatePomoUI();render();
-    }
-  },1000);
-  if("Notification"in window&&Notification.permission==="default")Notification.requestPermission();
-}
+function getWork(){return(DB.workTime||25)*60}function getBreak(){return(DB.breakTime||5)*60}
+function startPomo(id){var t=DB.tasks.find(function(x){return x.id===id});if(!t||t.done)return;if(pomoInt)stopPomo();pomoId=id;pomoBreak=false;pomoLeft=getWork();document.getElementById("pomo-bar").classList.add("on");document.getElementById("pomo-task-label").textContent=t.text;updatePomoUI();render();pomoInt=setInterval(function(){pomoLeft--;updatePomoUI();if(pomoLeft<=0){if(!pomoBreak){DB.pomos++;save();pomoBreak=true;pomoLeft=getBreak();document.getElementById("pomo-task-label").textContent="☕ 休息";notify("🍅 番茄完成！","休息一下吧");vibrate([200,100,200])}else{pomoBreak=false;pomoLeft=getWork();document.getElementById("pomo-task-label").textContent=t.text}updatePomoUI();render()}},1000);if("Notification"in window&&Notification.permission==="default")Notification.requestPermission()}
 function stopPomo(){if(pomoInt){clearInterval(pomoInt);pomoInt=null}pomoId=null;document.getElementById("pomo-bar").classList.remove("on");render()}
-function skipPomo(){
-  if(!pomoInt)return;
-  pomoLeft=0;
-  if(!pomoBreak){DB.pomos++;save();pomoBreak=true;pomoLeft=getBreak();document.getElementById("pomo-task-label").textContent="☕ 休息"}
-  else{pomoBreak=false;pomoLeft=getWork();var t=pomoId?DB.tasks.find(function(x){return x.id===pomoId}):null;document.getElementById("pomo-task-label").textContent=t?t.text:"专注中"}
-  updatePomoUI();render();
-}
-function updatePomoUI(){
-  var total=pomoBreak?getBreak():getWork();
-  var m=Math.floor(pomoLeft/60),s=pomoLeft%60;
-  document.getElementById("pomo-timer").textContent=m+":"+String(s).padStart(2,"0");
-  document.getElementById("pomo-circle").style.strokeDashoffset=CIRC*(1-pomoLeft/total);
-  document.getElementById("pomo-circle").style.stroke=pomoBreak?"#FBBF24":"url(#ring-grad)";
-}
+function skipPomo(){if(!pomoInt)return;pomoLeft=0;if(!pomoBreak){DB.pomos++;save();pomoBreak=true;pomoLeft=getBreak();document.getElementById("pomo-task-label").textContent="☕ 休息"}else{pomoBreak=false;pomoLeft=getWork();var t=pomoId?DB.tasks.find(function(x){return x.id===pomoId}):null;document.getElementById("pomo-task-label").textContent=t?t.text:"专注中"}updatePomoUI();render()}
+function updatePomoUI(){var total=pomoBreak?getBreak():getWork();var m=Math.floor(pomoLeft/60),s=pomoLeft%60;document.getElementById("pomo-timer").textContent=m+":"+String(s).padStart(2,"0");document.getElementById("pomo-circle").style.strokeDashoffset=CIRC*(1-pomoLeft/total);document.getElementById("pomo-circle").style.stroke=pomoBreak?"#FBBF24":"url(#ring-grad)"}
 function togglePomoSettings(){document.getElementById("pomo-settings").classList.toggle("show")}
-function savePomoSettings(){
-  var w=parseInt(document.getElementById("set-work").value)||25,b=parseInt(document.getElementById("set-break").value)||5;
-  DB.workTime=Math.max(1,Math.min(120,w));DB.breakTime=Math.max(1,Math.min(60,b));
-  save();document.getElementById("pomo-settings").classList.remove("show");
-}
+function savePomoSettings(){var w=parseInt(document.getElementById("set-work").value)||25,b=parseInt(document.getElementById("set-break").value)||5;DB.workTime=Math.max(1,Math.min(120,w));DB.breakTime=Math.max(1,Math.min(60,b));save();document.getElementById("pomo-settings").classList.remove("show")}
 
-function notify(title,body){if("Notification"in window&&Notification.permission==="granted")new Notification(title,{body:body,icon:"./icons/icon-192.png",tag:"pomo"})}
-function vibrate(p){if(navigator.vibrate)navigator.vibrate(p)}
-
-// ==================== SEARCH & SORT & FILTER ====================
+// ==================== SEARCH/SORT/FILTER ====================
 var searchQuery="",sortMode="newest",catFilter="all";
-function toggleSearch(){
-  var w=document.getElementById("search-wrap");w.classList.toggle("show");
-  if(w.classList.contains("show")){document.getElementById("search-input").focus()}
-  else{searchQuery="";document.getElementById("search-input").value="";render()}
-}
 function clearSearch(){searchQuery="";document.getElementById("search-input").value="";render()}
-function cycleSort(){
-  var modes=["newest","oldest","priority","due"],labels={"newest":"🕐 最新","oldest":"🕰 最早","priority":"⭐ 优先级","due":"📅 截止"};
-  var i=modes.indexOf(sortMode);sortMode=modes[(i+1)%4];document.getElementById("sort-btn").textContent=labels[sortMode];render();
-}
-function setCat(c){
-  catFilter=c;
-  document.querySelectorAll("#cat-filter button").forEach(function(b){b.classList.remove("on")});
-  document.getElementById("cat-"+c).classList.add("on");
-  render();
-}
+function cycleSort(){var modes=["newest","oldest","priority","due"],labels={"newest":"🕐 最新","oldest":"🕰 最早","priority":"⭐ 优先级","due":"📅 截止"};var i=modes.indexOf(sortMode);sortMode=modes[(i+1)%4];document.getElementById("sort-btn").textContent=labels[sortMode];render()}
+function setCat(c){catFilter=c;document.querySelectorAll("#cat-filter button").forEach(function(b){b.classList.remove("on")});document.getElementById("cat-"+c).classList.add("on");render()}
+var taskTab="all";
+function switchTab(t){taskTab=t;document.querySelectorAll(".tabs button").forEach(function(b){b.classList.remove("on")});var el=document.getElementById("tab-"+t);if(el)el.classList.add("on");document.querySelectorAll(".stat-card").forEach(function(c){c.classList.remove("active")});var card=document.getElementById("card-"+t);if(card)card.classList.add("active");render()}
 
-// ==================== TABS ====================
-var tab="all";
-function switchTab(t){
-  tab=t;
-  document.querySelectorAll(".tabs button").forEach(function(b){b.classList.remove("on")});
-  var el=document.getElementById("tab-"+t);if(el)el.classList.add("on");
-  document.querySelectorAll(".stat-card").forEach(function(c){c.classList.remove("active")});
-  var card=document.getElementById("card-"+t);if(card)card.classList.add("active");
-  render();
-}
-
-// ==================== FILTERED DATA ====================
 function filtered(){
-  var today=new Date().toISOString().split("T")[0];
-  var tasks=DB.tasks.slice();
-
-  // Search
-  if(searchQuery){
-    var q=searchQuery.toLowerCase();
-    tasks=tasks.filter(function(t){return t.text.toLowerCase().indexOf(q)!==-1});
-  }
-
-  // Category filter
-  if(catFilter!=="all"){tasks=tasks.filter(function(t){return t.category===catFilter})}
-
-  // Tab filter
-  if(tab==="active")tasks=tasks.filter(function(t){return !t.done});
-  else if(tab==="done")tasks=tasks.filter(function(t){return t.done});
-  else if(tab==="today")tasks=tasks.filter(function(t){return t.due===today});
-
-  // Sort
+  var today=new Date().toISOString().split("T")[0];var tasks=DB.tasks.slice();
+  if(searchQuery){var q=searchQuery.toLowerCase();tasks=tasks.filter(function(t){return t.text.toLowerCase().indexOf(q)!==-1})}
+  if(catFilter!=="all")tasks=tasks.filter(function(t){return t.category===catFilter});
+  if(taskTab==="active")tasks=tasks.filter(function(t){return !t.done});
+  else if(taskTab==="done")tasks=tasks.filter(function(t){return t.done});
+  else if(taskTab==="today")tasks=tasks.filter(function(t){return t.due===today});
   var po={high:0,mid:1,low:2};
-  if(sortMode==="newest"){tasks.sort(function(a,b){return b.createdAt.localeCompare(a.createdAt)})}
-  else if(sortMode==="oldest"){tasks.sort(function(a,b){return a.createdAt.localeCompare(b.createdAt)})}
-  else if(sortMode==="priority"){tasks.sort(function(a,b){if(a.priority!==b.priority)return po[a.priority]-po[b.priority];return b.createdAt.localeCompare(a.createdAt)})}
-  else if(sortMode==="due"){tasks.sort(function(a,b){if(!a.due&&!b.due)return b.createdAt.localeCompare(a.createdAt);if(!a.due)return 1;if(!b.due)return -1;return a.due.localeCompare(b.due)})}
-
+  if(sortMode==="newest")tasks.sort(function(a,b){return b.createdAt.localeCompare(a.createdAt)});
+  else if(sortMode==="oldest")tasks.sort(function(a,b){return a.createdAt.localeCompare(b.createdAt)});
+  else if(sortMode==="priority")tasks.sort(function(a,b){if(a.priority!==b.priority)return po[a.priority]-po[b.priority];return b.createdAt.localeCompare(a.createdAt)});
+  else if(sortMode==="due")tasks.sort(function(a,b){if(!a.due&&!b.due)return b.createdAt.localeCompare(a.createdAt);if(!a.due)return 1;if(!b.due)return -1;return a.due.localeCompare(b.due)});
   return tasks;
 }
 
-// ==================== RENDER ====================
-var swipeState={id:null,startX:0,curX:0,el:null};
-
+// ==================== TASK RENDER ====================
 function render(){
+  if(appMode!=="task")return;
   var tasks=filtered(),today=new Date().toISOString().split("T")[0];
   var listEl=document.getElementById("list"),all=DB.tasks;
   var allToday=all.filter(function(t){return t.due===today||(!t.due&&!t.done)});
-
   if(tasks.length===0){
-    var ico=tab==="done"?"🎉":"📋",msg=searchQuery?"无匹配任务":tab==="done"?"还没有完成的任务":"暂无任务";
-    listEl.innerHTML='<div class="empty"><div class="illu"><svg viewBox="0 0 100 100" fill="none"><rect x="20" y="15" width="60" height="12" rx="4" fill="currentColor" opacity="0.2"/><rect x="20" y="35" width="45" height="12" rx="4" fill="currentColor" opacity="0.12"/><rect x="20" y="55" width="52" height="12" rx="4" fill="currentColor" opacity="0.15"/><rect x="20" y="75" width="38" height="12" rx="4" fill="currentColor" opacity="0.1"/><circle cx="82" cy="27" r="10" fill="#7C6FF7" opacity="0.3"/></svg></div><div class="msg">'+ico+' '+msg+'</div><div class="sub">'+searchQuery?'换个关键词试试':'开始添加任务吧'+'</div></div>';
+    var ico=taskTab==="done"?"🎉":"📋",msg=searchQuery?"无匹配任务":taskTab==="done"?"还没有完成的任务":"暂无任务";
+    listEl.innerHTML='<div class="empty"><div class="illu"><svg viewBox="0 0 100 100" fill="none"><rect x="20" y="15" width="60" height="12" rx="4" fill="currentColor" opacity="0.2"/><rect x="20" y="35" width="45" height="12" rx="4" fill="currentColor" opacity="0.12"/><rect x="20" y="55" width="52" height="12" rx="4" fill="currentColor" opacity="0.15"/><rect x="20" y="75" width="38" height="12" rx="4" fill="currentColor" opacity="0.1"/><circle cx="82" cy="27" r="10" fill="#7C6FF7" opacity="0.3"/></svg></div><div class="msg">'+ico+' '+msg+'</div><div class="sub">开始添加任务吧</div></div>';
   }else{
-    listEl.innerHTML=tasks.map(function(t,i){
-      var over=t.due&&t.due<today&&!t.done;
-      var run=pomoId===t.id;
-      var tags='';
-      tags+='<span class="badge badge-cat-'+t.category+'">'+catEmoji[t.category]+' '+catNames[t.category]+'</span>';
+    listEl.innerHTML=tasks.map(function(t){
+      var over=t.due&&t.due<today&&!t.done,run=pomoId===t.id;
+      var tags='<span class="badge badge-cat-'+t.category+'">'+catEmoji[t.category]+' '+catNames[t.category]+'</span>';
       tags+='<span class="badge badge-pri-'+t.priority+'">'+priEmoji[t.priority]+' '+priNames[t.priority]+'</span>';
-      if(t.due){
-        if(t.due<today&&!t.done)tags+='<span class="badge badge-overdue">⚠ 已过期</span>';
-        else if(t.due===today)tags+='<span class="badge badge-due">📅 今天</span>';
-        else tags+='<span class="badge badge-due">📅 '+t.due+'</span>';
-      }
+      if(t.due){if(t.due<today&&!t.done)tags+='<span class="badge badge-overdue">⚠ 已过期</span>';else if(t.due===today)tags+='<span class="badge badge-due">📅 今天</span>';else tags+='<span class="badge badge-due">📅 '+t.due+'</span>'}
       if(t.repeat)tags+='<span class="badge badge-repeat">'+repeatEmoji[t.repeat]+' '+{daily:"每日",weekly:"每周",monthly:"每月"}[t.repeat]+'</span>';
       if(t.done)tags+='<span class="badge" style="color:var(--success);background:rgba(52,211,153,0.1)">✅ 完成</span>';
       if(run)tags+='<span class="badge badge-timer">🍅 计时中</span>';
-
-      // Subtasks
       var subHtml='';
-      if(t.subtasks&&t.subtasks.length>0){
-        var doneSub=t.subtasks.filter(function(s){return s.done}).length;
-        var totalSub=t.subtasks.length;
-        subHtml='<div class="subtasks">'+t.subtasks.map(function(s,si){
-          return'<div class="subtask'+ (s.done?" done":"") +'"><div class="sub-check'+ (s.done?" done":"") +'" onclick="event.stopPropagation();toggleSub(\''+t.id+'\','+si+')"></div><span class="sub-text">'+esc(s.text)+'</span></div>';
-        }).join("")+'</div>';
-      }
-
-      return'<div class="task-wrap" data-id="'+t.id+'">'+
-        '<div class="swipe-bg">滑动删除</div>'+
-        '<div class="task'+ (t.done?" done":"") + (over?" overdue":"") +'" data-id="'+t.id+'">'+
-        '<div class="task-inner">'+
-        '<div class="check'+ (t.done?" checked":"") +'" onclick="toggleTask(\''+t.id+'\')"></div>'+
-        '<div class="task-body" onclick="openEdit(\''+t.id+'\')">'+
-        '<div class="txt">'+esc(t.text)+'</div>'+
-        '<div class="meta">'+tags+'</div>'+
-        subHtml+
-        '</div>'+
-        '<div class="actions">'+
-        (!t.done?'<button class="btn-timer'+(run?" on":"")+'" onclick="event.stopPropagation();startPomo(\''+t.id+'\')" title="番茄钟">🍅</button>':'')+
-        '<button class="btn-del" onclick="event.stopPropagation();deleteTask(\''+t.id+'\')" title="删除">✕</button>'+
-        '</div></div></div>';
+      if(t.subtasks&&t.subtasks.length>0){subHtml='<div class="subtasks">'+t.subtasks.map(function(s,si){return'<div class="subtask'+(s.done?" done":"")+'"><div class="sub-check'+(s.done?" done":"")+'" onclick="event.stopPropagation();toggleSub(\''+t.id+'\','+si+')"></div><span class="sub-text">'+esc(s.text)+'</span></div>'}).join("")+'</div>'}
+      return'<div class="task-wrap"><div class="swipe-bg">滑动删除</div><div class="task'+(t.done?" done":"")+(over?" overdue":"")+'" data-id="'+t.id+'"><div class="task-inner"><div class="check'+(t.done?" checked":"")+'" onclick="toggleTask(\''+t.id+'\')"></div><div class="task-body" onclick="openEdit(\''+t.id+'\')"><div class="txt">'+esc(t.text)+'</div><div class="meta">'+tags+'</div>'+subHtml+'</div><div class="actions">'+(t.done?'':'<button class="btn-timer'+(run?" on":"")+'" onclick="event.stopPropagation();startPomo(\''+t.id+'\')">🍅</button>')+'<button class="btn-del" onclick="event.stopPropagation();deleteTask(\''+t.id+'\')">✕</button></div></div></div>';
     }).join("");
-
-    // Attach swipe listeners
     setTimeout(attachSwipe,50);
   }
-
-  // Stats
   document.getElementById("s-total").textContent=all.length;
-  document.getElementById("s-active").textContent=all.filter(function(t){return !t.done;}).length;
-  document.getElementById("s-done").textContent=all.filter(function(t){return t.done;}).length;
+  document.getElementById("s-active").textContent=all.filter(function(t){return !t.done}).length;
+  document.getElementById("s-done").textContent=all.filter(function(t){return t.done}).length;
   document.getElementById("s-pomo").textContent=DB.pomos||0;
-
-  // Daily progress
-  var todayDone=allToday.filter(function(t){return t.done}).length;
-  var todayTotal=allToday.length||1;
-  var pct=Math.round(todayDone/todayTotal*100);
-  document.getElementById("dp-text").textContent=todayDone+" / "+allToday.length+" 已完成";
-  document.getElementById("dp-bar").style.width=pct+"%";
-
-  // Update search input
-  var si=document.getElementById("search-input");
-  if(si.value!==searchQuery)si.value=searchQuery;
+  var td=allToday.filter(function(t){return t.done}).length,tt=allToday.length||1;
+  document.getElementById("dp-text").textContent=td+" / "+allToday.length+" 已完成";
+  document.getElementById("dp-bar").style.width=Math.round(td/tt*100)+"%";
+  var si=document.getElementById("search-input");if(si.value!==searchQuery)si.value=searchQuery;
 }
 
-// ==================== SWIPE TO DELETE ====================
 function attachSwipe(){
   document.querySelectorAll(".task").forEach(function(el){
-    if(el.dataset.swipeBound)return;el.dataset.swipeBound="1";
-    var startX=0,startY=0,offset=0,wrap=el.closest(".task-wrap"),id=el.dataset.id;
-
-    el.addEventListener("touchstart",function(e){
-      startX=e.touches[0].clientX;startY=e.touches[0].clientY;offset=0;el.style.transition="none";
-    },{passive:true});
-
-    el.addEventListener("touchmove",function(e){
-      var dx=e.touches[0].clientX-startX,dy=e.touches[0].clientY-startY;
-      if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>10){e.preventDefault()}
-      if(dx<0){offset=Math.max(dx,-80);el.style.transform="translateX("+offset+"px)"}
-    },{passive:false});
-
-    el.addEventListener("touchend",function(){
-      el.style.transition="transform 0.25s cubic-bezier(.4,0,.2,1)";
-      if(offset<-50){deleteTask(id);el.style.transform="translateX(0)"}
-      else{el.style.transform="translateX(0)"}
-    });
+    if(el.dataset.swipeBound)return;el.dataset.swipeBound="1";var sx=0,sy=0,ox=0,id=el.dataset.id;
+    el.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;ox=0;el.style.transition="none"},{passive:true});
+    el.addEventListener("touchmove",function(e){var dx=e.touches[0].clientX-sx,dy=e.touches[0].clientY-sy;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>10)e.preventDefault();if(dx<0){ox=Math.max(dx,-80);el.style.transform="translateX("+ox+"px)"}},{passive:false});
+    el.addEventListener("touchend",function(){el.style.transition="transform 0.25s cubic-bezier(.4,0,.2,1)";if(ox<-50){deleteTask(id);el.style.transform="translateX(0)"}else el.style.transform="translateX(0)"});
   });
 }
 
-// ==================== BATCH ====================
-function batchClearDone(){
-  var cnt=DB.tasks.filter(function(t){return t.done;}).length;
-  if(cnt===0)return;
-  var toDel=DB.tasks.filter(function(t){return t.done;});
-  lastDeleted={batch:toDel,task:null,index:-1};
-  DB.tasks=DB.tasks.filter(function(t){return !t.done;});
-  save();render();
-  document.getElementById("undo-msg").textContent="已清除 "+cnt+" 个任务";
-  document.getElementById("undo-toast").classList.add("show");
-  clearTimeout(undoTimer);
-  undoTimer=setTimeout(function(){lastDeleted=null;document.getElementById("undo-toast").classList.remove("show")},4000);
+// ==================== EXPENSE SYSTEM ====================
+var expCats=[
+  {key:"food",icon:"🍔",name:"餐饮",color:"#FBBF24"},
+  {key:"transport",icon:"🚌",name:"交通",color:"#38BDF8"},
+  {key:"shop",icon:"🛒",name:"购物",color:"#F472B6"},
+  {key:"entertain",icon:"🎮",name:"娱乐",color:"#34D399"},
+  {key:"bills",icon:"📱",name:"通讯",color:"#7C6FF7"},
+  {key:"housing",icon:"🏠",name:"居住",color:"#FB923C"},
+  {key:"health",icon:"💊",name:"医疗",color:"#FF5B5B"},
+  {key:"income",icon:"💰",name:"收入",color:"#34D399"},
+  {key:"other",icon:"📌",name:"其他",color:"#9A9AB0"}
+];
+var expCatIdx=0,expType="expense",expMonthOffset=0,expViewMode="month";
+
+function cycleExpCat(){expCatIdx=(expCatIdx+1)%expCats.length;updateExpCatBtn()}
+function cycleExpType(){expType=expType==="expense"?"income":"expense";document.getElementById("exp-type-btn").textContent=expType==="expense"?"💸 支出":"💰 收入"}
+function updateExpCatBtn(){var c=expCats[expCatIdx];document.getElementById("exp-cat-btn").textContent=c.icon+" "+c.name}
+function switchExpMode(m){expViewMode=m;document.getElementById("eb-month").classList.toggle("on",m==="month");document.getElementById("eb-all").classList.toggle("on",m==="all");renderExpenses()}
+
+function addExpense(){
+  var amt=parseFloat(document.getElementById("exp-amount").value);
+  if(!amt||amt<=0)return;
+  var now=new Date();
+  var cat=expCats[expCatIdx];
+  // If income type, auto-set category to income
+  var useCat=expType==="income"?"income":cat.key;
+  DB.expenses.push({id:uid(),amount:amt,type:expType,category:useCat,date:now.toISOString().split("T")[0],note:"",createdAt:now.toISOString()});
+  save();document.getElementById("exp-amount").value="";
+  expCatIdx=0;updateExpCatBtn();renderExpenses();vibrate(10);
 }
 
+function deleteExpense(id){
+  var idx=-1;for(var i=0;i<DB.expenses.length;i++){if(DB.expenses[i].id===id){idx=i;break}}
+  if(idx===-1)return;
+  lastDeleted={expense:DB.expenses[idx],index:idx,task:null};DB.expenses.splice(idx,1);
+  save();renderExpenses();vibrate(30);
+  var cat=expCats.find(function(c){return c.key===lastDeleted.expense.category});
+  showUndo("已删除: "+(cat?cat.name:"")+" ¥"+lastDeleted.expense.amount.toFixed(2));
+}
+
+function getExpMonth(){var now=new Date();now.setMonth(now.getMonth()+expMonthOffset);return now.toISOString().slice(0,7)}
+function changeExpMonth(d){expMonthOffset+=d;renderExpenses()}
+function expToday(){expMonthOffset=0;renderExpenses()}
+
+function renderExpenses(){
+  if(appMode!=="expense")return;
+  var ym=getExpMonth();
+  document.getElementById("exp-month-label").textContent=ym.replace("-","年")+"月";
+
+  // Filter
+  var exps=DB.expenses.slice().sort(function(a,b){return b.date.localeCompare(a.date)||b.createdAt.localeCompare(a.createdAt)});
+  if(expViewMode==="month")exps=exps.filter(function(e){return e.date.slice(0,7)===ym});
+
+  // Summary
+  var income=0,spent=0;
+  exps.forEach(function(e){if(e.type==="income")income+=e.amount;else spent+=e.amount});
+  document.getElementById("mc-income").textContent="¥"+income.toFixed(2);
+  document.getElementById("mc-expense").textContent="¥"+spent.toFixed(2);
+  document.getElementById("mc-balance").textContent="¥"+(income-spent).toFixed(2);
+
+  // Breakdown
+  var bd={};expCats.forEach(function(c){bd[c.key]=0});
+  exps.forEach(function(e){
+    if(e.type==="expense")bd[e.category]=(bd[e.category]||0)+e.amount;
+  });
+  var maxAmt=Math.max.apply(null,Object.values(bd))||1;
+  var filterCats=expCats.filter(function(c){return c.key!=="income"});
+  document.getElementById("exp-breakdown").innerHTML=filterCats.map(function(c){
+    var v=bd[c.key]||0,pct=Math.round(v/maxAmt*100);
+    return'<div class="cat-bar"><div class="cb-icon">'+c.icon+'</div><div class="cb-name">'+c.name+'</div><div class="cb-track"><div class="cb-fill" style="width:'+pct+'%;background:'+c.color+'"></div></div><div class="cb-amt">¥'+v.toFixed(0)+'</div></div>';
+  }).join("");
+
+  // List
+  var listEl=document.getElementById("exp-list");
+  if(exps.length===0){
+    listEl.innerHTML='<div class="empty"><div class="illu"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" opacity="0.2"/><rect x="44" y="30" width="12" height="40" rx="3" fill="currentColor" opacity="0.3"/><rect x="32" y="42" width="36" height="3" rx="1.5" fill="currentColor" opacity="0.2"/></svg></div><div class="msg">暂无记录</div><div class="sub">添加一笔收支吧</div></div>';
+  }else{
+    var groups={};
+    exps.forEach(function(e){
+      var d=e.date;if(!groups[d])groups[d]=[];groups[d].push(e);
+    });
+    var dates=Object.keys(groups).sort().reverse();
+    listEl.innerHTML=dates.map(function(date){
+      var items=groups[date].map(function(e){
+        var cat=expCats.find(function(c){return c.key===e.category})||expCats[8];
+        var isIn=e.type==="income";
+        return'<div class="exp-item"><div class="ei-icon e-cat-'+cat.key+'" style="background:rgba('+hexToRgb(cat.color)+',0.12)">'+cat.icon+'</div><div class="ei-info"><div class="ei-name">'+(isIn?'收入':cat.name)+(e.note?' - '+esc(e.note):'')+'</div><div class="ei-note">'+date+'</div></div><div class="ei-amt '+(isIn?'in':'out')+'">'+(isIn?'+':'-')+'¥'+e.amount.toFixed(2)+'</div><button class="ei-del" onclick="event.stopPropagation();deleteExpense(\''+e.id+'\')">✕</button></div>';
+      }).join("");
+      var dayTotal=groups[date].reduce(function(s,e){return s+(e.type==="income"?e.amount:-e.amount)},0);
+      var totalStr=dayTotal>=0?"+"+dayTotal.toFixed(2):dayTotal.toFixed(2);
+      return'<div class="exp-date-group"><div class="exp-date-label">📅 '+date+' <span style="color:'+(dayTotal>=0?'var(--success)':'var(--danger)')+'">'+totalStr+'</span></div>'+items+'</div>';
+    }).join("");
+  }
+}
+
+function hexToRgb(h){var r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return r+","+g+","+b}
+
+// ==================== BATCH ====================
+function batchClearDone(){
+  var cnt=DB.tasks.filter(function(t){return t.done}).length;if(cnt===0)return;
+  var toDel=DB.tasks.filter(function(t){return t.done});lastDeleted={batch:toDel,task:null,expense:null,index:-1};
+  DB.tasks=DB.tasks.filter(function(t){return !t.done});save();render();showUndo("已清除 "+cnt+" 个任务");
+}
 function batchReschedule(){
-  var today=new Date().toISOString().split("T")[0];
-  var cnt=0;
-  DB.tasks.forEach(function(t){if(!t.done&&t.due&&t.due<today){t.due=today;cnt++}});
-  save();render();vibrate(10);
+  var today=new Date().toISOString().split("T")[0],cnt=0;
+  DB.tasks.forEach(function(t){if(!t.done&&t.due&&t.due<today){t.due=today;cnt++}});save();render();vibrate(10);
   if(cnt===0)alert("没有过期任务");else alert(cnt+" 个过期任务已改为今天到期");
 }
 
-function exportData(){
-  var b=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"});
-  var a=document.createElement("a");a.href=URL.createObjectURL(b);
-  a.download="todo-backup-"+new Date().toISOString().split("T")[0]+".json";a.click();
-}
+// Override undo for batch
+var origUndoDel=undoDelete;
+undoDelete=function(){
+  if(lastDeleted&&lastDeleted.batch){lastDeleted.batch.forEach(function(t){DB.tasks.push(t)});lastDeleted=null;save();render();document.getElementById("undo-toast").classList.remove("show");return}
+  origUndoDel();
+};
 
-function importData(){
+// ==================== DATA IO ====================
+function exportAllData(){
+  var b=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"});
+  var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="data-backup-"+new Date().toISOString().split("T")[0]+".json";a.click();
+}
+function importAllData(){
   var inp=document.createElement("input");inp.type="file";inp.accept=".json";
-  inp.onchange=function(e){
-    var f=e.target.files[0];if(!f)return;var r=new FileReader();
+  inp.onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();
     r.onload=function(ev){
       try{var data=JSON.parse(ev.target.result);
-        if(data.tasks&&Array.isArray(data.tasks)){
-          if(confirm("导入 "+data.tasks.length+" 个任务？")){
-            var ids=new Set(DB.tasks.map(function(t){return t.id;}));
-            data.tasks.forEach(function(t){if(!ids.has(t.id))DB.tasks.push(t)});
-            DB.pomos=Math.max(DB.pomos||0,data.pomos||0);save();render();
+        if(data.tasks||data.expenses){
+          var tc=(data.tasks||[]).length,ec=(data.expenses||[]).length;
+          if(confirm("导入 "+tc+" 个任务 + "+ec+" 条账单？")){
+            if(data.tasks){var ids=new Set(DB.tasks.map(function(t){return t.id}));data.tasks.forEach(function(t){if(!ids.has(t.id))DB.tasks.push(t)})}
+            if(data.expenses){var eids=new Set(DB.expenses.map(function(e){return e.id}));data.expenses.forEach(function(e){if(!eids.has(e.id))DB.expenses.push(e)})}
+            DB.pomos=Math.max(DB.pomos||0,data.pomos||0);save();if(appMode==="task")render();else renderExpenses();
           }
         }
       }catch(ex){alert("文件格式错误")}
@@ -843,46 +701,31 @@ function importData(){
   };inp.click();
 }
 
-// Override undo for batch
-var origUndo=undoDelete;
-undoDelete=function(){
-  if(lastDeleted&&lastDeleted.batch){
-    lastDeleted.batch.forEach(function(t){DB.tasks.push(t)});lastDeleted=null;save();render();
-    document.getElementById("undo-toast").classList.remove("show");return;
-  }
-  origUndo();
-};
-
 // ==================== CLOCK ====================
-function tickClock(){
-  var n=new Date(),wk=["周日","周一","周二","周三","周四","周五","周六"];
-  document.getElementById("live-time").textContent=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0");
-  document.getElementById("live-date").textContent=wk[n.getDay()]+" "+(n.getMonth()+1)+"/"+n.getDate();
-}
+function tickClock(){var n=new Date(),wk=["周日","周一","周二","周三","周四","周五","周六"];document.getElementById("live-time").textContent=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0");document.getElementById("live-date").textContent=wk[n.getDay()]+" "+(n.getMonth()+1)+"/"+n.getDate()}
 tickClock();setInterval(tickClock,30000);
 
 // ==================== PWA ====================
 var deferredPrompt=null;
 window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredPrompt=e;document.getElementById("install-toast").classList.add("on")});
-function installApp(){
-  if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(r){document.getElementById("install-toast").classList.remove("on");deferredPrompt=null})}
-  else{alert("📱 iPhone：Safari → 分享 → 添加到主屏幕\n\n🤖 安卓：Chrome 菜单 → 添加到主屏幕")}
-}
+function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(r){document.getElementById("install-toast").classList.remove("on");deferredPrompt=null})}else alert("📱 iPhone：Safari → 分享 → 添加到主屏幕\n\n🤖 安卓：Chrome 菜单 → 添加到主屏幕")}
 if(navigator.standalone||window.matchMedia("(display-mode: standalone)").matches)document.getElementById("install-toast").classList.remove("on");
 
 // ==================== HELPERS ====================
 function esc(s){var d={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"};return s.replace(/[&<>"']/g,function(c){return d[c]})}
 function escAttr(s){return s.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function notify(title,body){if("Notification"in window&&Notification.permission==="granted")new Notification(title,{body:body,icon:"./icons/icon-192.png",tag:"pomo"})}
+function vibrate(p){if(navigator.vibrate)navigator.vibrate(p)}
 
 // ==================== INIT ====================
 load();
-document.getElementById("set-work").value=DB.workTime||25;
-document.getElementById("set-break").value=DB.breakTime||5;
-render();
+document.getElementById("set-work").value=DB.workTime||25;document.getElementById("set-break").value=DB.breakTime||5;
+render();renderExpenses();
 if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
 document.getElementById("task-input").addEventListener("keydown",function(e){if(e.key==="Enter")addTask()});
 document.getElementById("edit-sheet").addEventListener("click",function(e){if(e.target===this)closeEdit()});
 document.getElementById("search-input").addEventListener("input",function(){searchQuery=this.value;render()});
+document.getElementById("exp-amount").addEventListener("keydown",function(e){if(e.key==="Enter")addExpense()});
 </script>
 </body>
 </html>
