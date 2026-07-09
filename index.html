@@ -16,27 +16,25 @@
 html,body{height:100%;overflow:hidden}
 body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100vh;user-select:none;-webkit-user-select:none}
 
-header{padding:14px 18px;padding-top:calc(14px + var(--safe-t));display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-header h1{font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:8px;letter-spacing:-0.3px}
+header{padding:12px 18px;padding-top:calc(12px + var(--safe-t));display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+header h1{font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px;letter-spacing:-0.3px}
 header h1 .dot{width:7px;height:7px;border-radius:50%}
 header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--text2)}
-.mod-dot(none){}
-.mod-dot(task){background:var(--accent)}.mod-dot(expense){background:var(--accent2)}.mod-dot(word){background:var(--accent3)}.mod-dot(track){background:var(--accent4)}
-.dot-task{background:var(--accent)}.dot-expense{background:var(--accent2)}.dot-word{background:var(--accent3)}.dot-track{background:var(--accent4)}
+.dot-task{background:var(--accent)}.dot-expense{background:var(--accent2)}.dot-word{background:var(--accent3)}.dot-track{background:var(--accent4)}.dot-dash{background:#8B6914}
 
 .btn-base{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:all 0.12s}
 .btn-base:active{background:var(--surface2);transform:scale(0.92)}
 
-.pomo-bar{margin:0 16px 8px;padding:10px 14px;border-radius:var(--radius);background:rgba(194,101,58,0.04);border:1px solid rgba(194,101,58,0.12);display:none;align-items:center;gap:10px;flex-shrink:0}
+.pomo-bar{margin:0 16px 6px;padding:10px 14px;border-radius:var(--radius);background:rgba(194,101,58,0.04);border:1px solid rgba(194,101,58,0.12);display:none;align-items:center;gap:10px;flex-shrink:0}
 .pomo-bar.on{display:flex}
 .pomo-timer{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent)}
 .pomo-label{font-size:0.62rem;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
 .pomo-bar .btn-stop{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(209,67,67,0.2);background:transparent;color:var(--danger);cursor:pointer;font-size:0.65rem;margin-left:auto;flex-shrink:0}
 
 .nav-bar{display:flex;flex-shrink:0;border-top:1px solid var(--border);background:var(--bg);padding-bottom:var(--safe-b)}
-.nav-bar button{flex:1;min-width:0;padding:5px 2px 1px;border:none;background:transparent;color:var(--text3);font-family:var(--font);font-size:0.58rem;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;align-items:center}
+.nav-bar button{flex:1;min-width:0;padding:5px 2px 1px;border:none;background:transparent;color:var(--text3);font-family:var(--font);font-size:0.56rem;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;align-items:center}
 .nav-bar button .ni{font-size:0.95rem}
-.nav-bar button.on{color:var(--accent);font-weight:600}.nav-bar button.on.n2{color:var(--accent2)}.nav-bar button.on.n3{color:var(--accent3)}.nav-bar button.on.n4{color:var(--accent4)}
+.nav-bar button.on{color:var(--accent);font-weight:600}.nav-bar button.on.n2{color:var(--accent2)}.nav-bar button.on.n3{color:var(--accent3)}.nav-bar button.on.n4{color:var(--accent4)}.nav-bar button.on.n0{color:#8B6914}
 
 .panel{display:none;flex-direction:column;flex:1;overflow:hidden}
 .panel.on{display:flex}
@@ -49,15 +47,15 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .tabs button{padding:5px 12px;border-radius:20px;border:none;background:transparent;color:var(--text2);font-family:var(--font);font-size:0.72rem;cursor:pointer;transition:all 0.15s}
 .tabs button.on{background:var(--surface2);color:var(--text);font-weight:600}
 
-/* Shared form patterns */
 .inline-add{display:flex;gap:5px;padding:0 16px 8px;flex-shrink:0;align-items:center}
 .inline-add input{padding:9px 10px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:0.82rem;outline:none;flex:1}
 .inline-add .add-btn{width:40px;height:40px;border-radius:var(--radius);border:none;color:#fff;font-size:1.05rem;cursor:pointer;flex-shrink:0;transition:all 0.12s}
 .inline-add .add-btn:active{transform:scale(0.9)}
 
 .bot-bar{padding:5px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
-.bot-bar button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.66rem;cursor:pointer;transition:all 0.12s}
+.bot-bar button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.65rem;cursor:pointer;transition:all 0.12s}
 .bot-bar button:active{background:var(--surface2)}
+.bot-bar button.on{color:var(--accent);border-color:rgba(194,101,58,0.3);font-weight:600}
 
 .list-item{display:flex;align-items:center;gap:7px;padding:9px 10px;background:var(--surface);border-radius:var(--radius);margin-bottom:3px;border:1px solid var(--border);box-shadow:var(--shadow)}
 .list-item .li-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0}
@@ -66,13 +64,25 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .list-item .li-del{font-size:0.58rem;color:var(--text3);cursor:pointer;padding:3px;opacity:0;transition:all 0.12s}.list-item:active .li-del{opacity:1}
 .date-head{font-size:0.62rem;color:var(--text3);padding:5px 0 3px;font-weight:600}
 
-/* TASK specific */
+/* DASHBOARD */
+.dash-summary{display:flex;gap:5px;padding:6px 16px;flex-shrink:0}
+.dash-row{display:flex;gap:5px;padding:0 16px 6px;flex-shrink:0}
+.ds-card{flex:1;background:var(--surface);border-radius:var(--radius);padding:12px 8px;border:1px solid var(--border);box-shadow:var(--shadow);cursor:pointer;transition:all 0.12s}
+.ds-card:active{background:var(--surface2)}
+.ds-card .dv{font-size:1.3rem;font-weight:800}.ds-card .dl{font-size:0.58rem;color:var(--text2);margin-top:2px}
+.ds-card .df{font-size:0.65rem;color:var(--text3);margin-top:1px}
+.budget-bar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;margin-top:6px}
+.budget-bar .bf{height:100%;border-radius:3px;transition:width 0.4s}
+.overbudget .dv{color:var(--danger)!important}
+
+/* TASK */
 .task-add{display:flex;gap:5px;padding:0 16px 8px;flex-shrink:0}
 .task-add input{flex:1;padding:9px 12px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:0.82rem;outline:none}
 .task-add input:focus{border-color:var(--accent)}
 .task-add .prio{width:34px;height:41px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.85rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.12s}
+.task-add .rep{width:34px;height:41px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.65rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.12s;font-family:var(--font)}
 .task-add .add-btn{width:42px;height:41px;border-radius:var(--radius);border:none;background:var(--accent);color:#fff;font-size:1.1rem;cursor:pointer;flex-shrink:0;transition:all 0.12s}
-.task-add .add-btn:active,.task-add .prio:active{transform:scale(0.9)}
+.task-add .add-btn:active,.task-add .prio:active,.task-add .rep:active{transform:scale(0.9)}
 
 .tcard-wrap{margin-bottom:5px}
 .tcard{display:flex;flex-direction:column;padding:10px 12px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
@@ -86,16 +96,16 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .tcard.done .ttxt{text-decoration:line-through;color:var(--text3)}
 .tprio{width:5px;height:5px;border-radius:50%;flex-shrink:0}.tprio-1{background:var(--success)}.tprio-2{background:var(--warn)}.tprio-3{background:var(--danger)}
 .tdue{font-size:0.62rem;color:var(--text3);flex-shrink:0}.tdue.ov{color:var(--danger)}
+.tag-re{font-size:0.58rem;padding:1px 5px;border-radius:8px;background:rgba(91,140,158,0.1);color:var(--accent4);flex-shrink:0}
 .tpomo{width:24px;height:24px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:0.65rem;flex-shrink:0;color:var(--accent);transition:all 0.12s;display:flex;align-items:center;justify-content:center}
 .tpomo.on{color:var(--success);background:rgba(91,155,111,0.08)}
-.tdel{width:24px;height:24px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:0.65rem;flex-shrink:0;color:var(--text3);transition:all 0.12s}
-.tdel:active{color:var(--danger);transform:scale(0.85)}
+.tdel{width:24px;height:24px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:0.65rem;flex-shrink:0;color:var(--text3);transition:all 0.12s}.tdel:active{color:var(--danger);transform:scale(0.85)}
 .chkl{margin-top:3px;padding-left:25px}.chkl .ci{display:flex;align-items:center;gap:5px;padding:2px 0;font-size:0.73rem;color:var(--text2);cursor:pointer}
 .chkl .ci .cb{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--text3);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.12s}
 .chkl .ci .cb.done{background:var(--success);border-color:var(--success)}.chkl .ci .cb.done::after{content:"✓";color:#fff;font-size:0.4rem;font-weight:700}
 .chkl .ci.done .ct{text-decoration:line-through;color:var(--text3)}.chkl .progress{font-size:0.58rem;color:var(--text3);margin-bottom:2px}
 
-/* EXPENSE specific */
+/* EXPENSE */
 .exp-sum{display:flex;gap:5px;padding:0 16px 6px;flex-shrink:0}
 .exp-c{flex:1;background:var(--surface);border-radius:var(--radius);padding:10px;border:1px solid var(--border);text-align:center;box-shadow:var(--shadow)}
 .exp-c .ev{font-size:1.2rem;font-weight:800}.exp-c .el{font-size:0.58rem;color:var(--text2);margin-top:1px}
@@ -105,18 +115,23 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .exp-mn button{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:0.7rem;transition:all 0.12s}
 .exp-mn .ml{font-size:0.76rem;font-weight:700}
 .exp-add .amt{width:70px;padding:9px 5px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:0.95rem;font-weight:700;outline:none;text-align:center}
-.exp-add .amt:focus{border-color:var(--accent2)}
 .exp-add .ecat{padding:7px 9px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.7rem;white-space:nowrap;font-family:var(--font);color:var(--text);flex-shrink:0;transition:all 0.12s}
-.exp-add .ecat:active{background:var(--surface2)}
+.budget-settings{padding:0 16px 6px;flex-shrink:0;display:flex;gap:6px;align-items:center;font-size:0.65rem;color:var(--text2)}
+.budget-settings input{width:90px;padding:5px 8px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:0.7rem;outline:none;text-align:right}
+.budget-settings button{padding:4px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.65rem;color:var(--text2);font-family:var(--font)}
+.budget-warn{font-size:0.6rem;padding:0 16px 4px;flex-shrink:0;display:none}
+.budget-warn.show{display:block;color:var(--danger);animation:glitch 1s infinite}@keyframes glitch{0%,100%{opacity:1}50%{opacity:0.5}}
 
-/* WORD specific */
+/* WORD */
 .word-stats{display:flex;gap:5px;padding:4px 16px 6px;flex-shrink:0}
 .word-card{flex:1;background:var(--surface);border-radius:var(--radius);padding:10px 6px;border:1px solid var(--border);text-align:center;box-shadow:var(--shadow)}
 .word-card .wv{font-size:1.25rem;font-weight:800;color:var(--accent3)}.word-card .wl{font-size:0.58rem;color:var(--text2);margin-top:1px}
 .word-add .wnum{width:70px;text-align:center;font-weight:700}
 .word-add .wrev{width:60px;text-align:center;font-size:0.72rem}
+.wchart-wrap{padding:4px 16px 6px;flex-shrink:0}
+.wchart-wrap canvas{width:100%;height:80px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border)}
 
-/* TRACK specific */
+/* TRACK */
 .track-main{display:flex;flex-direction:column;align-items:center;padding:12px 16px 6px;flex-shrink:0}
 .track-emoji{font-size:2.5rem;transition:all 0.3s}
 .track-emoji.running{animation:bounce 0.5s infinite alternate}
@@ -132,7 +147,7 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .track-ctrl .btn-stop{background:var(--danger);color:#fff;font-size:0.9rem}
 .track-ctrl button:active{transform:scale(0.88)}
 .track-picker{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:6px}
-.track-picker button{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;transition:all 0.12s;white-space:nowrap}
+.track-picker button{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;transition:all 0.12s;white-space:nowrap;position:relative}
 .track-picker button:active{background:var(--surface2)}
 .track-picker button.on{border-color:var(--accent);color:var(--accent);background:rgba(194,101,58,0.06);font-weight:600}
 .track-picker .add-act{padding:5px 10px;border-radius:20px;border:1px dashed var(--border);color:var(--text3);font-size:0.68rem;cursor:pointer}
@@ -141,21 +156,19 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .track-stats .ts .tv{font-size:1.15rem;font-weight:800;color:var(--accent)}.track-stats .ts .tl{font-size:0.58rem;color:var(--text2);margin-top:1px}
 .track-records{padding:2px 16px 4px;flex-shrink:0;font-size:0.68rem;color:var(--text2);font-weight:600}
 
-/* Reminder */
 .remind-toast{position:fixed;top:calc(var(--safe-t) + 50px);left:50%;transform:translateX(-50%);z-index:300;background:var(--accent);color:#fff;padding:14px 20px;border-radius:var(--radius);font-size:0.8rem;display:none;white-space:nowrap;box-shadow:0 8px 30px rgba(194,101,58,0.3);animation:toastIn 0.3s ease-out;font-weight:600;letter-spacing:0.5px}
 @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 .remind-toast.show{display:block}
 
-/* Shared overlay/sheet/undo */
 .undo{position:fixed;bottom:calc(var(--safe-b) + 80px);left:50%;transform:translateX(-50%);z-index:300;background:var(--surface);border:1px solid var(--border);padding:7px 13px;border-radius:20px;font-size:0.74rem;display:none;gap:7px;align-items:center;box-shadow:0 8px 30px rgba(0,0,0,0.08)}
 .undo.on{display:flex}.undo button{background:var(--accent);color:#fff;border:none;padding:3px 9px;border-radius:12px;font-family:var(--font);font-size:0.68rem;cursor:pointer;font-weight:600}
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.2);z-index:200;justify-content:center;align-items:flex-end;backdrop-filter:blur(6px)}
 .overlay.on{display:flex}
-.sheet{width:100%;max-width:500px;background:var(--surface);border-radius:20px 20px 0 0;padding:6px 18px 16px;padding-bottom:calc(16px + var(--safe-b));animation:slideUp 0.3s cubic-bezier(.4,0,.2,1);max-height:85vh;overflow-y:auto}
-@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.sheet{width:100%;max-width:500px;background:var(--surface);border-radius:20px 20px 0 0;padding:6px 18px 16px;padding-bottom:calc(16px + var(--safe-b));animation:slU 0.3s cubic-bezier(.4,0,.2,1);max-height:85vh;overflow-y:auto}
+@keyframes slU{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .sheet h3{font-size:0.9rem;margin-bottom:10px}
 .sheet .row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
-.sheet .row label{width:38px;font-size:0.68rem;color:var(--text2)}
+.sheet .row label{width:44px;font-size:0.68rem;color:var(--text2)}
 .sheet input,.sheet select{flex:1;padding:8px 10px;border-radius:9px;border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:0.8rem;outline:none}
 .sheet .btns{display:flex;gap:7px;margin-top:12px}
 .sheet .btns .save{flex:2;padding:10px;border-radius:9px;border:none;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:var(--font)}
@@ -164,9 +177,6 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .sheet .srow input{flex:1;padding:6px 7px;border-radius:6px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:0.73rem;outline:none}
 .sheet .srow .rs{width:20px;height:20px;border-radius:50%;border:none;background:transparent;color:var(--danger);cursor:pointer;font-size:0.58rem}
 .sheet .adc{font-size:0.66rem;color:var(--accent);cursor:pointer;display:inline-block;font-weight:500;margin-bottom:6px}
-.lb{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,0.9);justify-content:center;align-items:center}.lb.on{display:flex}
-.lb img{max-width:95vw;max-height:85vh;border-radius:8px}
-.lb .lbc{position:absolute;top:20px;right:20px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);color:#fff;border:none;font-size:0.9rem;cursor:pointer}
 </style>
 </head>
 <body>
@@ -186,8 +196,32 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
   <div class="pomo-label" id="pomo-label">专注中</div>
   <button class="btn-stop" onclick="tap();stopPomo()">✕</button>
 </div>
-
 <div class="remind-toast" id="remind-toast"></div>
+
+<!-- DASHBOARD -->
+<div class="panel" id="p-dash">
+  <div class="dash-summary" style="padding-top:8px">
+    <div class="ds-card" onclick="switchMode('task')"><div class="dv" id="d-tasks" style="color:var(--accent)">0</div><div class="dl">待办任务</div><div class="df" id="d-tasks-sub"></div></div>
+    <div class="ds-card" onclick="switchMode('expense')"><div class="dv" id="d-spend" style="color:var(--danger)">¥0</div><div class="dl">今日支出</div><div class="df" id="d-spend-sub"></div></div>
+  </div>
+  <div class="dash-row">
+    <div class="ds-card" onclick="switchMode('word')"><div class="dv" id="d-words" style="color:var(--accent3)">0</div><div class="dl">今日新词</div></div>
+    <div class="ds-card" onclick="switchMode('track')"><div class="dv" id="d-time" style="color:var(--accent4)">0m</div><div class="dl">今日安排</div></div>
+    <div class="ds-card" onclick="switchMode('track')"><div class="dv" id="d-pomo" style="color:#F472B6">0</div><div class="dl">🍅 番茄</div></div>
+  </div>
+  <div class="dash-row" id="d-budget-row" style="display:none">
+    <div class="ds-card" id="d-budget-card">
+      <div class="dv" id="d-budget-val" style="color:var(--danger)">¥0</div><div class="dl">本月支出</div>
+      <div class="budget-bar"><div class="bf" id="d-budget-bar" style="width:0%;background:var(--danger)"></div></div>
+      <div class="df" id="d-budget-label"></div>
+    </div>
+  </div>
+  <div class="dash-row">
+    <div class="ds-card" onclick="switchMode('task')" style="background:var(--accent);color:#fff">
+      <div class="dv" style="color:#fff;font-size:1rem">📋 开始使用</div><div class="dl" style="color:rgba(255,255,255,0.8)">点击进入各模块</div>
+    </div>
+  </div>
+</div>
 
 <!-- TASK -->
 <div class="panel on" id="p-task">
@@ -196,8 +230,9 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
     <button onclick="tap();S.task.setTab('done')" id="tab-done">✅ 已完成</button>
   </div>
   <div class="task-add">
-    <input id="task-input" placeholder="添加任务..." enterkeyhint="done">
+    <input id="task-input" placeholder="添加任务...（可加今天/明天）" enterkeyhint="done">
     <button class="prio" id="prio-btn" onclick="tap();S.task.cyclePrio()">🟢</button>
+    <button class="rep" id="rep-btn" onclick="tap();S.task.cycleRepeat()">1×</button>
     <button class="add-btn" onclick="tap();S.task.add()">＋</button>
   </div>
   <div class="scroll" id="task-list"></div>
@@ -219,6 +254,13 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
     <div class="ml" id="e-month">2026年7月</div>
     <button onclick="tap();S.expense.chMonth(1)">▶</button>
   </div>
+  <div class="budget-settings">
+    <span>📊 月度预算:</span>
+    <input type="number" id="budget-amount" placeholder="不限制" min="0" step="100" enterkeyhint="done">
+    <button onclick="tap();S.expense.setBudget()">设置</button>
+    <button onclick="tap();S.expense.clearBudget()" style="color:var(--danger)">清除</button>
+  </div>
+  <div class="budget-warn" id="budget-warn">⚠️ 已超出本月预算！</div>
   <div class="inline-add exp-add">
     <input class="amt" id="exp-amount" placeholder="金额" step="0.01" enterkeyhint="done">
     <button class="ecat" id="exp-cat" onclick="tap();S.expense.cycleCat()">🍔 餐饮</button>
@@ -239,12 +281,13 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
     <div class="word-card"><div class="wv" id="ws-today">0</div><div class="wl">今日新词</div></div>
     <div class="word-card"><div class="wv" id="ws-review">0</div><div class="wl">今日复习</div></div>
     <div class="word-card"><div class="wv" id="ws-total">0</div><div class="wl">总词汇量</div></div>
-    <div class="word-card"><div class="wv" id="ws-streak">0</div><div class="wl">连续天数</div></div>
+    <div class="word-card"><div class="wv" id="ws-streak">0</div><div class="wl">🔥 连续天</div></div>
   </div>
+  <div class="wchart-wrap"><canvas id="wchart" height="160"></canvas></div>
   <div class="inline-add word-add">
     <input class="wnum" id="word-new" placeholder="新词" type="number" min="0" enterkeyhint="done">
     <input class="wrev" id="word-review" placeholder="复习" type="number" min="0" enterkeyhint="done">
-    <input id="word-note" placeholder="备注（可选）" style="flex:2">
+    <input id="word-note" placeholder="备注" style="flex:2">
     <button class="add-btn" style="background:var(--accent3)" onclick="tap();S.word.add()">＋</button>
   </div>
   <div class="scroll" id="word-list"></div>
@@ -274,7 +317,8 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
     <div class="ts"><div class="tv" id="ts-week">0h</div><div class="tl">本周总计</div></div>
     <div class="ts"><div class="tv" id="ts-sessions">0</div><div class="tl">今日次数</div></div>
   </div>
-  <div class="track-records">📋 今日安排</div>
+  <div class="wchart-wrap"><canvas id="tchart" height="160"></canvas></div>
+  <div class="track-records"></div>
   <div class="scroll" id="track-list"></div>
   <div class="bot-bar">
     <button class="on" onclick="tap();S.track.setView('today')" id="tb-today">📅 今天</button>
@@ -286,7 +330,8 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 
 <!-- NAV -->
 <div class="nav-bar">
-  <button class="on n1" onclick="switchMode('task')" id="nav-task"><span class="ni">📋</span>任务</button>
+  <button class="on n0" onclick="switchMode('dash')" id="nav-dash"><span class="ni">🏠</span>摘要</button>
+  <button class="n1" onclick="switchMode('task')" id="nav-task"><span class="ni">📋</span>任务</button>
   <button class="n2" onclick="switchMode('expense')" id="nav-expense"><span class="ni">💰</span>记账</button>
   <button class="n3" onclick="switchMode('word')" id="nav-word"><span class="ni">📖</span>单词</button>
   <button class="n4" onclick="switchMode('track')" id="nav-track"><span class="ni">⏱</span>安排</button>
@@ -298,271 +343,269 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
   <div class="row"><label>内容</label><input id="e-text"></div>
   <div class="row"><label>截止</label><input type="date" id="e-due"></div>
   <div class="row"><label>优先级</label><select id="e-prio"><option value="low">🟢 简单</option><option value="mid">🟡 重要</option><option value="high">🔴 紧急</option></select></div>
+  <div class="row"><label>重复</label><select id="e-repeat"><option value="">不重复</option><option value="daily">🔄 每天</option><option value="weekly">🔁 每周</option><option value="monthly">🔂 每月</option></select></div>
   <div style="font-size:0.7rem;color:var(--text2);font-weight:500;margin:6px 0 3px">📝 任务选项</div>
   <div id="clist-sheet"></div><span class="adc" onclick="S.task.addChkItem()">+ 添加选项</span>
   <div class="btns"><button class="save" onclick="tap();S.task.saveEdit()">💾 保存</button><button class="cancel" onclick="tap();S.task.closeEdit()">取消</button></div>
 </div></div>
 
-<div class="lb" id="lightbox" onclick="closeLightbox()"><img id="lb-img"><button class="lbc">✕</button></div>
 <div class="undo" id="undo"><span id="undo-msg"></span><button onclick="tap();S.undo.exec()">撤销</button></div>
 
 <script>
-/* =========================== UTILS =========================== */
+/* UTILS */
 const $=id=>document.getElementById(id);
-const now=()=>new Date();
-const todayStr=()=>now().toISOString().split('T')[0];
+const n=()=>new Date();
+const td=()=>n().toISOString().split('T')[0];
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const hms=s=>{s=s||0;let h=Math.floor(s/3600),m=Math.floor((s%3600)/60);return h>0?h+'h'+m+'m':m>0?m+'m':'<1m'};
 const esc=s=>{let d={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"};return s.replace(/[&<>"']/g,c=>d[c])};
-const escAttr=s=>s.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-const hm=x=>{let h=x.getHours().toString().padStart(2,"0"),m=x.getMinutes().toString().padStart(2,"0");return h+":"+m};
+const escA=s=>s.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const hm=x=>x.getHours().toString().padStart(2,"0")+":"+x.getMinutes().toString().padStart(2,"0");
 
 /* Audio */
-let _actx=null;
-const beep=()=>{try{if(!_actx)_actx=new(window.AudioContext||window.webkitAudioContext)();let o=_actx.createOscillator(),g=_actx.createGain();o.connect(g);g.connect(_actx.destination);o.frequency.value=1200;o.type='sine';g.gain.setValueAtTime(0.12,_actx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,_actx.currentTime+0.07);o.start(_actx.currentTime);o.stop(_actx.currentTime+0.07)}catch(e){}};
-const loudBeep=()=>{try{if(!_actx)_actx=new(window.AudioContext||window.webkitAudioContext)();for(let i=0;i<3;i++){let o=_actx.createOscillator(),g=_actx.createGain();o.connect(g);g.connect(_actx.destination);o.frequency.value=800+i*300;o.type='square';g.gain.setValueAtTime(0.25,_actx.currentTime+i*0.1);g.gain.exponentialRampToValueAtTime(0.001,_actx.currentTime+i*0.1+0.1);o.start(_actx.currentTime+i*0.1);o.stop(_actx.currentTime+i*0.1+0.1)}}catch(e){}};
-const vib=p=>{if(navigator.vibrate)navigator.vibrate(p)};
+let _acA=null;
+function beep(){try{if(!_acA)_acA=new(window.AudioContext||window.webkitAudioContext)();let o=_acA.createOscillator(),g=_acA.createGain();o.connect(g);g.connect(_acA.destination);o.frequency.value=1200;o.type='sine';g.gain.setValueAtTime(0.12,_acA.currentTime);g.gain.exponentialRampToValueAtTime(0.001,_acA.currentTime+0.07);o.start(_acA.currentTime);o.stop(_acA.currentTime+0.07)}catch(e){}}
+function loudBeep(){try{if(!_acA)_acA=new(window.AudioContext||window.webkitAudioContext)();for(let i=0;i<3;i++){let o=_acA.createOscillator(),g=_acA.createGain();o.connect(g);g.connect(_acA.destination);o.frequency.value=800+i*300;o.type='square';g.gain.setValueAtTime(0.25,_acA.currentTime+i*0.1);g.gain.exponentialRampToValueAtTime(0.001,_acA.currentTime+i*0.1+0.1);o.start(_acA.currentTime+i*0.1);o.stop(_acA.currentTime+i*0.1+0.1)}}catch(e){}}
+const vib=p=>navigator.vibrate&&navigator.vibrate(p);
 const tap=()=>{vib(6);beep()};
 const nfy=(t,b)=>{if("Notification"in window&&Notification.permission==="granted")new Notification(t,{body:b,icon:"./icons/icon-192.png",tag:"daily"})};
 
-/* =========================== DATA =========================== */
-const KEY="daily-v3";
-let DB={tasks:[],expenses:[],wordRecords:[],timeRecords:[],activities:["📚 读书","💻 学习","🏃 运动","🎧 练琴","✍️ 写作"],pomos:0,workTime:25};
+/* DATA */
+const KEY="daily-v4";
+let DB={tasks:[],expenses:[],wordRecords:[],timeRecords:[],activities:["📚 读书","💻 学习","🏃 运动","🎧 练琴","✍️ 写作"],pomos:0,workTime:25,monthBudget:0};
+function load(){try{let d=JSON.parse(localStorage.getItem(KEY));if(!d)return;DB=d;DB.wordRecords=DB.wordRecords||[];DB.expenses=DB.expenses||[];DB.timeRecords=DB.timeRecords||[];DB.activities=DB.activities||["📚 读书","💻 学习","🏃 运动","🎧 练琴","✍️ 写作"];DB.monthBudget=DB.monthBudget||0;DB.expenses=DB.expenses.map(e=>{e.type=e.type||'expense';return e})}catch(e){}}
+const save=()=>{localStorage.setItem(KEY,JSON.stringify(DB));
+  /* IndexedDB backup */ try{let req=indexedDB.open("daily-backup",1);req.onupgradeneeded=()=>req.result.createObjectStore("data");req.onsuccess=()=>{let tx=req.result.transaction("data","readwrite");tx.objectStore("data").put(DB,"main");req.result.close()}}catch(e){}}
+const find=(a,i)=>a.find(x=>x.id===i);
+const findI=(a,i)=>a.findIndex(x=>x.id===i);
 
-function load(){
-  try{let d=JSON.parse(localStorage.getItem(KEY));if(!d)return;
-    DB=d;
-    DB.wordRecords=DB.wordRecords||[];DB.expenses=DB.expenses||[];DB.timeRecords=DB.timeRecords||[];
-    DB.activities=DB.activities||["📚 读书","💻 学习","🏃 运动","🎧 练琴","✍️ 写作"];
-    DB.expenses=DB.expenses.map(e=>{e.type=e.type||'expense';return e});
-  }catch(e){}
-}
-const save=()=>localStorage.setItem(KEY,JSON.stringify(DB));
-const find=(arr,id)=>arr.find(x=>x.id===id);
-const findI=(arr,id)=>arr.findIndex(x=>x.id===id);
+/* Restore from IndexedDB if localStorage empty */
+function restoreBackup(){if(DB.tasks.length||DB.expenses.length)return;try{let req=indexedDB.open("daily-backup",1);req.onupgradeneeded=()=>req.result.createObjectStore("data");req.onsuccess=()=>{let tx=req.result.transaction("data","readonly"),d=tx.objectStore("data").get("main");d.onsuccess=()=>{if(d.result){DB=Object.assign(DB,d.result);save()}};req.result.close()}}catch(e){}}
 
-/* Generic: group records by date, render with date headers */
-function renderDateGrouped(recs,renderItem,colorVar){
-  if(!recs.length)return '<div class="empty"><div class="ei">📋</div>暂无记录</div>';
-  let gr={};recs.forEach(r=>{let d=r.date;if(!gr[d])gr[d]=[];gr[d].push(r)});
-  return Object.keys(gr).sort().reverse().map(dt=>{
-    let items=gr[dt],dTotal=items.reduce((s,r)=>{let v=typeof r.amount!=='undefined'?(r.type==='income'?r.amount:-r.amount):r.seconds||0;return s+v},0);
-    let sign=dTotal>=0?'+':'';let sColor=dTotal>=0?'var(--success)':'var(--danger)';
-    return'<div><div class="date-head">📅 '+dt+' <span style="color:'+(colorVar?sColor:'var(--accent)')+'">'+(typeof items[0].amount!=='undefined'?sign+dTotal.toFixed(2):hms(Math.abs(dTotal)))+'</span></div>'+items.map(renderItem).join("")+'</div>';
+function renderDateGrouped(recs,renderItem,cv,totalFn){
+  if(!recs.length)return'<div class="empty"><div class="ei">📋</div>暂无记录</div>';
+  let g={};recs.forEach(r=>{let d=r.date;if(!g[d])g[d]=[];g[d].push(r)});
+  return Object.keys(g).sort().reverse().map(dt=>{
+    let items=g[dt],dT=items.reduce(totalFn||((s,r)=>{let v=typeof r.amount!=='undefined'?(r.type==='income'?r.amount:-r.amount):r.seconds||0;return s+v}),0);
+    let sign=dT>=0?'+':'',sc=dT>=0?'var(--success)':'var(--danger)';
+    return'<div><div class="date-head">📅 '+dt+' <span style="color:'+(cv?sc:'var(--accent)')+'">'+(typeof items[0]?.amount!=='undefined'?sign+dT.toFixed(2):hms(Math.abs(dT)))+'</span></div>'+items.map(renderItem).join("")+'</div>';
   }).join("");
 }
 
-/* =========================== MODE =========================== */
-let curMode="task";
-const PANELS=["task","expense","word","track"];
-const MODE_INFO={task:["任务","dot-task"],expense:["记账","dot-expense"],word:["单词","dot-word"],track:["安排","dot-track"]};
-
-function switchMode(m){tap();
-  curMode=m;let mi=MODE_INFO[m];
-  PANELS.forEach(k=>($("p-"+k).classList.toggle("on",k===m), $("nav-"+k).classList.toggle("on",k===m)));
+/* MODE */
+let curM="task";
+const P=["dash","task","expense","word","track"];
+const MI={dash:["今日摘要","dot-dash"],task:["任务","dot-task"],expense:["记账","dot-expense"],word:["单词","dot-word"],track:["安排","dot-track"]};
+function switchMode(m){tap();curM=m;let mi=MI[m];
+  P.forEach(k=>{$("p-"+k).classList.toggle("on",k===m);let nb=$("nav-"+k);if(nb)nb.classList.toggle("on",k===m)});
   $("logo-text").textContent=mi[0];$("logo-dot").className="dot "+mi[1];
   $("pomo-btn").style.display=m==="task"?"":"none";
-  let renders={task:S.task.render,expense:S.expense.render,word:S.word.render,track:S.track.render};
-  renders[m]();
+  let R={dash:S.dash.render,task:S.task.render,expense:S.expense.render,word:S.word.render,track:S.track.render};R[m]();
 }
 
-/* =========================== MODULES =========================== */
+/* POMODORO — now Date.now() diff based */
+let po={id:null,timer:null,startMs:0,totalMs:0,qPause:false,isBreak:false};
+function togglePomo(){let w=prompt("番茄钟时长（分钟）","25");if(w){DB.workTime=parseInt(w)||25;save()}}
+function startPomo(id){tap();let t=find(DB.tasks,id);if(!t||t.done)return;if(po.timer)stopPomo();
+  po.id=id;po.isBreak=false;po.totalMs=(DB.workTime||25)*60*1000;po.startMs=Date.now();po.qPause=false;
+  $("pomo-bar").classList.add("on");$("pomo-label").textContent=t.text;poTick();S.task.render();
+  po.timer=setInterval(()=>{poTick()},500);
+  if("Notification"in window&&Notification.permission==="default")Notification.requestPermission();
+}
+function poTick(){let el=Date.now()-po.startMs,left=Math.max(0,Math.ceil((po.totalMs-el)/1000));
+  if(el>=po.totalMs){if(!po.isBreak){DB.pomos++;save();po.isBreak=true;po.totalMs=5*60*1000;po.startMs=Date.now();$("pomo-label").textContent="☕ 休息";nfy("🍅 完成！","休息 5 分钟");vib([200,100,200]);loudBeep()}else{stopPomo();return}}
+  $("pomo-timer").textContent=String(Math.floor(left/60)).padStart(2,"0")+":"+String(left%60).padStart(2,"0")
+}
+function stopPomo(){tap();if(po.timer){clearInterval(po.timer);po.timer=null}po.id=null;$("pomo-bar").classList.remove("on");S.task.render()}
+
+/* S = modules */
 const S={};
 
-/* -- POMODORO -- */
-S.pomo={id:null,timer:null,left:0,isBreak:false};
-S.pomo.toggle=()=>{let w=prompt("番茄钟时长（分钟）","25");if(w){DB.workTime=parseInt(w)||25;save();alert("已设 "+DB.workTime+" 分钟")}};
-S.pomo.start=function(id){tap();
-  let t=find(DB.tasks,id);if(!t||t.done)return;if(this.timer)this.stop();
-  this.id=id;this.isBreak=false;this.left=(DB.workTime||25)*60;
-  $("pomo-bar").classList.add("on");$("pomo-label").textContent=t.text;
-  this.doStart();
+/* -- DASHBOARD -- */
+S.dash={};
+S.dash.render=()=>{
+  if(curM!=="dash")return;
+  let today=td(),at=DB.tasks.filter(t=>!t.done),ad=at.filter(t=>t.due===today||!t.due).length;
+  let et=DB.expenses.filter(e=>e.date===today),es=et.filter(e=>e.type!=="income").reduce((s,e)=>s+e.amount,0);
+  let wt=DB.wordRecords.filter(r=>r.date===today),wn=wt.reduce((s,r)=>s+(r.newWords||0),0);
+  let tt=DB.timeRecords.filter(r=>r.date===today),ts=tt.reduce((s,r)=>s+r.seconds,0);
+  $("d-tasks").textContent=at.length;$("d-tasks-sub").textContent="今日到期 "+ad+" 个";
+  $("d-spend").textContent="¥"+es.toFixed(2);$("d-spend-sub").textContent=et.filter(e=>e.type==="income").length?"含 "+et.filter(e=>e.type==="income").length+" 笔收入":"无收入记录";
+  $("d-words").textContent=wn;$("d-time").textContent=hms(ts);$("d-pomo").textContent=DB.pomos||0;
+  // Budget
+  if(DB.monthBudget>0){let bd=$("d-budget-row");bd.style.display="";let ym=n().toISOString().slice(0,7),mSp=DB.expenses.filter(e=>e.type!=="income"&&e.date.slice(0,7)===ym).reduce((s,e)=>s+e.amount,0),pct=Math.min(100,Math.round(mSp/DB.monthBudget*100));
+    $("d-budget-val").textContent="¥"+mSp.toFixed(0);$("d-budget-bar").style.width=pct+"%";$("d-budget-label").textContent="预算 ¥"+DB.monthBudget+" / "+(mSp>DB.monthBudget?"超支 ¥"+(mSp-DB.monthBudget).toFixed(0):"剩余 ¥"+(DB.monthBudget-mSp).toFixed(0));if(mSp>DB.monthBudget)$("d-budget-card").classList.add("overbudget")}else $("d-budget-row").style.display="none";
 };
-S.pomo.doStart=function(){
-  let self=this,tick=()=>{let m=Math.floor(self.left/60),s=self.left%60;$("pomo-timer").textContent=m+":"+String(s).padStart(2,"0")};
-  tick();S.task.render();
-  this.timer=setInterval(()=>{this.left--;tick();
-    if(this.left<=0){if(!this.isBreak){DB.pomos++;save();this.isBreak=true;this.left=300;$("pomo-label").textContent="☕ 休息";nfy("🍅 完成！","休息 5 分钟");vib([200,100,200]);loudBeep()}else{this.isBreak=false;let t=find(DB.tasks,this.id);this.left=(DB.workTime||25)*60;$("pomo-label").textContent=t?t.text:"专注中"}tick();S.task.render()}
-  },1000);
-  if("Notification"in window&&Notification.permission==="default")Notification.requestPermission();
-};
-S.pomo.stop=function(){tap();if(this.timer){clearInterval(this.timer);this.timer=null}this.id=null;$("pomo-bar").classList.remove("on");S.task.render()};
-const togglePomo=()=>S.pomo.toggle();
-const startPomo=id=>S.pomo.start(id);
-const stopPomo=()=>S.pomo.stop();
 
 /* -- TASK -- */
-S.task={prio:"low",tab:"active"};
-S.task.PRIO={high:"🔴",mid:"🟡",low:"🟢"};
-S.task.PN={high:3,mid:2,low:1};
-S.task.cyclePrio=()=>{let o=["low","mid","high"];S.task.prio=o[(o.indexOf(S.task.prio)+1)%3];$("prio-btn").textContent=S.task.PRIO[S.task.prio]};
+S.task={prio:"low",rep:"",tab:"active"};
+S.task.PE={high:"🔴",mid:"🟡",low:"🟢"};S.task.PN={high:3,mid:2,low:1};S.task.RE={"":"1×",daily:"🔄d",weekly:"🔁w",monthly:"🔂m"};
+S.task.cyclePrio=()=>{let o=["low","mid","high"];S.task.prio=o[(o.indexOf(S.task.prio)+1)%3];$("prio-btn").textContent=S.task.PE[S.task.prio]};
+S.task.cycleRepeat=()=>{let o=["","daily","weekly","monthly"],i=(o.indexOf(S.task.rep)+1)%4;S.task.rep=o[i];$("rep-btn").textContent=S.task.RE[o[i]]};
 S.task.setTab=t=>{S.task.tab=t;$("tab-active").classList.toggle("on",t==="active");$("tab-done").classList.toggle("on",t==="done");S.task.render()};
 S.task.add=()=>{
-  let inp=$("task-input"),txt=inp.value.trim();if(!txt)return;
-  let due="",td=todayStr();if(/今天/.test(txt)){due=td;txt=txt.replace(/今天/g,"").trim()}else if(/明天/.test(txt)){let d=now();d.setDate(d.getDate()+1);due=d.toISOString().split('T')[0];txt=txt.replace(/明天/g,"").trim()}
-  DB.tasks.push({id:uid(),text:txt||inp.value.trim(),priority:S.task.prio,due:due,done:false,checklist:[],createdAt:now().toISOString()});
-  save();inp.value="";S.task.prio="low";$("prio-btn").textContent="🟢";S.task.render()
+  let t=$("task-input").value.trim();if(!t)return;let due="",today=td();
+  if(/今天/.test(t)){due=today;t=t.replace(/今天/g,"").trim()}else if(/明天/.test(t)){let d=n();d.setDate(d.getDate()+1);due=d.toISOString().split('T')[0];t=t.replace(/明天/g,"").trim()}
+  DB.tasks.push({id:uid(),text:t,priority:S.task.prio,repeat:S.task.rep,due:due,done:false,checklist:[],createdAt:n().toISOString()});
+  save();$("task-input").value="";S.task.prio="low";S.task.rep="";$("prio-btn").textContent="🟢";$("rep-btn").textContent="1×";S.task.render();
+  if(curM!=="task")S.dash.render()
 };
-S.task.toggle=id=>{let t=find(DB.tasks,id);if(t){t.done=!t.done;save();S.task.render();tap()}};
+S.task.toggle=id=>{let t=find(DB.tasks,id);if(t){t.done=!t.done;if(t.done&&t.repeat)S.task.handleRepeat(t);save();S.task.render();tap()}};
+S.task.handleRepeat=t=>{let next="";if(t.repeat==="daily"){let d=n();d.setDate(d.getDate()+1);next=d.toISOString().split('T')[0]}else if(t.repeat==="weekly"){let d=n();d.setDate(d.getDate()+7);next=d.toISOString().split('T')[0]}else if(t.repeat==="monthly"){let d=n();d.setMonth(d.getMonth()+1);next=d.toISOString().split('T')[0]}if(next){DB.tasks.push({id:uid(),text:t.text,priority:t.priority,repeat:t.repeat,due:next,done:false,checklist:t.checklist.map(c=>({text:c.text,done:false})),createdAt:n().toISOString()});save()}};
 S.task.toggleChk=(tid,i)=>{tap();let t=find(DB.tasks,tid);if(t&&t.checklist[i]){t.checklist[i].done=!t.checklist[i].done;save();S.task.render()}};
-S.task.del=id=>{tap();let i=findI(DB.tasks,id);if(i===-1)return;S.undo.set({t:"task",d:DB.tasks[i],i:i});DB.tasks.splice(i,1);save();S.task.render();S.undo.show("已删除")};
-S.task.clearDone=()=>{tap();let td=DB.tasks.filter(t=>t.done);if(!td.length)return;S.undo.set({t:"batch",d:td});DB.tasks=DB.tasks.filter(t=>!t.done);save();S.task.render();S.undo.show("已清除 "+td.length+" 个")};
+S.task.del=id=>{tap();let i=findI(DB.tasks,id);if(i===-1)return;S.undo.set({k:"task",d:DB.tasks[i],i:i});DB.tasks.splice(i,1);save();S.task.render();S.undo.show("已删除")};
+S.task.clearDone=()=>{tap();let dd=DB.tasks.filter(t=>t.done);if(!dd.length)return;S.undo.set({k:"batch",d:dd});DB.tasks=DB.tasks.filter(t=>!t.done);save();S.task.render();S.undo.show("已清除 "+dd.length+" 个")};
 
 S.task.render=()=>{
-  if(curMode!=="task")return;
-  let ts=DB.tasks.slice().sort((a,b)=>b.createdAt.localeCompare(a.createdAt));
+  if(curM!=="task")return;
+  let ts=DB.tasks.slice().sort((a,b)=>b.createdAt.localeCompare(a.createdAt)),today=td();
   ts=S.task.tab==="done"?ts.filter(t=>t.done):ts.filter(t=>!t.done);
-  let el=$("task-list"),td=todayStr();
+  let el=$("task-list");
   if(!ts.length){el.innerHTML='<div class="empty"><div class="ei">'+(S.task.tab==="done"?"🎉":"📝")+'</div>'+(S.task.tab==="done"?"还没有完成的任务":"暂无待办任务")+'</div>';return}
   el.innerHTML=ts.map(t=>{
-    let ov=t.due&&t.due<td&&!t.done,run=S.pomo.id===t.id;
-    let dueStr='';if(t.due){if(t.due<td&&!t.done)dueStr='<span class="tdue ov">过期</span>';else dueStr='<span class="tdue">'+(t.due===td?"今天":t.due)+'</span>'}
-    let clHtml='';let cl=t.checklist||[];
-    if(cl.length){let dc=cl.filter(c=>c.done).length;clHtml='<div class="chkl"><div class="progress">'+dc+'/'+cl.length+'</div>'+cl.map((c,i)=>'<div class="ci'+(c.done?" done":"")+'" onclick="event.stopPropagation();S.task.toggleChk(\''+t.id+'\','+i+')"><div class="cb'+(c.done?" done":"")+'"></div><span class="ct">'+esc(c.text)+'</span></div>').join("")+'</div>'}
-    return'<div class="tcard-wrap"><div class="tcard'+(t.done?" done":"")+'"><div class="main-row"><div class="tcheck'+(t.done?" done":"")+'" onclick="S.task.toggle(\''+t.id+'\')"></div><div class="ttxt" onclick="S.task.openEdit(\''+t.id+'\')">'+esc(t.text)+'</div>'+dueStr+'<div class="tprio tprio-'+S.task.PN[t.priority]+'"></div>'+(t.done?"":'<button class="tpomo'+(run?" on":"")+'" onclick="event.stopPropagation();tap();startPomo(\''+t.id+'\')">🍅</button>')+'<button class="tdel" onclick="event.stopPropagation();tap();S.task.del(\''+t.id+'\')">✕</button></div>'+clHtml+'</div></div>'
+    let ov=t.due&&t.due<today&&!t.done,run=po.id===t.id;
+    let ds='';if(t.due){if(t.due<today&&!t.done)ds='<span class="tdue ov">过期</span>';else ds='<span class="tdue">'+(t.due===today?"今天":t.due)+'</span>'}
+    let rep='';if(t.repeat)rep='<span class="tag-re">'+S.task.RE[t.repeat]+'</span>';
+    let clH='';let cl=t.checklist||[];
+    if(cl.length){let dc=cl.filter(c=>c.done).length;clH='<div class="chkl"><div class="progress">'+dc+'/'+cl.length+'</div>'+cl.map((c,i)=>'<div class="ci'+(c.done?" done":"")+'" onclick="event.stopPropagation();S.task.toggleChk(\''+t.id+'\','+i+')"><div class="cb'+(c.done?" done":"")+'"></div><span class="ct">'+esc(c.text)+'</span></div>').join("")+'</div>'}
+    return'<div class="tcard-wrap"><div class="tcard'+(t.done?" done":"")+'"><div class="main-row"><div class="tcheck'+(t.done?" done":"")+'" onclick="S.task.toggle(\''+t.id+'\')"></div><div class="ttxt" onclick="S.task.openEdit(\''+t.id+'\')">'+esc(t.text)+'</div>'+rep+ds+'<div class="tprio tprio-'+S.task.PN[t.priority]+'"></div>'+(t.done?"":'<button class="tpomo'+(run?" on":"")+'" onclick="event.stopPropagation();tap();startPomo(\''+t.id+'\')">🍅</button>')+'<button class="tdel" onclick="event.stopPropagation();tap();S.task.del(\''+t.id+'\')">✕</button></div>'+clH+'</div></div>'
   }).join("")
 };
 
-/* Task Edit */
-S.task.editId=null;S.task.tmpChkl=[];
-S.task.openEdit=function(id){let t=find(DB.tasks,id);if(!t)return;this.editId=id;$("e-text").value=t.text;$("e-due").value=t.due||"";$("e-prio").value=t.priority;this.tmpChkl=(t.checklist||[]).map(c=>({text:c.text,done:c.done}));this.renderChkl();$("edit-sheet").classList.add("on")};
-S.task.closeEdit=()=>{S.task.editId=null;S.task.tmpChkl=[];$("edit-sheet").classList.remove("on")};
-S.task.addChkItem=()=>{S.task.tmpChkl.push({text:"",done:false});S.task.renderChkl()};
-S.task.rmChkItem=i=>{S.task.tmpChkl.splice(i,1);S.task.renderChkl()};
-S.task.renderChkl=()=>{$("clist-sheet").innerHTML=S.task.tmpChkl.map((c,i)=>'<div class="srow"><input value="'+escAttr(c.text)+'" oninput="S.task.tmpChkl['+i+'].text=this.value" placeholder="选项 '+(i+1)+'"><button class="rs" onclick="S.task.rmChkItem('+i+')">✕</button></div>').join("")};
-S.task.saveEdit=function(){if(!this.editId)return;let t=find(DB.tasks,this.editId);if(!t)return;t.text=$("e-text").value.trim()||t.text;t.due=$("e-due").value;t.priority=$("e-prio").value;t.checklist=this.tmpChkl.filter(c=>c.text.trim());save();this.closeEdit();S.task.render()};
-const openEdit=id=>S.task.openEdit(id);
-const closeEdit=()=>S.task.closeEdit();
-const addChkItem=()=>S.task.addChkItem();
+S.task.eId=null;S.task.tChkl=[];
+S.task.openEdit=function(id){let t=find(DB.tasks,id);if(!t)return;this.eId=id;$("e-text").value=t.text;$("e-due").value=t.due||"";$("e-prio").value=t.priority;$("e-repeat").value=t.repeat||"";this.tChkl=(t.checklist||[]).map(c=>({text:c.text,done:c.done}));this.rChkl();$("edit-sheet").classList.add("on")};
+S.task.closeEdit=()=>{S.task.eId=null;S.task.tChkl=[];$("edit-sheet").classList.remove("on")};
+S.task.addChkItem=()=>{S.task.tChkl.push({text:"",done:false});S.task.rChkl()};
+S.task.rChkl=()=>{$("clist-sheet").innerHTML=S.task.tChkl.map((c,i)=>'<div class="srow"><input value="'+escA(c.text)+'" oninput="S.task.tChkl['+i+'].text=this.value" placeholder="选项 '+(i+1)+'"><button class="rs" onclick="S.task.tChkl.splice('+i+',1);S.task.rChkl()">✕</button></div>').join("")};
+S.task.saveEdit=function(){if(!this.eId)return;let t=find(DB.tasks,this.eId);if(!t)return;t.text=$("e-text").value.trim()||t.text;t.due=$("e-due").value;t.priority=$("e-prio").value;t.repeat=$("e-repeat").value||"";t.checklist=this.tChkl.filter(c=>c.text.trim());save();this.closeEdit();S.task.render()};
 
 /* -- EXPENSE -- */
 S.expense={cat:0,type:"expense",month:0,view:"month"};
-S.expense.CATS=[{k:"food",i:"🍔",n:"餐饮"},{k:"transport",i:"🚌",n:"交通"},{k:"shop",i:"🛒",n:"购物"},{k:"entertain",i:"🎮",n:"娱乐"},{k:"bills",i:"📱",n:"通讯"},{k:"housing",i:"🏠",n:"居住"},{k:"health",i:"💊",n:"医疗"},{k:"other",i:"📌",n:"其他"}];
-S.expense.cycleCat=()=>{this.cat=(this.cat+1)%this.CATS.length;$("exp-cat").textContent=this.CATS[this.cat].i+" "+this.CATS[this.cat].n};
+S.expense.C=[{k:"food",i:"🍔",n:"餐饮"},{k:"transport",i:"🚌",n:"交通"},{k:"shop",i:"🛒",n:"购物"},{k:"entertain",i:"🎮",n:"娱乐"},{k:"bills",i:"📱",n:"通讯"},{k:"housing",i:"🏠",n:"居住"},{k:"health",i:"💊",n:"医疗"},{k:"other",i:"📌",n:"其他"}];
+S.expense.cycleCat=()=>{this.cat=(this.cat+1)%this.C.length;$("exp-cat").textContent=this.C[this.cat].i+" "+this.C[this.cat].n};
 S.expense.cycleType=()=>{this.type=this.type==="expense"?"income":"expense";$("exp-type").textContent=this.type==="expense"?"💸 支出":"💰 收入"};
 S.expense.chMonth=d=>{this.month+=d;S.expense.render()};
 S.expense.setView=v=>{this.view=v;$("eb-m").classList.toggle("on",v==="month");$("eb-a").classList.toggle("on",v==="all");S.expense.render()};
-S.expense.getMonth=()=>{let d=now();d.setMonth(d.getMonth()+this.month);return d.toISOString().slice(0,7)};
-S.expense.add=()=>{let a=parseFloat($("exp-amount").value);if(!a||a<=0)return;let c=this.CATS[this.cat],uc=this.type==="income"?"income":c.k;DB.expenses.push({id:uid(),amount:a,type:this.type,category:uc,date:todayStr(),createdAt:now().toISOString()});save();$("exp-amount").value="";S.expense.render()};
-S.expense.del=id=>{tap();let i=findI(DB.expenses,id);if(i===-1)return;S.undo.set({t:"expense",d:DB.expenses[i],i:i});DB.expenses.splice(i,1);save();S.expense.render();S.undo.show("已删除账单")};
+S.expense.getMonth=()=>{let d=n();d.setMonth(d.getMonth()+this.month);return d.toISOString().slice(0,7)};
+S.expense.setBudget=()=>{let v=parseFloat($("budget-amount").value);DB.monthBudget=v>0?v:0;save();$("budget-amount").value="";S.expense.render();S.dash.render()};
+S.expense.clearBudget=()=>{DB.monthBudget=0;save();$("budget-amount").value="";S.expense.render();S.dash.render()};
+S.expense.add=()=>{let a=parseFloat($("exp-amount").value);if(!a||a<=0)return;let c=this.C[this.cat],uc=this.type==="income"?"income":c.k;DB.expenses.push({id:uid(),amount:a,type:this.type,category:uc,date:td(),createdAt:n().toISOString()});save();$("exp-amount").value="";S.expense.render();if(curM!=="expense")S.dash.render()};
+S.expense.del=id=>{tap();let i=findI(DB.expenses,id);if(i===-1)return;S.undo.set({k:"expense",d:DB.expenses[i],i:i});DB.expenses.splice(i,1);save();S.expense.render();S.undo.show("已删除账单")};
 
 S.expense.render=()=>{
-  if(curMode!=="expense")return;
+  if(curM!=="expense")return;
   let ym=this.getMonth();$("e-month").textContent=ym.replace("-","年")+"月";
   let exps=DB.expenses.slice().sort((a,b)=>b.date.localeCompare(a.date));
   if(this.view==="month")exps=exps.filter(e=>e.date.slice(0,7)===ym);
   let inc=0,sp=0;exps.forEach(e=>{if(e.type==="income")inc+=e.amount;else sp+=e.amount});
   $("e-income").textContent="¥"+inc.toFixed(2);$("e-spent").textContent="¥"+sp.toFixed(2);$("e-bal").textContent="¥"+(inc-sp).toFixed(2);
+  // Budget check
+  if(DB.monthBudget>0){let mSp=DB.expenses.filter(e=>e.type!=="income"&&e.date.slice(0,7)===ym).reduce((s,e)=>s+e.amount,0);$("budget-warn").classList.toggle("show",mSp>DB.monthBudget)}
   let el=$("exp-list");
   if(!exps.length){el.innerHTML='<div class="empty"><div class="ei">💸</div>暂无记录</div>';return}
   el.innerHTML=renderDateGrouped(exps,function(e){
-    let c=S.expense.CATS.find(x=>x.k===e.category)||S.expense.CATS[7],isIn=e.type==="income";
-    return'<div class="list-item"><div class="li-icon" style="background:rgba(212,149,106,0.1)">'+c.i+'</div><div class="li-info"><div class="li-name">'+(isIn?"收入":c.n)+'</div><div class="li-date">'+e.date+'</div></div><div class="li-val '+(isIn?"eia in":"eia out")+'">'+(isIn?"+":"-")+'¥'+e.amount.toFixed(2)+'</div><span class="li-del" onclick="event.stopPropagation();S.expense.del(\''+e.id+'\')">✕</span></div>'
+    let c=S.expense.C.find(x=>x.k===e.category)||S.expense.C[7],isI=e.type==="income";
+    return'<div class="list-item"><div class="li-icon" style="background:rgba(212,149,106,0.1)">'+c.i+'</div><div class="li-info"><div class="li-name">'+(isI?"收入":c.n)+'</div><div class="li-date">'+e.date+'</div></div><div class="li-val '+(isI?"eia in":"eia out")+'">'+(isI?"+":"-")+'¥'+e.amount.toFixed(2)+'</div><span class="li-del" onclick="event.stopPropagation();S.expense.del(\''+e.id+'\')">✕</span></div>'
   },true);
 };
 
 /* -- WORD -- */
 S.word={view:"week"};
 S.word.setView=v=>{S.word.view=v;$("wb-week").classList.toggle("on",v==="week");$("wb-all").classList.toggle("on",v==="all");S.word.render()};
-S.word.add=()=>{
-  let nw=parseInt($("word-new").value)||0,rv=parseInt($("word-review").value)||0;if(!nw&&!rv)return;
-  let nt=$("word-note").value.trim();DB.wordRecords.push({id:uid(),newWords:nw,reviewWords:rv,note:nt,date:todayStr(),createdAt:now().toISOString()});
-  save();$("word-new").value="";$("word-review").value="";$("word-note").value="";S.word.render()
-};
-S.word.del=id=>{tap();let i=findI(DB.wordRecords,id);if(i===-1)return;S.undo.set({t:"word",d:DB.wordRecords[i],i:i});DB.wordRecords.splice(i,1);save();S.word.render();S.undo.show("已删除记录")};
-S.word.calcStreak=()=>{let dates=[...new Set(DB.wordRecords.map(r=>r.date))].sort().reverse();if(!dates.length)return 0;let s=0;for(let i=0;i<100;i++){let d=new Date(now());d.setDate(d.getDate()-i);let ds=d.toISOString().split("T")[0];if(dates.includes(ds))s++;else if(i===0)continue;else break}return s};
+S.word.add=()=>{let nw=parseInt($("word-new").value)||0,rv=parseInt($("word-review").value)||0;if(!nw&&!rv)return;let nt=$("word-note").value.trim();DB.wordRecords.push({id:uid(),newWords:nw,reviewWords:rv,note:nt,date:td(),createdAt:n().toISOString()});save();$("word-new").value="";$("word-review").value="";$("word-note").value="";S.word.render();if(curM!=="word")S.dash.render()};
+S.word.del=id=>{tap();let i=findI(DB.wordRecords,id);if(i===-1)return;S.undo.set({k:"word",d:DB.wordRecords[i],i:i});DB.wordRecords.splice(i,1);save();S.word.render();S.undo.show("已删除记录")};
+S.word.calcStreak=()=>{let ds=[...new Set(DB.wordRecords.map(r=>r.date))].sort().reverse();if(!ds.length)return 0;let s=0;for(let i=0;i<100;i++){let d=n();d.setDate(d.getDate()-i);let ds1=d.toISOString().split("T")[0];if(ds.includes(ds1))s++;else if(i===0)continue;else break}return s};
 
 S.word.render=()=>{
-  if(curMode!=="word")return;
-  let today=now().toISOString().split("T")[0],recs=DB.wordRecords.slice().sort((a,b)=>b.date.localeCompare(a.date));
-  if(S.word.view==="week"){let w=now();w.setDate(w.getDate()-7);recs=recs.filter(r=>r.date>=w.toISOString().split("T")[0])}
-  let todayRecs=recs.filter(r=>r.date===today);
-  $("ws-today").textContent=todayRecs.reduce((s,r)=>s+(r.newWords||0),0);
-  $("ws-review").textContent=todayRecs.reduce((s,r)=>s+(r.reviewWords||0),0);
+  if(curM!=="word")return;
+  let today=td(),recs=DB.wordRecords.slice().sort((a,b)=>b.date.localeCompare(a.date));
+  if(S.word.view==="week"){let w=n();w.setDate(w.getDate()-7);recs=recs.filter(r=>r.date>=w.toISOString().split("T")[0])}
+  let tdR=recs.filter(r=>r.date===today);
+  $("ws-today").textContent=tdR.reduce((s,r)=>s+(r.newWords||0),0);
+  $("ws-review").textContent=tdR.reduce((s,r)=>s+(r.reviewWords||0),0);
   $("ws-total").textContent=DB.wordRecords.reduce((s,r)=>s+(r.newWords||0),0);
   $("ws-streak").textContent=S.word.calcStreak();
+  // Chart
+  S.word.drawChart(recs);
   let el=$("word-list");
   if(!recs.length){el.innerHTML='<div class="empty"><div class="ei">📖</div>暂无记录</div>';return}
   el.innerHTML=renderDateGrouped(recs,function(r){
-    return'<div class="list-item" style="--c:var(--accent3)"><div class="li-icon" style="background:rgba(125,155,90,0.1)">📖</div><div class="li-info"><div class="li-name">'+(r.note?esc(r.note):"单词记录")+'</div><div class="li-date">'+r.date+'</div></div><div class="li-val" style="color:var(--accent3)">+'+r.newWords+' | 复'+r.reviewWords+'</div><span class="li-del" onclick="event.stopPropagation();S.word.del(\''+r.id+'\')">✕</span></div>'
-  },false);
+    return'<div class="list-item"><div class="li-icon" style="background:rgba(125,155,90,0.1)">📖</div><div class="li-info"><div class="li-name">'+(r.note?esc(r.note):"单词记录")+'</div><div class="li-date">'+r.date+'</div></div><div class="li-val" style="color:var(--accent3)">+'+r.newWords+' | 复'+r.reviewWords+'</div><span class="li-del" onclick="event.stopPropagation();S.word.del(\''+r.id+'\')">✕</span></div>'
+  },false,(s,r)=>s+(r.newWords||0));
+};
+
+S.word.drawChart=recs=>{let c=$("wchart");if(!c)return;let w=c.width=c.offsetWidth*2,h=c.height=c.offsetHeight*2;let ctx=c.getContext("2d");ctx.clearRect(0,0,w,h);if(!recs.length)return;
+  let days=[];for(let i=6;i>=0;i--){let d=n();d.setDate(d.getDate()-i);let ds=d.toISOString().split("T")[0];let v=recs.filter(r=>r.date===ds).reduce((s,r)=>s+(r.newWords||0),0);days.push({label:(d.getMonth()+1)+"/"+d.getDate(),val:v})}
+  let mx=Math.max.apply(null,days.map(d=>d.val))||1,bw=(w-60)/days.length-8,px=40;
+  ctx.fillStyle="var(--text2)";ctx.font="18px sans-serif";ctx.textAlign="right";
+  days.forEach((d,i)=>{let x=px+i*(bw+8),bh=Math.max(4,(d.val/mx)*(h-60));ctx.fillStyle="rgba(125,155,90,0.6)";ctx.fillRect(x,h-40-bh,bw,bh);ctx.fillStyle="#8C8882";ctx.font="14px sans-serif";ctx.textAlign="center";ctx.fillText(d.label,x+bw/2,h-10);if(d.val>0){ctx.fillStyle="#2D2926";ctx.font="12px sans-serif";ctx.fillText(d.val,x+bw/2,h-44-bh)}}
 };
 
 /* -- TRACK -- */
-S.track={actIdx:0,running:false,paused:false,startTime:null,stored:0,timer:null,view:"today",remindTimer:null,remindStart:0};
-let tk=S.track;
-
-tk.pickAct=i=>{tk.actIdx=i;document.querySelectorAll("#track-picker button.on").forEach(b=>b.classList.remove("on"));document.querySelectorAll("#track-picker button")[i].classList.add("on");tk.updateLabel();if(!tk.running)tk.render()};
-tk.updateLabel=()=>{let act=(DB.activities||[])[tk.actIdx]||"📌 自定义";$("track-emoji").textContent=act.slice(0,2);$("track-act-name").textContent=act.slice(2).trim()||act;$("track-emoji").className="track-emoji"+(tk.running?" running":"")};
-tk.getElapsed=()=>tk.paused?tk.stored:Math.floor((Date.now()-tk.startTime)/1000);
-tk.updateClock=()=>{let s=tk.getElapsed();$("track-clock").textContent=String(Math.floor(s/3600)).padStart(2,"0")+":"+String(Math.floor((s%3600)/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")};
-tk.updateRange=()=>{if(!tk.running&&!tk.paused){$("track-range").textContent="—:— 至 —:—";return}let st=tk.running?tk.startTime:Date.now()-tk.stored*1000,stD=new Date(st),enD=tk.running?now():new Date(stD.getTime()+tk.stored*1000);$("track-range").textContent=hm(stD)+" 至 "+hm(enD)};
-tk.startReminder=()=>{tk.remindStart=Date.now();tk.remindTimer=setInterval(()=>{if(tk.running&&Date.now()-tk.remindStart>300000){loudBeep();vib([500,200,300,200,500]);let act=(DB.activities||[])[tk.actIdx]||"专注中",t=$("remind-toast");t.textContent="⏰ "+act+" — 已经5分钟了，回来专注！";t.classList.add("show");setTimeout(()=>t.classList.remove("show"),3000);tk.remindStart=Date.now()}},60000)};
-tk.stopReminder=()=>{if(tk.remindTimer){clearInterval(tk.remindTimer);tk.remindTimer=null}};
-
-tk.start=()=>{tap();if(tk.running)return;if(tk.paused){tk.paused=false;tk.stored=tk.getElapsed()}else tk.stored=0;tk.running=true;tk.startTime=Date.now()-tk.stored*1000;$("track-emoji").classList.add("running");$("btn-play").style.display="none";$("btn-pause").style.display="";tk.updateLabel();tk.updateClock();tk.updateRange();tk.render();tk.timer=setInterval(()=>{tk.updateClock();tk.updateRange()},200);tk.startReminder();nfy("⏱ 开始计时",(DB.activities||[])[tk.actIdx]||"专注中")};
-tk.pause=()=>{tap();if(!tk.running)return;tk.running=false;tk.paused=true;tk.stored=Math.floor((Date.now()-tk.startTime)/1000);clearInterval(tk.timer);tk.timer=null;tk.stopReminder();$("track-emoji").classList.remove("running");$("btn-play").style.display="";$("btn-pause").style.display="none";tk.updateRange();tk.render()};
-tk.stop=()=>{tap();if(!tk.running&&!tk.paused)return;let secs=tk.paused?tk.stored:Math.floor((Date.now()-tk.startTime)/1000);if(secs<5){tk.running=false;tk.paused=false;tk.stored=0;tk.startTime=null;clearInterval(tk.timer);tk.timer=null;tk.stopReminder();$("btn-play").style.display="";$("btn-pause").style.display="none";$("track-clock").textContent="00:00:00";$("track-range").textContent="—:— 至 —:—";tk.render();return}let act=(DB.activities||[])[tk.actIdx]||"自定义",stDt=tk.running?new Date(tk.startTime):new Date(Date.now()-tk.stored*1000),enDt=new Date(stDt.getTime()+secs*1000);DB.timeRecords.push({id:uid(),activity:act,seconds:secs,startTime:stDt.toISOString(),endTime:enDt.toISOString(),date:todayStr(),createdAt:now().toISOString()});tk.running=false;tk.paused=false;tk.stored=0;tk.startTime=null;clearInterval(tk.timer);tk.timer=null;tk.stopReminder();save();$("btn-play").style.display="";$("btn-pause").style.display="none";$("track-clock").textContent="00:00:00";$("track-range").textContent="—:— 至 —:—";$("track-emoji").classList.remove("running");tk.render();vib([50,30,50]);loudBeep()};
-tk.addActivity=()=>{tap();let name=prompt("输入活动名称（如：画画）");if(!name||!name.trim())return;DB.activities.push("📌 "+name.trim());save();tk.renderBtns();tk.pickAct(DB.activities.length-1)};
-tk.removeActivity=i=>{tap();let acts=DB.activities||[];if(acts.length<=1){alert("至少保留一个活动");return}acts.splice(i,1);DB.activities=acts;save();if(tk.actIdx>=i)tk.actIdx--;if(tk.actIdx<0)tk.actIdx=0;tk.render();S.undo.show("已删除活动")};
-tk.delRecord=id=>{tap();let i=findI(DB.timeRecords,id);if(i===-1)return;S.undo.set({t:"track",d:DB.timeRecords[i],i:i});DB.timeRecords.splice(i,1);save();tk.render();S.undo.show("已删除记录")};
+let tk={actIdx:0,running:false,paused:false,startT:null,stored:0,timer:null,view:"today",remT:null,remS:0};
+tk.pickAct=i=>{tk.actIdx=i;document.querySelectorAll("#track-picker button.on").forEach(b=>b.classList.remove("on"));document.querySelectorAll("#track-picker button")[i]?.classList.add("on");tk.updLbl();if(!tk.running)tk.render()};
+tk.updLbl=()=>{let a=(DB.activities||[])[tk.actIdx]||"📌 自定义";$("track-emoji").textContent=a.slice(0,2);$("track-act-name").textContent=a.slice(2).trim()||a;$("track-emoji").className="track-emoji"+(tk.running?" running":"")};
+tk.elapsed=()=>tk.paused?tk.stored:Math.floor((Date.now()-tk.startT)/1000);
+tk.updClock=()=>{let s=tk.elapsed();$("track-clock").textContent=String(Math.floor(s/3600)).padStart(2,"0")+":"+String(Math.floor((s%3600)/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")};
+tk.updRange=()=>{if(!tk.running&&!tk.paused){$("track-range").textContent="—:— 至 —:—";return}let st=tk.running?tk.startT:Date.now()-tk.stored*1000,sD=new Date(st),eD=tk.running?n():new Date(sD.getTime()+tk.stored*1000);$("track-range").textContent=hm(sD)+" 至 "+hm(eD)};
+tk.startRem=()=>{tk.remS=Date.now();tk.remT=setInterval(()=>{if(tk.running&&Date.now()-tk.remS>300000){loudBeep();vib([500,200,300,200,500]);let a=(DB.activities||[])[tk.actIdx]||"专注中",t=$("remind-toast");t.textContent="⏰ "+a+" — 已经5分钟了，回来专注！";t.classList.add("show");setTimeout(()=>t.classList.remove("show"),3000);tk.remS=Date.now()}},60000)};
+tk.stopRem=()=>{if(tk.remT){clearInterval(tk.remT);tk.remT=null}};
+tk.start=()=>{tap();if(tk.running)return;if(tk.paused){tk.paused=false;tk.stored=tk.elapsed()}else tk.stored=0;tk.running=true;tk.startT=Date.now()-tk.stored*1000;$("track-emoji").classList.add("running");$("btn-play").style.display="none";$("btn-pause").style.display="";tk.updLbl();tk.updClock();tk.updRange();tk.render();tk.timer=setInterval(()=>{tk.updClock();tk.updRange()},200);tk.startRem();nfy("⏱ 开始计时",(DB.activities||[])[tk.actIdx]||"专注中")};
+tk.pause=()=>{tap();if(!tk.running)return;tk.running=false;tk.paused=true;tk.stored=Math.floor((Date.now()-tk.startT)/1000);clearInterval(tk.timer);tk.timer=null;tk.stopRem();$("track-emoji").classList.remove("running");$("btn-play").style.display="";$("btn-pause").style.display="none";tk.updRange();tk.render()};
+tk.stop=()=>{tap();if(!tk.running&&!tk.paused)return;let s=tk.paused?tk.stored:Math.floor((Date.now()-tk.startT)/1000);if(s<5){tk.running=false;tk.paused=false;tk.stored=0;tk.startT=null;clearInterval(tk.timer);tk.timer=null;tk.stopRem();$("btn-play").style.display="";$("btn-pause").style.display="none";$("track-clock").textContent="00:00:00";$("track-range").textContent="—:— 至 —:—";tk.render();return}let a=(DB.activities||[])[tk.actIdx]||"自定义",sD=tk.running?new Date(tk.startT):new Date(Date.now()-tk.stored*1000),eD=new Date(sD.getTime()+s*1000);DB.timeRecords.push({id:uid(),activity:a,seconds:s,startTime:sD.toISOString(),endTime:eD.toISOString(),date:td(),createdAt:n().toISOString()});tk.running=false;tk.paused=false;tk.stored=0;tk.startT=null;clearInterval(tk.timer);tk.timer=null;tk.stopRem();save();$("btn-play").style.display="";$("btn-pause").style.display="none";$("track-clock").textContent="00:00:00";$("track-range").textContent="—:— 至 —:—";$("track-emoji").classList.remove("running");tk.render();vib([50,30,50]);loudBeep();if(curM!=="track")S.dash.render()};
+tk.addAct=()=>{tap();let name=prompt("输入活动名称（如：画画）");if(!name||!name.trim())return;DB.activities.push("📌 "+name.trim());save();tk.rBtns();tk.pickAct(DB.activities.length-1)};
+tk.rmAct=i=>{tap();let acts=DB.activities||[];if(acts.length<=1){alert("至少保留一个");return}acts.splice(i,1);DB.activities=acts;save();if(tk.actIdx>=i)tk.actIdx--;if(tk.actIdx<0)tk.actIdx=0;tk.render()};
+tk.delRec=id=>{tap();let i=findI(DB.timeRecords,id);if(i===-1)return;S.undo.set({k:"track",d:DB.timeRecords[i],i:i});DB.timeRecords.splice(i,1);save();tk.render();S.undo.show("已删除记录")};
 tk.setView=v=>{tk.view=v;$("tb-today").classList.toggle("on",v==="today");$("tb-week").classList.toggle("on",v==="week");$("tb-all").classList.toggle("on",v==="all");tk.render()};
 
-// Long press handler
-let _actPressTm=null;
-function handleActDown(e,i){_actPressTm=setTimeout(()=>{let el=$("act-del-"+i);if(el)el.style.display="block";vib(15);beep()},500)}
-function handleActUp(e,i){clearTimeout(_actPressTm);setTimeout(()=>{let el=$("act-del-"+i);if(el)el.style.display="none"},2000)}
+let _apTm=null;
+function hAD(e,i){_apTm=setTimeout(()=>{let el=$("act-del-"+i);if(el)el.style.display="block";vib(15);beep()},500)}
+function hAU(e,i){clearTimeout(_apTm);setTimeout(()=>{let el=$("act-del-"+i);if(el)el.style.display="none"},2000)}
 
-tk.renderBtns=()=>{
-  let acts=DB.activities||[];
-  $("track-picker").innerHTML=acts.map((a,i)=>'<button'+(i===tk.actIdx?' class="on"':'')+' onclick="tap();tk.pickAct('+i+')" style="position:relative" oncontextmenu="return false" onpointerdown="handleActDown(event,'+i+')" onpointerup="handleActUp(event,'+i+')" onpointerleave="handleActUp(event,'+i+')">'+a+'<span style="position:absolute;top:1px;right:2px;font-size:0.4rem;color:var(--text3);line-height:1;display:none" id="act-del-'+i+'" onclick="event.stopPropagation();tap();tk.removeActivity('+i+')">✕</span></button>').join("")+'<button class="add-act" onclick="tap();tk.addActivity()">+自定义</button>';
-};
+tk.rBtns=()=>{let acts=DB.activities||[];$("track-picker").innerHTML=acts.map((a,i)=>'<button'+(i===tk.actIdx?' class="on"':'')+' onclick="tap();tk.pickAct('+i+')" oncontextmenu="return false" onpointerdown="hAD(event,'+i+')" onpointerup="hAU(event,'+i+')" onpointerleave="hAU(event,'+i+')">'+a+'<span style="position:absolute;top:1px;right:2px;font-size:0.4rem;color:var(--text3);display:none" id="act-del-'+i+'" onclick="event.stopPropagation();tap();tk.rmAct('+i+')">✕</span></button>').join("")+'<button class="add-act" onclick="tap();tk.addAct()">+自定义</button>'};
 
 tk.render=()=>{
-  if(curMode!=="track")return;
-  let today=now().toISOString().split("T")[0],recs=DB.timeRecords.slice().sort((a,b)=>b.createdAt.localeCompare(a.createdAt));
-  if(tk.view==="today")recs=recs.filter(r=>r.date===today);else if(tk.view==="week"){let w=now();w.setDate(w.getDate()-7);recs=recs.filter(r=>r.createdAt>=w.toISOString())}
-  let todayRecs=DB.timeRecords.filter(r=>r.date===today);
-  $("ts-today").textContent=hms(todayRecs.reduce((s,r)=>s+r.seconds,0));
-  $("ts-week").textContent=hms(DB.timeRecords.filter(r=>{let w=now();w.setDate(w.getDate()-7);return r.createdAt>=w.toISOString()}).reduce((s,r)=>s+r.seconds,0));
-  $("ts-sessions").textContent=todayRecs.length;
+  if(curM!=="track")return;
+  let today=td(),recs=DB.timeRecords.slice().sort((a,b)=>b.createdAt.localeCompare(a.createdAt));
+  if(tk.view==="today")recs=recs.filter(r=>r.date===today);else if(tk.view==="week"){let w=n();w.setDate(w.getDate()-7);recs=recs.filter(r=>r.createdAt>=w.toISOString())}
+  let tR=DB.timeRecords.filter(r=>r.date===today),wR=DB.timeRecords.filter(r=>{let w=n();w.setDate(w.getDate()-7);return r.createdAt>=w.toISOString()});
+  $("ts-today").textContent=hms(tR.reduce((s,r)=>s+r.seconds,0));$("ts-week").textContent=hms(wR.reduce((s,r)=>s+r.seconds,0));$("ts-sessions").textContent=tR.length;
+  tk.drawChart(recs);
+  let sc=$("track-records");sc.textContent=tk.view==="today"?"📋 今日安排":"📋 安排记录";
   let el=$("track-list");
   if(!recs.length){el.innerHTML='<div class="empty"><div class="ei">⏱</div>暂无安排记录</div>'}
   else el.innerHTML=renderDateGrouped(recs,function(r){
-    let em=r.activity.slice(0,2),nm=r.activity.slice(2).trim()||r.activity,timeRange='';
-    if(r.startTime){let st=new Date(r.startTime),et=new Date(r.endTime||r.startTime);timeRange='<span style="font-size:0.58rem;color:var(--text3);margin-left:4px">'+hm(st)+' - '+hm(et)+'</span>'}
-    return'<div class="list-item"><div class="li-icon" style="background:rgba(194,101,58,0.08)">'+em+'</div><div class="li-info"><div class="li-name">'+esc(nm)+timeRange+'</div><div class="li-date">'+r.date+'</div></div><div class="li-val" style="color:var(--accent)">'+hms(r.seconds)+'</div><span class="li-del" onclick="event.stopPropagation();tk.delRecord(\''+r.id+'\')">✕</span></div>'
+    let em=r.activity.slice(0,2),nm=r.activity.slice(2).trim()||r.activity,tr='';
+    if(r.startTime){let st=new Date(r.startTime),et=new Date(r.endTime||r.startTime);tr='<span style="font-size:0.58rem;color:var(--text3);margin-left:4px">'+hm(st)+' - '+hm(et)+'</span>'}
+    return'<div class="list-item"><div class="li-icon" style="background:rgba(194,101,58,0.08)">'+em+'</div><div class="li-info"><div class="li-name">'+esc(nm)+tr+'</div><div class="li-date">'+r.date+'</div></div><div class="li-val" style="color:var(--accent)">'+hms(r.seconds)+'</div><span class="li-del" onclick="event.stopPropagation();tk.delRec(\''+r.id+'\')">✕</span></div>'
   },false);
-  tk.renderBtns();tk.updateLabel();if(!tk.running&&!tk.paused)$("track-clock").textContent="00:00:00";
+  tk.rBtns();tk.updLbl();if(!tk.running&&!tk.paused)$("track-clock").textContent="00:00:00"
+};
+
+tk.drawChart=recs=>{let c=$("tchart");if(!c)return;let w=c.width=c.offsetWidth*2,h=c.height=c.offsetHeight*2,ctx=c.getContext("2d");ctx.clearRect(0,0,w,h);if(!recs.length)return;
+  let days=[];for(let i=6;i>=0;i--){let d=n();d.setDate(d.getDate()-i);let ds=d.toISOString().split("T")[0];let v=recs.filter(r=>r.date===ds).reduce((s,r)=>s+r.seconds,0);days.push({label:(d.getMonth()+1)+"/"+d.getDate(),val:Math.round(v/60)})}
+  let mx=Math.max.apply(null,days.map(d=>d.val))||1,bw=(w-60)/days.length-8,px=40;
+  days.forEach((d,i)=>{let x=px+i*(bw+8),bh=Math.max(4,(d.val/mx)*(h-60));ctx.fillStyle="rgba(194,101,58,0.5)";ctx.fillRect(x,h-40-bh,bw,bh);ctx.fillStyle="#8C8882";ctx.font="14px sans-serif";ctx.textAlign="center";ctx.fillText(d.label,x+bw/2,h-10);if(d.val>0){ctx.fillStyle="#2D2926";ctx.font="12px sans-serif";ctx.fillText(d.val+"m",x+bw/2,h-44-bh)})
 };
 
 /* -- UNDO -- */
-S.undo={data:null,timer:null};
-S.undo.set=function(d){this.data=d};
-S.undo.show=function(msg){clearTimeout(this.timer);$("undo-msg").textContent=msg;$("undo").classList.add("on");let self=this;this.timer=setTimeout(()=>{self.data=null;$("undo").classList.remove("on")},4000)};
-S.undo.exec=function(){let d=this.data;if(!d)return;
-  if(d.t==="batch"){d.d.forEach(t=>DB.tasks.push(t))}
-  else if(d.t==="task")DB.tasks.splice(d.i,0,d.d);
-  else if(d.t==="expense")DB.expenses.splice(d.i,0,d.d);
-  else if(d.t==="word")DB.wordRecords.splice(d.i,0,d.d);
-  else if(d.t==="track")DB.timeRecords.splice(d.i,0,d.d);
-  this.data=null;save();let renders={task:S.task.render,expense:S.expense.render,word:S.word.render,track:S.track.render};renders[curMode]();$("undo").classList.remove("on")
-};
+S.undo={d:null,ti:null};
+S.undo.set=function(d){this.d=d};
+S.undo.show=function(m){clearTimeout(this.ti);$("undo-msg").textContent=m;$("undo").classList.add("on");let s=this;this.ti=setTimeout(()=>{s.d=null;$("undo").classList.remove("on")},4000)};
+S.undo.exec=function(){let d=this.d;if(!d)return;
+  if(d.k==="batch")d.d.forEach(t=>DB.tasks.push(t));else{let arr=d.k==="task"?DB.tasks:d.k==="expense"?DB.expenses:d.k==="word"?DB.wordRecords:DB.timeRecords;arr.splice(d.i,0,d.d)}
+  this.d=null;save();let R={dash:S.dash.render,task:S.task.render,expense:S.expense.render,word:S.word.render,track:S.track.render};R[curM]();$("undo").classList.remove("on")};
 
 /* -- IO -- */
 S.io={};
-S.io.export=()=>{let b=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="daily-"+todayStr()+".json";a.click()};
-S.io.import=()=>{let inp=document.createElement("input");inp.type="file";inp.accept=".json";inp.onchange=function(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=function(ev){try{let d=JSON.parse(ev.target.result),tc=(d.tasks||[]).length,ec=(d.expenses||[]).length,wc=(d.wordRecords||[]).length,rc=(d.timeRecords||[]).length;if(confirm("导入 "+tc+" 任务 / "+ec+" 账单 / "+wc+" 单词 / "+rc+" 安排？")){let merge=(target,src)=>{let ids=new Set(target.map(x=>x.id));src.forEach(x=>{if(!ids.has(x.id))target.push(x)})};if(d.tasks)merge(DB.tasks,d.tasks);if(d.expenses)merge(DB.expenses,d.expenses);if(d.wordRecords)merge(DB.wordRecords,d.wordRecords);if(d.timeRecords)merge(DB.timeRecords,d.timeRecords);DB.pomos=Math.max(DB.pomos||0,d.pomos||0);if(d.activities)DB.activities=d.activities;save();let renders={task:S.task.render,expense:S.expense.render,word:S.word.render,track:S.track.render};renders[curMode]()}}catch(ex){alert("格式错误")}};r.readAsText(f)};inp.click()};
+S.io.export=()=>{let b=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="daily-"+td()+".json";a.click()};
+S.io.import=()=>{let inp=document.createElement("input");inp.type="file";inp.accept=".json";inp.onchange=function(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=function(ev){try{let d=JSON.parse(ev.target.result),tc=(d.tasks||[]).length,ec=(d.expenses||[]).length,wc=(d.wordRecords||[]).length,rc=(d.timeRecords||[]).length;if(confirm("导入 "+tc+" 任务 / "+ec+" 账单 / "+wc+" 单词 / "+rc+" 安排？")){let mg=(t,s)=>{let ids=new Set(t.map(x=>x.id));s.forEach(x=>{if(!ids.has(x.id))t.push(x)})};if(d.tasks)mg(DB.tasks,d.tasks);if(d.expenses)mg(DB.expenses,d.expenses);if(d.wordRecords)mg(DB.wordRecords,d.wordRecords);if(d.timeRecords)mg(DB.timeRecords,d.timeRecords);DB.pomos=Math.max(DB.pomos||0,d.pomos||0);if(d.activities)DB.activities=d.activities;if(d.monthBudget)DB.monthBudget=d.monthBudget;save();let R={dash:S.dash.render,task:S.task.render,expense:S.expense.render,word:S.word.render,track:S.track.render};R[curM]()}}catch(ex){alert("格式错误")}};r.readAsText(f)};inp.click()};
 const exportAll=()=>S.io.export();
 
-/* Lightbox */
-function closeLightbox(){$("lightbox").classList.remove("on")}
+function tickClock(){$("live-time").textContent=String(n().getHours()).padStart(2,"0")+":"+String(n().getMinutes()).padStart(2,"0")}
 
-/* Clock */
-function tickClock(){$("live-time").textContent=String(now().getHours()).padStart(2,"0")+":"+String(now().getMinutes()).padStart(2,"0")}
-
-/* =========================== INIT =========================== */
-load();S.task.render();S.expense.render();S.word.render();S.track.render();tickClock();
+/* INIT */
+load();restoreBackup();S.task.render();S.expense.render();S.word.render();S.track.render();S.dash.render();tickClock();
 setInterval(tickClock,30000);
 if("serviceWorker"in navigator){navigator.serviceWorker.register("./sw.js").then(reg=>{reg.addEventListener("updatefound",()=>{let nw=reg.installing;nw.addEventListener("statechange",()=>{if(nw.state==="installed"&&navigator.serviceWorker.controller){nw.postMessage("skipWaiting");setTimeout(()=>location.reload(),300)}})})})}
 $("task-input").addEventListener("keydown",e=>{if(e.key==="Enter"){tap();S.task.add()}});
@@ -570,6 +613,7 @@ $("edit-sheet").addEventListener("click",function(e){if(e.target===this)S.task.c
 $("exp-amount").addEventListener("keydown",e=>{if(e.key==="Enter"){tap();S.expense.add()}});
 $("word-new").addEventListener("keydown",e=>{if(e.key==="Enter"){tap();S.word.add()}});
 $("word-review").addEventListener("keydown",e=>{if(e.key==="Enter"){tap();S.word.add()}});
+$("budget-amount").addEventListener("keydown",e=>{if(e.key==="Enter"){tap();S.expense.setBudget()}});
 </script>
 </body>
 </html>
