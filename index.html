@@ -3,37 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>日常</title>
+<title>自律日常</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="日常">
+<meta name="apple-mobile-web-app-title" content="自律日常">
 <link rel="apple-touch-icon" href="./icons/apple-icon.png">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#F5F0EA">
 <link rel="manifest" href="./manifest.json">
 <style>
-:root{--bg:#FFFFFF;--surface:#F7F7F9;--surface2:#EFEFF3;--border:rgba(0,0,0,0.06);--text:#1C1C20;--text2:#84848C;--text3:#B0B0B8;--accent:#8B5CF6;--accent2:#EC4899;--accent3:#0EA5E9;--accent4:#F97316;--danger:#EF4444;--success:#10B981;--warn:#F59E0B;--font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--radius:14px;--safe-b:env(safe-area-inset-bottom,10px);--safe-t:env(safe-area-inset-top,0px)}
+:root{--bg:#F5F0EA;--surface:#EDE7DF;--surface2:#E5DED5;--border:rgba(0,0,0,0.05);--shadow:0 1px 3px rgba(0,0,0,0.04);--text:#2D2926;--text2:#8C8882;--text3:#B5B0AA;--accent:#C2653A;--accent2:#D4956A;--accent3:#7D9B5A;--accent4:#5B8C9E;--danger:#D14343;--success:#5B9B6F;--warn:#D4952A;--font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--radius:14px;--safe-b:env(safe-area-inset-bottom,10px);--safe-t:env(safe-area-inset-top,0px)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden}
 body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100vh;user-select:none;-webkit-user-select:none}
 
-header{padding:10px 18px;padding-top:calc(10px + var(--safe-t));display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-header h1{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:8px}
-header h1 .dot{width:7px;height:7px;border-radius:50%;transition:all 0.3s}
-.dot-task{background:var(--accent)}.dot-expense{background:var(--accent2)}.dot-journal{background:var(--accent3)}.dot-track{background:var(--accent4)}
-header .time{font-size:0.9rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--text2)}
-header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+header{padding:14px 18px;padding-top:calc(14px + var(--safe-t));display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+header h1{font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:8px;letter-spacing:-0.3px}
+header h1 .dot{width:7px;height:7px;border-radius:50%}.dot-task{background:var(--accent)}.dot-expense{background:var(--accent2)}.dot-word{background:var(--accent3)}.dot-track{background:var(--accent4)}
+header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--text2)}
+header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:all 0.12s}
+header .icon-btn:active{background:var(--surface2);transform:scale(0.92)}
 
-.pomo-bar{margin:0 16px 6px;padding:8px 12px;border-radius:var(--radius);background:rgba(139,92,246,0.04);border:1px solid rgba(139,92,246,0.1);display:none;align-items:center;gap:8px;flex-shrink:0}
+/* Pomodoro */
+.pomo-bar{margin:0 16px 8px;padding:10px 14px;border-radius:var(--radius);background:rgba(194,101,58,0.04);border:1px solid rgba(194,101,58,0.12);display:none;align-items:center;gap:10px;flex-shrink:0}
 .pomo-bar.on{display:flex}
-.pomo-timer{font-size:1.3rem;font-weight:800;font-variant-numeric:tabular-nums}
-.pomo-label{font-size:0.62rem;color:var(--text2);margin-left:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
-.pomo-bar button{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,91,91,0.2);background:transparent;color:var(--danger);cursor:pointer;font-size:0.65rem;margin-left:auto;flex-shrink:0}
+.pomo-timer{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent)}
+.pomo-label{font-size:0.62rem;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.pomo-bar button{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(209,67,67,0.2);background:transparent;color:var(--danger);cursor:pointer;font-size:0.65rem;margin-left:auto;flex-shrink:0}
 
+/* Nav */
 .nav-bar{display:flex;flex-shrink:0;border-top:1px solid var(--border);background:var(--bg);padding-bottom:var(--safe-b)}
-.nav-bar button{flex:1;min-width:0;padding:5px 4px 1px;border:none;background:transparent;color:var(--text3);font-family:var(--font);font-size:0.58rem;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:0px}
+.nav-bar button{flex:1;min-width:0;padding:5px 2px 1px;border:none;background:transparent;color:var(--text3);font-family:var(--font);font-size:0.58rem;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;align-items:center;gap:0px}
 .nav-bar button .ni{font-size:0.95rem}
-.nav-bar button.on{color:var(--accent)}.nav-bar button.on:nth-child(2){color:var(--accent2)}.nav-bar button.on:nth-child(3){color:var(--accent3)}.nav-bar button.on:nth-child(4){color:var(--accent4)}
+.nav-bar button.on{color:var(--accent);font-weight:600}.nav-bar button.on:nth-child(2){color:var(--accent2)}.nav-bar button.on:nth-child(3){color:var(--accent3)}.nav-bar button.on:nth-child(4){color:var(--accent4)}
 
+/* Panel */
 .panel{display:none;flex-direction:column;flex:1;overflow:hidden}
 .panel.on{display:flex}
 .scroll{flex:1;overflow-y:auto;padding:0 16px 6px;-webkit-overflow-scrolling:touch}
@@ -41,118 +44,136 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
 .empty{padding:50px 20px;text-align:center;color:var(--text3);font-size:0.82rem}
 .empty .ei{font-size:2.2rem;margin-bottom:8px;opacity:0.4}
 
+/* Tabs */
 .tabs{display:flex;padding:0 16px 5px;gap:3px;flex-shrink:0}
-.tabs button{padding:5px 12px;border-radius:20px;border:none;background:transparent;color:var(--text2);font-family:var(--font);font-size:0.72rem;cursor:pointer;transition:all 0.2s}
-.tabs button.on{background:var(--surface2);color:var(--text)}
+.tabs button{padding:5px 12px;border-radius:20px;border:none;background:transparent;color:var(--text2);font-family:var(--font);font-size:0.72rem;cursor:pointer;transition:all 0.15s}
+.tabs button.on{background:var(--surface2);color:var(--text);font-weight:600}
+
+/* ===== TASK ===== */
 .task-add{display:flex;gap:5px;padding:0 16px 8px;flex-shrink:0}
 .task-add input{flex:1;padding:9px 12px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:0.82rem;outline:none}
 .task-add input:focus{border-color:var(--accent)}
-.task-add .prio{width:34px;height:41px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.85rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
-.task-add button:last-child{width:42px;height:41px;border-radius:var(--radius);border:none;background:var(--accent);color:#fff;font-size:1.1rem;cursor:pointer;flex-shrink:0}
+.task-add .prio{width:34px;height:41px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.85rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.12s}
+.task-add button:last-child{width:42px;height:41px;border-radius:var(--radius);border:none;background:var(--accent);color:#fff;font-size:1.1rem;cursor:pointer;flex-shrink:0;transition:all 0.12s}
+.task-add button:last-child:active,.task-add .prio:active{transform:scale(0.9)}
 
 .tcard-wrap{margin-bottom:5px}
-.tcard{display:flex;flex-direction:column;padding:10px 12px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border)}
+.tcard{display:flex;flex-direction:column;padding:10px 12px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
 .tcard.done{opacity:0.4}
 .tcard .main-row{display:flex;align-items:center;gap:7px}
-.tcheck{width:18px;height:18px;border-radius:50%;flex-shrink:0;border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
-.tcheck.done{background:var(--success);border-color:var(--success)}
+.tcheck{width:18px;height:18px;border-radius:50%;flex-shrink:0;border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s cubic-bezier(.4,0,.2,1)}
+.tcheck.done{background:var(--success);border-color:var(--success);animation:pop 0.3s cubic-bezier(.4,0,.2,1)}
+@keyframes pop{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
 .tcheck.done::after{content:"✓";color:#fff;font-size:0.55rem;font-weight:700}
 .ttxt{flex:1;font-size:0.82rem;line-height:1.4;word-break:break-word;cursor:pointer}
 .tcard.done .ttxt{text-decoration:line-through;color:var(--text3)}
 .tprio{width:5px;height:5px;border-radius:50%;flex-shrink:0}.tprio-1{background:var(--success)}.tprio-2{background:var(--warn)}.tprio-3{background:var(--danger)}
 .tdue{font-size:0.62rem;color:var(--text3);flex-shrink:0}.tdue.ov{color:var(--danger)}
-.tpomo{width:24px;height:24px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:0.65rem;flex-shrink:0;color:var(--accent);transition:all 0.15s;display:flex;align-items:center;justify-content:center}
-.tpomo.on{color:var(--success);background:rgba(52,211,153,0.08)}
-.tdel{width:24px;height:24px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:0.65rem;flex-shrink:0;color:var(--text3)}.tdel:active{color:var(--danger)}
+.tpomo{width:24px;height:24px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:0.65rem;flex-shrink:0;color:var(--accent);transition:all 0.12s;display:flex;align-items:center;justify-content:center}
+.tpomo.on{color:var(--success);background:rgba(91,155,111,0.08)}
+.tdel{width:24px;height:24px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:0.65rem;flex-shrink:0;color:var(--text3);transition:all 0.12s}
+.tdel:active{color:var(--danger);transform:scale(0.85)}
 .chkl{margin-top:3px;padding-left:25px}.chkl .ci{display:flex;align-items:center;gap:5px;padding:2px 0;font-size:0.73rem;color:var(--text2);cursor:pointer}
-.chkl .ci .cb{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--text3);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.chkl .ci .cb{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--text3);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.12s}
 .chkl .ci .cb.done{background:var(--success);border-color:var(--success)}.chkl .ci .cb.done::after{content:"✓";color:#fff;font-size:0.4rem;font-weight:700}
 .chkl .ci.done .ct{text-decoration:line-through;color:var(--text3)}.chkl .progress{font-size:0.58rem;color:var(--text3);margin-bottom:2px}
 .task-bot{padding:5px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
-.task-bot button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.66rem;cursor:pointer}
+.task-bot button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.66rem;cursor:pointer;transition:all 0.12s}
+.task-bot button:active{background:var(--surface2);transform:scale(0.96)}
 
-/* Expense */
+/* ===== EXPENSE ===== */
 .exp-sum{display:flex;gap:5px;padding:0 16px 6px;flex-shrink:0}
-.exp-c{flex:1;background:var(--surface);border-radius:var(--radius);padding:10px;border:1px solid var(--border);text-align:center}
+.exp-c{flex:1;background:var(--surface);border-radius:var(--radius);padding:10px;border:1px solid var(--border);text-align:center;box-shadow:var(--shadow)}
 .exp-c .ev{font-size:1.2rem;font-weight:800}.exp-c .el{font-size:0.58rem;color:var(--text2);margin-top:1px}
 .exp-c.in .ev{color:var(--success)}.exp-c.out .ev{color:var(--danger)}.exp-c.net .ev{color:var(--accent)}
 .exp-mn{display:flex;align-items:center;justify-content:center;gap:6px;padding:0 16px 4px;flex-shrink:0}
-.exp-mn button{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:0.7rem}
+.exp-mn button{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:0.7rem;transition:all 0.12s}
+.exp-mn button:active{background:var(--surface2)}
 .exp-mn .ml{font-size:0.76rem;font-weight:700}
 .exp-add{display:flex;gap:4px;padding:0 16px 6px;flex-shrink:0;align-items:center}
 .exp-add .amt{width:70px;padding:9px 5px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:0.95rem;font-weight:700;outline:none;text-align:center}
 .exp-add .amt:focus{border-color:var(--accent2)}
-.exp-add .ecat{padding:7px 9px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.7rem;white-space:nowrap;font-family:var(--font);color:var(--text);flex-shrink:0}
-.exp-add button:last-child{width:40px;height:40px;border-radius:var(--radius);border:none;background:var(--accent2);color:#fff;font-size:1.05rem;cursor:pointer;flex-shrink:0}
+.exp-add .ecat{padding:7px 9px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.7rem;white-space:nowrap;font-family:var(--font);color:var(--text);flex-shrink:0;transition:all 0.12s}
+.exp-add .ecat:active{background:var(--surface2)}
+.exp-add button:last-child{width:40px;height:40px;border-radius:var(--radius);border:none;background:var(--accent2);color:#fff;font-size:1.05rem;cursor:pointer;flex-shrink:0;transition:all 0.12s}
+.exp-add button:last-child:active{transform:scale(0.9)}
 .exp-bot{padding:5px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
-.exp-bot button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.66rem;cursor:pointer}
-.exp-bot button.on{color:var(--accent2);border-color:rgba(236,72,153,0.3)}
-.eitem{display:flex;align-items:center;gap:7px;padding:9px 10px;background:var(--surface);border-radius:var(--radius);margin-bottom:3px;border:1px solid var(--border)}
-.eitem .eii{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0}
+.exp-bot button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.66rem;cursor:pointer;transition:all 0.12s}
+.exp-bot button.on{color:var(--accent2);border-color:rgba(212,149,106,0.3)}
+.exp-bot button:active{background:var(--surface2)}
+.eitem{display:flex;align-items:center;gap:7px;padding:9px 10px;background:var(--surface);border-radius:var(--radius);margin-bottom:3px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.eitem .eii{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0;background:rgba(212,149,106,0.1)}
 .eitem .einfo{flex:1;min-width:0}.eitem .ein{font-size:0.76rem;font-weight:500}.eitem .eid{font-size:0.58rem;color:var(--text3)}
 .eitem .eia{font-weight:700;font-size:0.82rem;flex-shrink:0}.eia.in{color:var(--success)}.eia.out{color:var(--danger)}
-.eitem .eix{font-size:0.58rem;color:var(--text3);cursor:pointer;padding:3px;opacity:0}.eitem:active .eix{opacity:1}
+.eitem .eix{font-size:0.58rem;color:var(--text3);cursor:pointer;padding:3px;opacity:0;transition:all 0.12s}.eitem:active .eix{opacity:1}
 .edate{font-size:0.62rem;color:var(--text3);padding:5px 0 3px;font-weight:600}
 
-/* Journal */
-.jadd{display:flex;gap:5px;padding:0 16px 6px;flex-shrink:0}
-.jadd textarea{flex:1;padding:9px 10px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:0.82rem;outline:none;resize:none;height:40px}
-.jadd textarea:focus{border-color:var(--accent3)}
-.jadd .pbtn{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border);background:var(--surface2);cursor:pointer;font-size:0.75rem;display:flex;align-items:center;justify-content:center;align-self:flex-end;position:relative;overflow:hidden}
-.jadd .pbtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
-.jadd button:last-child{width:40px;height:40px;border-radius:var(--radius);border:none;background:var(--accent3);color:#fff;font-size:1.05rem;cursor:pointer;flex-shrink:0;align-self:flex-end}
-.pprev{display:flex;gap:3px;padding:0 16px 4px;flex-shrink:0;flex-wrap:wrap}
-.pprev .pp{width:40px;height:40px;border-radius:7px;background-size:cover;background-position:center;position:relative;border:1px solid var(--border)}
-.pprev .pp .px{position:absolute;top:-4px;right:-4px;width:14px;height:14px;border-radius:50%;background:var(--danger);color:#fff;border:none;font-size:0.45rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.jbot{padding:5px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
-.jbot button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.66rem;cursor:pointer}
-.jbot button.on{color:var(--accent3);border-color:rgba(14,165,233,0.3)}
-.je{background:var(--surface);border-radius:var(--radius);margin-bottom:6px;border:1px solid var(--border);overflow:hidden}
-.je-h{display:flex;align-items:center;justify-content:space-between;padding:7px 12px 1px}
-.je-d{font-size:0.62rem;color:var(--text3)}
-.je-t{padding:3px 12px 7px;font-size:0.8rem;line-height:1.6;white-space:pre-wrap}
-.je-p{display:flex;gap:2px;padding:0 12px 7px;flex-wrap:wrap}
-.je-p .jp{height:65px;border-radius:7px;background-size:cover;background-position:center;cursor:pointer}
-.je-f{padding:3px 12px;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
-.je-f button{background:transparent;border:none;color:var(--text3);font-size:0.6rem;cursor:pointer;padding:2px 5px}
+/* ===== WORD TRACK ===== */
+.word-stats{display:flex;gap:5px;padding:0 16px 6px;flex-shrink:0}
+.word-card{flex:1;background:var(--surface);border-radius:var(--radius);padding:10px 6px;border:1px solid var(--border);text-align:center;box-shadow:var(--shadow)}
+.word-card .wv{font-size:1.25rem;font-weight:800;color:var(--accent3)}.word-card .wl{font-size:0.58rem;color:var(--text2);margin-top:1px}
+.word-add{display:flex;gap:5px;padding:0 16px 6px;flex-shrink:0;align-items:center}
+.word-add input{padding:9px 10px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:0.82rem;outline:none}
+.word-add input:focus{border-color:var(--accent3)}
+.word-add .wnum{width:70px;text-align:center;font-weight:700}
+.word-add .wrev{width:60px;text-align:center;font-size:0.72rem}
+.word-add button:last-child{width:40px;height:40px;border-radius:var(--radius);border:none;background:var(--accent3);color:#fff;font-size:1.05rem;cursor:pointer;flex-shrink:0;transition:all 0.12s}
+.word-add button:last-child:active{transform:scale(0.9)}
+.word-bot{padding:5px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
+.word-bot button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.66rem;cursor:pointer;transition:all 0.12s}
+.word-bot button.on{color:var(--accent3);border-color:rgba(125,155,90,0.3)}
+.word-bot button:active{background:var(--surface2)}
+.witem{display:flex;align-items:center;gap:7px;padding:9px 10px;background:var(--surface);border-radius:var(--radius);margin-bottom:3px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.witem .wii{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0;background:rgba(125,155,90,0.1)}
+.witem .winfo{flex:1;min-width:0}.witem .win{font-size:0.76rem;font-weight:500}.witem .wid{font-size:0.58rem;color:var(--text3)}
+.witem .wia{font-weight:700;font-size:0.82rem;flex-shrink:0;color:var(--accent3)}
+.witem .wix{font-size:0.58rem;color:var(--text3);cursor:pointer;padding:3px;opacity:0;transition:all 0.12s}.witem:active .wix{opacity:1}
 
-/* Time Track */
-.track-main{display:flex;flex-direction:column;align-items:center;padding:16px 16px 8px;flex-shrink:0}
-.track-emoji{font-size:3rem;margin-bottom:4px;transition:all 0.3s}
+/* ===== TIME TRACK (日常安排) ===== */
+.track-main{display:flex;flex-direction:column;align-items:center;padding:12px 16px 6px;flex-shrink:0}
+.track-emoji{font-size:2.5rem;margin-bottom:4px;transition:all 0.3s}
 .track-emoji.running{animation:bounce 0.5s infinite alternate}
 @keyframes bounce{from{transform:scale(1)}to{transform:scale(1.1)}}
-.track-clock{font-size:2.8rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:2px;color:var(--accent4)}
-.track-label{font-size:0.8rem;color:var(--text2);margin:2px 0 8px}
+.track-clock{font-size:2.6rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:2px;color:var(--accent)}
+.track-range{font-size:0.7rem;color:var(--text3);margin:2px 0 6px;font-variant-numeric:tabular-nums}
+.track-label{font-size:0.8rem;color:var(--text2);margin-bottom:8px}
 .track-label .act-name{color:var(--text);font-weight:600}
-.track-ctrl{display:flex;gap:10px;margin-bottom:8px}
-.track-ctrl button{width:52px;height:52px;border-radius:50%;border:none;font-size:1.3rem;cursor:pointer;transition:all 0.15s;font-family:var(--font)}
-.track-ctrl .btn-play{background:var(--accent4);color:#fff;box-shadow:0 3px 12px rgba(249,115,22,0.2)}
-.track-ctrl .btn-pause{background:var(--warn);color:#111}
+.track-ctrl{display:flex;gap:12px;margin-bottom:8px}
+.track-ctrl button{width:52px;height:52px;border-radius:50%;border:none;font-size:1.3rem;cursor:pointer;transition:all 0.12s;font-family:var(--font)}
+.track-ctrl .btn-play{background:var(--accent);color:#fff;box-shadow:0 3px 12px rgba(194,101,58,0.25)}
+.track-ctrl .btn-pause{background:var(--warn);color:#fff}
 .track-ctrl .btn-stop{background:var(--danger);color:#fff;font-size:0.9rem}
-.track-ctrl button:active{transform:scale(0.9)}
+.track-ctrl button:active{transform:scale(0.88)}
 .track-picker{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:6px}
-.track-picker button{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;transition:all 0.15s;white-space:nowrap}
-.track-picker button.on{border-color:var(--accent4);color:var(--accent4);background:rgba(249,115,22,0.08);font-weight:600}
+.track-picker button{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;transition:all 0.12s;white-space:nowrap}
+.track-picker button:active{background:var(--surface2)}
+.track-picker button.on{border-color:var(--accent);color:var(--accent);background:rgba(194,101,58,0.06);font-weight:600}
 .track-picker .add-act{padding:5px 10px;border-radius:20px;border:1px dashed var(--border);background:transparent;color:var(--text3);font-family:var(--font);font-size:0.68rem;cursor:pointer}
 .track-stats{display:flex;gap:5px;padding:0 16px 6px;flex-shrink:0}
-.track-stats .ts{flex:1;background:var(--surface);border-radius:var(--radius);padding:9px 6px;text-align:center;border:1px solid var(--border)}
-.track-stats .ts .tv{font-size:1.15rem;font-weight:800;color:var(--accent4)}.track-stats .ts .tl{font-size:0.58rem;color:var(--text2);margin-top:1px}
+.track-stats .ts{flex:1;background:var(--surface);border-radius:var(--radius);padding:9px 6px;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow)}
+.track-stats .ts .tv{font-size:1.15rem;font-weight:800;color:var(--accent)}.track-stats .ts .tl{font-size:0.58rem;color:var(--text2);margin-top:1px}
 .track-records{padding:2px 16px 4px;flex-shrink:0;font-size:0.68rem;color:var(--text2);font-weight:600}
-.titem{display:flex;align-items:center;gap:7px;padding:9px 10px;background:var(--surface);border-radius:var(--radius);margin-bottom:3px;border:1px solid var(--border)}
-.titem .tii{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0}
+.titem{display:flex;align-items:center;gap:7px;padding:9px 10px;background:var(--surface);border-radius:var(--radius);margin-bottom:3px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.titem .tii{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0;background:rgba(194,101,58,0.08)}
 .titem .tinfo{flex:1;min-width:0}.titem .tin{font-size:0.76rem;font-weight:500}.titem .tid{font-size:0.58rem;color:var(--text3)}
-.titem .tia{font-weight:700;font-size:0.8rem;flex-shrink:0;color:var(--accent4);font-variant-numeric:tabular-nums}
-.titem .tix{font-size:0.58rem;color:var(--text3);cursor:pointer;padding:3px;opacity:0}.titem:active .tix{opacity:1}
+.titem .tia{font-weight:700;font-size:0.8rem;flex-shrink:0;color:var(--accent);font-variant-numeric:tabular-nums}
+.titem .tix{font-size:0.58rem;color:var(--text3);cursor:pointer;padding:3px;opacity:0;transition:all 0.12s}.titem:active .tix{opacity:1}
 .track-bot{padding:5px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
-.track-bot button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.66rem;cursor:pointer}
-.track-bot button.on{color:var(--accent4);border-color:rgba(249,115,22,0.3)}
+.track-bot button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.66rem;cursor:pointer;transition:all 0.12s}
+.track-bot button.on{color:var(--accent);border-color:rgba(194,101,58,0.3)}
+.track-bot button:active{background:var(--surface2)}
+
+/* ===== REMINDER TOAST ===== */
+.remind-toast{position:fixed;top:calc(var(--safe-t) + 50px);left:50%;transform:translateX(-50%);z-index:300;background:var(--accent);color:#fff;padding:14px 20px;border-radius:var(--radius);font-size:0.8rem;display:none;white-space:nowrap;box-shadow:0 8px 30px rgba(194,101,58,0.3);animation:toastIn 0.3s ease-out;font-weight:600;letter-spacing:0.5px}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.remind-toast.show{display:block}
 
 /* Shared */
-.undo{position:fixed;bottom:calc(var(--safe-b) + 80px);left:50%;transform:translateX(-50%);z-index:300;background:var(--surface);border:1px solid var(--border);padding:7px 13px;border-radius:20px;font-size:0.74rem;display:none;gap:7px;align-items:center;box-shadow:0 8px 32px rgba(0,0,0,0.08)}
+.undo{position:fixed;bottom:calc(var(--safe-b) + 80px);left:50%;transform:translateX(-50%);z-index:300;background:var(--surface);border:1px solid var(--border);padding:7px 13px;border-radius:20px;font-size:0.74rem;display:none;gap:7px;align-items:center;box-shadow:0 8px 30px rgba(0,0,0,0.08)}
 .undo.on{display:flex}.undo button{background:var(--accent);color:#fff;border:none;padding:3px 9px;border-radius:12px;font-family:var(--font);font-size:0.68rem;cursor:pointer;font-weight:600}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:200;justify-content:center;align-items:flex-end;backdrop-filter:blur(8px)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.2);z-index:200;justify-content:center;align-items:flex-end;backdrop-filter:blur(6px)}
 .overlay.on{display:flex}
-.sheet{width:100%;max-width:500px;background:var(--surface);border-radius:20px 20px 0 0;padding:6px 18px 16px;padding-bottom:calc(16px + var(--safe-b));animation:slideUp 0.3s;max-height:85vh;overflow-y:auto}
+.sheet{width:100%;max-width:500px;background:var(--surface);border-radius:20px 20px 0 0;padding:6px 18px 16px;padding-bottom:calc(16px + var(--safe-b));animation:slideUp 0.3s cubic-bezier(.4,0,.2,1);max-height:85vh;overflow-y:auto}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .sheet h3{font-size:0.9rem;margin-bottom:10px}
 .sheet .row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
@@ -172,12 +193,12 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
 </head>
 <body>
 
-<svg style="position:absolute;width:0;height:0"><defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#F97316"/></linearGradient></defs></svg>
+<svg style="position:absolute;width:0;height:0"><defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#C2653A"/><stop offset="100%" stop-color="#D4956A"/></linearGradient></defs></svg>
 
 <header>
   <h1><span class="dot dot-task" id="logo-dot"></span><span id="logo-text">任务</span></h1>
   <div style="display:flex;align-items:center;gap:8px">
-    <button class="icon-btn" id="pomo-btn" onclick="togglePomo()" title="番茄钟">🍅</button>
+    <button class="icon-btn" id="pomo-btn" onclick="tap();togglePomo()" title="番茄钟">🍅</button>
     <div class="time" id="live-time">00:00</div>
   </div>
 </header>
@@ -185,52 +206,66 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
 <div class="pomo-bar" id="pomo-bar">
   <div class="pomo-timer" id="pomo-timer">25:00</div>
   <div class="pomo-label" id="pomo-label">专注中</div>
-  <button onclick="stopPomo()">✕</button>
+  <button onclick="tap();stopPomo()">✕</button>
 </div>
+
+<!-- Reminder toast -->
+<div class="remind-toast" id="remind-toast"></div>
 
 <!-- ===== TASK ===== -->
 <div class="panel on" id="p-task">
-  <div class="tabs"><button class="on" onclick="setTaskTab('active')" id="tab-active">⏳ 待办</button><button onclick="setTaskTab('done')" id="tab-done">✅ 已完成</button></div>
-  <div class="task-add"><input id="task-input" placeholder="添加任务..." enterkeyhint="done"><button class="prio" id="prio-btn" onclick="cyclePrio()">🟢</button><button onclick="addTask()">＋</button></div>
+  <div class="tabs"><button class="on" onclick="tap();setTaskTab('active')" id="tab-active">⏳ 待办</button><button onclick="tap();setTaskTab('done')" id="tab-done">✅ 已完成</button></div>
+  <div class="task-add"><input id="task-input" placeholder="添加任务..." enterkeyhint="done"><button class="prio" id="prio-btn" onclick="tap();cyclePrio()">🟢</button><button onclick="tap();addTask()">＋</button></div>
   <div class="scroll" id="task-list"></div>
-  <div class="task-bot"><button onclick="clearDone()">🗑 清除完成</button><button onclick="exportAll()">📤 导出</button></div>
+  <div class="task-bot"><button onclick="tap();clearDone()">🗑 清除完成</button><button onclick="tap();exportAll()">📤 导出</button></div>
 </div>
 
 <!-- ===== EXPENSE ===== -->
 <div class="panel" id="p-expense">
   <div class="exp-sum"><div class="exp-c in"><div class="ev" id="e-income">¥0</div><div class="el">收入</div></div><div class="exp-c out"><div class="ev" id="e-spent">¥0</div><div class="el">支出</div></div><div class="exp-c net"><div class="ev" id="e-bal">¥0</div><div class="el">结余</div></div></div>
-  <div class="exp-mn"><button onclick="chMonth(-1)">◀</button><div class="ml" id="e-month">2026年7月</div><button onclick="chMonth(1)">▶</button></div>
-  <div class="exp-add"><input class="amt" id="exp-amount" placeholder="金额" step="0.01" enterkeyhint="done"><button class="ecat" id="exp-cat" onclick="cycleExpCat()">🍔 餐饮</button><button class="ecat" id="exp-type" onclick="cycleExpType()">💸 支出</button><button onclick="addExpense()">＋</button></div>
+  <div class="exp-mn"><button onclick="tap();chMonth(-1)">◀</button><div class="ml" id="e-month">2026年7月</div><button onclick="tap();chMonth(1)">▶</button></div>
+  <div class="exp-add"><input class="amt" id="exp-amount" placeholder="金额" step="0.01" enterkeyhint="done"><button class="ecat" id="exp-cat" onclick="tap();cycleExpCat()">🍔 餐饮</button><button class="ecat" id="exp-type" onclick="tap();cycleExpType()">💸 支出</button><button onclick="tap();addExpense()">＋</button></div>
   <div class="scroll" id="exp-list"></div>
-  <div class="exp-bot"><button class="on" onclick="setExpView('month')" id="eb-m">📅 本月</button><button onclick="setExpView('all')" id="eb-a">📋 全部</button><button onclick="exportAll()">📤 导出</button></div>
+  <div class="exp-bot"><button class="on" onclick="tap();setExpView('month')" id="eb-m">📅 本月</button><button onclick="tap();setExpView('all')" id="eb-a">📋 全部</button><button onclick="tap();exportAll()">📤 导出</button></div>
 </div>
 
-<!-- ===== JOURNAL ===== -->
-<div class="panel" id="p-journal">
-  <div class="jadd"><textarea id="j-text" placeholder="今天吃了什么、做了什么..." enterkeyhint="done"></textarea><div class="pbtn">📷<input type="file" accept="image/*" multiple onchange="onPhotos()"></div><button onclick="addJournal()">＋</button></div>
-  <div class="pprev" id="pprev"></div>
-  <div class="scroll" id="journal-list"></div>
-  <div class="jbot"><button class="on" onclick="setJView('week')" id="jb-w">📅 本周</button><button onclick="setJView('all')" id="jb-a">📋 全部</button><button onclick="exportAll()">📤 导出</button></div>
+<!-- ===== WORD TRACK ===== -->
+<div class="panel" id="p-word">
+  <div class="word-stats" style="padding-top:4px">
+    <div class="word-card"><div class="wv" id="ws-today">0</div><div class="wl">今日新词</div></div>
+    <div class="word-card"><div class="wv" id="ws-review">0</div><div class="wl">今日复习</div></div>
+    <div class="word-card"><div class="wv" id="ws-total">0</div><div class="wl">总词汇量</div></div>
+    <div class="word-card"><div class="wv" id="ws-streak">0</div><div class="wl">连续天数</div></div>
+  </div>
+  <div class="word-add">
+    <input class="wnum" id="word-new" placeholder="新词" type="number" min="0" enterkeyhint="done">
+    <input class="wrev" id="word-review" placeholder="复习" type="number" min="0" enterkeyhint="done">
+    <input id="word-note" placeholder="备注（可选）" style="flex:1">
+    <button onclick="tap();addWord()">＋</button>
+  </div>
+  <div class="scroll" id="word-list"></div>
+  <div class="word-bot"><button class="on" onclick="tap();setWordView('week')" id="wb-week">📅 本周</button><button onclick="tap();setWordView('all')" id="wb-all">📋 全部</button><button onclick="tap();exportAll()">📤 导出</button></div>
 </div>
 
 <!-- ===== TIME TRACK ===== -->
 <div class="panel" id="p-track">
   <div class="track-picker" id="track-picker">
-    <button class="on" onclick="pickActivity(0)">📚 读书</button>
-    <button onclick="pickActivity(1)">💻 学习</button>
-    <button onclick="pickActivity(2)">🏃 运动</button>
-    <button onclick="pickActivity(3)">🎧 练琴</button>
-    <button onclick="pickActivity(4)">✍️ 写作</button>
-    <button class="add-act" onclick="addActivity()">+自定义</button>
+    <button class="on" onclick="tap();pickActivity(0)">📚 读书</button>
+    <button onclick="tap();pickActivity(1)">💻 学习</button>
+    <button onclick="tap();pickActivity(2)">🏃 运动</button>
+    <button onclick="tap();pickActivity(3)">🎧 练琴</button>
+    <button onclick="tap();pickActivity(4)">✍️ 写作</button>
+    <button class="add-act" onclick="tap();addActivity()">+自定义</button>
   </div>
   <div class="track-main">
     <div class="track-emoji" id="track-emoji">📚</div>
     <div class="track-clock" id="track-clock">00:00:00</div>
-    <div class="track-label">正在计时：<span class="act-name" id="track-act-name">读书</span></div>
+    <div class="track-range" id="track-range">—:— 至 —:—</div>
+    <div class="track-label">正在安排：<span class="act-name" id="track-act-name">读书</span></div>
     <div class="track-ctrl">
-      <button class="btn-play" id="btn-play" onclick="startTrack()">▶</button>
-      <button class="btn-pause" id="btn-pause" onclick="pauseTrack()" style="display:none">⏸</button>
-      <button class="btn-stop" id="btn-stop" onclick="stopTrack()">⏹</button>
+      <button class="btn-play" id="btn-play" onclick="tap();startTrack()">▶</button>
+      <button class="btn-pause" id="btn-pause" onclick="tap();pauseTrack()" style="display:none">⏸</button>
+      <button class="btn-stop" id="btn-stop" onclick="tap();stopTrack()">⏹</button>
     </div>
   </div>
   <div class="track-stats">
@@ -238,17 +273,17 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
     <div class="ts"><div class="tv" id="ts-week">0h</div><div class="tl">本周总计</div></div>
     <div class="ts"><div class="tv" id="ts-sessions">0</div><div class="tl">今日次数</div></div>
   </div>
-  <div class="track-records">📋 今日记录</div>
+  <div class="track-records">📋 今日安排</div>
   <div class="scroll" id="track-list"></div>
-  <div class="track-bot"><button class="on" onclick="setTrackView('today')" id="tb-today">📅 今天</button><button onclick="setTrackView('week')" id="tb-week">📅 本周</button><button onclick="setTrackView('all')" id="tb-all">📋 全部</button><button onclick="exportAll()">📤 导出</button></div>
+  <div class="track-bot"><button class="on" onclick="tap();setTrackView('today')" id="tb-today">📅 今天</button><button onclick="tap();setTrackView('week')" id="tb-week">📅 本周</button><button onclick="tap();setTrackView('all')" id="tb-all">📋 全部</button><button onclick="tap();exportAll()">📤 导出</button></div>
 </div>
 
 <!-- NAV -->
 <div class="nav-bar">
   <button class="on" onclick="switchMode('task')" id="nav-task"><span class="ni">📋</span>任务</button>
   <button onclick="switchMode('expense')" id="nav-expense"><span class="ni">💰</span>记账</button>
-  <button onclick="switchMode('journal')" id="nav-journal"><span class="ni">📔</span>日记</button>
-  <button onclick="switchMode('track')" id="nav-track"><span class="ni">⏱</span>计时</button>
+  <button onclick="switchMode('word')" id="nav-word"><span class="ni">📖</span>单词</button>
+  <button onclick="switchMode('track')" id="nav-track"><span class="ni">⏱</span>安排</button>
 </div>
 
 <!-- EDIT SHEET -->
@@ -258,53 +293,60 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
   <div class="row"><label>优先级</label><select id="e-prio"><option value="low">🟢 简单</option><option value="mid">🟡 重要</option><option value="high">🔴 紧急</option></select></div>
   <div style="font-size:0.7rem;color:var(--text2);font-weight:500;margin:6px 0 3px">📝 任务选项</div>
   <div id="clist-sheet"></div><span class="adc" onclick="addChkItem()">+ 添加选项</span>
-  <div class="btns"><button class="save" onclick="saveEdit()">💾 保存</button><button class="cancel" onclick="closeEdit()">取消</button></div>
+  <div class="btns"><button class="save" onclick="tap();saveEdit()">💾 保存</button><button class="cancel" onclick="tap();closeEdit()">取消</button></div>
 </div></div>
 
 <div class="lb" id="lightbox" onclick="closeLightbox()"><img id="lb-img"><button class="lbc">✕</button></div>
-<div class="undo" id="undo"><span id="undo-msg"></span><button onclick="undo()">撤销</button></div>
+<div class="undo" id="undo"><span id="undo-msg"></span><button onclick="tap();undo()">撤销</button></div>
 
 <script>
 // ==================== DATA ====================
-const KEY="daily-v2";
-let DB={tasks:[],expenses:[],journals:[],timeRecords:[],activities:["📚 读书","💻 学习","🏃 运动","🎧 练琴","✍️ 写作"],pomos:0};
+const KEY="daily-v3";
+let DB={tasks:[],expenses:[],wordRecords:[],timeRecords:[],activities:["📚 读书","💻 学习","🏃 运动","🎧 练琴","✍️ 写作"],pomos:0};
 function save(){localStorage.setItem(KEY,JSON.stringify(DB))}
-function load(){try{let d=JSON.parse(localStorage.getItem(KEY));if(d){DB=d;if(!DB.journals)DB.journals=[];if(!DB.expenses)DB.expenses=[];if(!DB.timeRecords)DB.timeRecords=[];if(!DB.activities)DB.activities=["📚 读书","💻 学习","🏃 运动","🎧 练琴","✍️ 写作"];DB.expenses=DB.expenses.map(e=>{if(!e.type)e.type='expense';return e})}}catch(e){}}
+function load(){try{let d=JSON.parse(localStorage.getItem(KEY));if(d){DB=d;if(!DB.wordRecords)DB.wordRecords=[];if(!DB.expenses)DB.expenses=[];if(!DB.timeRecords)DB.timeRecords=[];if(!DB.activities)DB.activities=["📚 读书","💻 学习","🏃 运动","🎧 练琴","✍️ 写作"];DB.expenses=DB.expenses.map(e=>{if(!e.type)e.type='expense';return e})}}catch(e){}}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+// ==================== SOUND ====================
+let _actx=null;
+function beep(){try{if(!_actx)_actx=new(window.AudioContext||window.webkitAudioContext)();let o=_actx.createOscillator(),g=_actx.createGain();o.connect(g);g.connect(_actx.destination);o.frequency.value=1200;o.type='sine';g.gain.setValueAtTime(0.12,_actx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,_actx.currentTime+0.07);o.start(_actx.currentTime);o.stop(_actx.currentTime+0.07)}catch(e){}}
+function loudBeep(){try{if(!_actx)_actx=new(window.AudioContext||window.webkitAudioContext)();for(let i=0;i<3;i++){let o=_actx.createOscillator(),g=_actx.createGain();o.connect(g);g.connect(_actx.destination);o.frequency.value=800+i*300;o.type='square';g.gain.setValueAtTime(0.25,_actx.currentTime+i*0.1);g.gain.exponentialRampToValueAtTime(0.001,_actx.currentTime+i*0.1+0.1);o.start(_actx.currentTime+i*0.1);o.stop(_actx.currentTime+i*0.1+0.1)}}catch(e){}}
+function vib(p){if(navigator.vibrate)navigator.vibrate(p)}
+function tap(){vib(6);beep()}
 
 // ==================== MODE SWITCH ====================
 let mode="task";
 function switchMode(m){tap();
-  mode=m;["task","expense","journal","track"].forEach(k=>document.getElementById("p-"+k).classList.toggle("on",k===m));
-  ["task","expense","journal","track"].forEach(k=>document.getElementById("nav-"+k).classList.toggle("on",k===m));
-  let t={task:["任务","dot-task"],expense:["记账","dot-expense"],journal:["日记","dot-journal"],track:["计时","dot-track"]}[m];
+  mode=m;["task","expense","word","track"].forEach(k=>document.getElementById("p-"+k).classList.toggle("on",k===m));
+  ["task","expense","word","track"].forEach(k=>document.getElementById("nav-"+k).classList.toggle("on",k===m));
+  let t={task:["任务","dot-task"],expense:["记账","dot-expense"],word:["单词","dot-word"],track:["安排","dot-track"]}[m];
   document.getElementById("logo-text").textContent=t[0];document.getElementById("logo-dot").className="dot "+t[1];
   document.getElementById("pomo-btn").style.display=m==="task"?"":"none";
-  if(m==="task")renderTasks();else if(m==="expense")renderExpenses();else if(m==="journal")renderJournals();else if(m==="track")renderTrack()
+  if(m==="task")renderTasks();else if(m==="expense")renderExpenses();else if(m==="word")renderWords();else if(m==="track")renderTrack()
 }
 
 // ==================== POMODORO ====================
 let pi=null,pt=null,pl=0,pb=false;
 function togglePomo(){let w=prompt("设置番茄钟时长（分钟）","25");if(!w)return;DB.workTime=parseInt(w)||25;save();alert("番茄钟已设为 "+DB.workTime+" 分钟")}
-function startPomo(id){let t=DB.tasks.find(x=>x.id===id);if(!t||t.done)return;if(pt)stopPomo();pi=id;pb=false;pl=(DB.workTime||25)*60;document.getElementById("pomo-bar").classList.add("on");document.getElementById("pomo-label").textContent=t.text;tickPomo();renderTasks();tap();pt=setInterval(()=>{pl--;tickPomo();if(pl<=0){if(!pb){DB.pomos++;save();pb=true;pl=300;document.getElementById("pomo-label").textContent="☕ 休息";nfy("🍅 完成！","休息 5 分钟");vib([200,100,200])}else{pb=false;pl=(DB.workTime||25)*60;document.getElementById("pomo-label").textContent=t.text}tickPomo();renderTasks()}},1000);if("Notification"in window&&Notification.permission==="default")Notification.requestPermission()}
-function stopPomo(){if(pt){clearInterval(pt);pt=null}pi=null;document.getElementById("pomo-bar").classList.remove("on");renderTasks()}
+function startPomo(id){tap();let t=DB.tasks.find(x=>x.id===id);if(!t||t.done)return;if(pt)stopPomo();pi=id;pb=false;pl=(DB.workTime||25)*60;document.getElementById("pomo-bar").classList.add("on");document.getElementById("pomo-label").textContent=t.text;tickPomo();renderTasks();pt=setInterval(()=>{pl--;tickPomo();if(pl<=0){if(!pb){DB.pomos++;save();pb=true;pl=300;document.getElementById("pomo-label").textContent="☕ 休息";nfy("🍅 完成！","休息 5 分钟");vib([200,100,200]);loudBeep()}else{pb=false;pl=(DB.workTime||25)*60;document.getElementById("pomo-label").textContent=t.text}tickPomo();renderTasks()}},1000);if("Notification"in window&&Notification.permission==="default")Notification.requestPermission()}
+function stopPomo(){tap();if(pt){clearInterval(pt);pt=null}pi=null;document.getElementById("pomo-bar").classList.remove("on");renderTasks()}
 function tickPomo(){let m=Math.floor(pl/60),s=pl%60;document.getElementById("pomo-timer").textContent=m+":"+String(s).padStart(2,"0")}
 
 // ==================== TASK ====================
 let tPrio="low",tTab="active";let pe={high:"🔴",mid:"🟡",low:"🟢"};
-function cyclePrio(){let o=["low","mid","high"],i=o.indexOf(tPrio);tPrio=o[(i+1)%3];document.getElementById("prio-btn").textContent=pe[tPrio];tap()}
+function cyclePrio(){let o=["low","mid","high"],i=o.indexOf(tPrio);tPrio=o[(i+1)%3];document.getElementById("prio-btn").textContent=pe[tPrio]}
 function setTaskTab(t){tTab=t;document.getElementById("tab-active").classList.toggle("on",t==="active");document.getElementById("tab-done").classList.toggle("on",t==="done");renderTasks()}
-function addTask(){let txt=document.getElementById("task-input").value.trim();if(!txt)return;let due="",today=new Date().toISOString().split("T")[0];if(/今天/.test(txt)){due=today;txt=txt.replace(/今天/g,"").trim()}else if(/明天/.test(txt)){let d=new Date();d.setDate(d.getDate()+1);due=d.toISOString().split("T")[0];txt=txt.replace(/明天/g,"").trim()}DB.tasks.push({id:uid(),text:txt||document.getElementById("task-input").value.trim(),priority:tPrio,due:due,done:false,checklist:[],createdAt:new Date().toISOString()});save();document.getElementById("task-input").value="";tPrio="low";document.getElementById("prio-btn").textContent="🟢";renderTasks();tap()}
+function addTask(){let txt=document.getElementById("task-input").value.trim();if(!txt)return;let due="",today=new Date().toISOString().split("T")[0];if(/今天/.test(txt)){due=today;txt=txt.replace(/今天/g,"").trim()}else if(/明天/.test(txt)){let d=new Date();d.setDate(d.getDate()+1);due=d.toISOString().split("T")[0];txt=txt.replace(/明天/g,"").trim()}DB.tasks.push({id:uid(),text:txt||document.getElementById("task-input").value.trim(),priority:tPrio,due:due,done:false,checklist:[],createdAt:new Date().toISOString()});save();document.getElementById("task-input").value="";tPrio="low";document.getElementById("prio-btn").textContent="🟢";renderTasks()}
 function toggleTask(id){let t=DB.tasks.find(x=>x.id===id);if(t){t.done=!t.done;save();renderTasks();tap()}}
-function toggleChkItem(tid,i){let t=DB.tasks.find(x=>x.id===tid);if(t&&t.checklist[i]){t.checklist[i].done=!t.checklist[i].done;save();renderTasks();tap()}}
-function delTask(id){let i=DB.tasks.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"task",d:DB.tasks[i],i:i};DB.tasks.splice(i,1);save();renderTasks();showUndo("已删除")}
-function clearDone(){let td=DB.tasks.filter(t=>t.done);if(!td.length)return;lastDel={t:"batch",d:td};DB.tasks=DB.tasks.filter(t=>!t.done);save();renderTasks();showUndo("已清除 "+td.length+" 个")}
+function toggleChkItem(tid,i){tap();let t=DB.tasks.find(x=>x.id===tid);if(t&&t.checklist[i]){t.checklist[i].done=!t.checklist[i].done;save();renderTasks()}}
+function delTask(id){tap();let i=DB.tasks.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"task",d:DB.tasks[i],i:i};DB.tasks.splice(i,1);save();renderTasks();showUndo("已删除")}
+function clearDone(){tap();let td=DB.tasks.filter(t=>t.done);if(!td.length)return;lastDel={t:"batch",d:td};DB.tasks=DB.tasks.filter(t=>!t.done);save();renderTasks();showUndo("已清除 "+td.length+" 个")}
 
 function renderTasks(){
   if(mode!=="task")return;let today=new Date().toISOString().split("T")[0],tasks=DB.tasks.slice();tasks.sort((a,b)=>b.createdAt.localeCompare(a.createdAt));tasks=tTab==="done"?tasks.filter(t=>t.done):tasks.filter(t=>!t.done);
   let el=document.getElementById("task-list");
   if(!tasks.length){el.innerHTML='<div class="empty"><div class="ei">'+(tTab==="done"?"🎉":"📝")+'</div>'+(tTab==="done"?"还没有完成的任务":"暂无待办任务")+'</div>'}
-  else{el.innerHTML=tasks.map(t=>{let ov=t.due&&t.due<today&&!t.done,run=pi===t.id;let dueStr='';if(t.due){if(t.due<today&&!t.done)dueStr='<span class="tdue ov">过期</span>';else if(t.due===today)dueStr='<span class="tdue">今天</span>';else dueStr='<span class="tdue">'+t.due+'</span>'}let cl=(t.checklist||[]),clHtml='';if(cl.length){let dc=cl.filter(c=>c.done).length;clHtml='<div class="chkl"><div class="progress">'+dc+'/'+cl.length+'</div>'+cl.map((c,i)=>'<div class="ci'+(c.done?" done":"")+'" onclick="event.stopPropagation();toggleChkItem(\''+t.id+'\','+i+')"><div class="cb'+(c.done?" done":"")+'"></div><span class="ct">'+esc(c.text)+'</span></div>').join("")+'</div>'}return'<div class="tcard-wrap"><div class="tcard'+(t.done?" done":"")+'"><div class="main-row"><div class="tcheck'+(t.done?" done":"")+'" onclick="toggleTask(\''+t.id+'\')"></div><div class="ttxt" onclick="openEdit(\''+t.id+'\')">'+esc(t.text)+'</div>'+dueStr+'<div class="tprio tprio-'+({high:3,mid:2,low:1}[t.priority])+'"></div>'+(t.done?"":'<button class="tpomo'+(run?" on":"")+'" onclick="event.stopPropagation();startPomo(\''+t.id+'\')">🍅</button>')+'<button class="tdel" onclick="event.stopPropagation();delTask(\''+t.id+'\')">✕</button></div>'+clHtml+'</div></div>'}).join("")}
+  else{el.innerHTML=tasks.map(t=>{let ov=t.due&&t.due<today&&!t.done,run=pi===t.id;let dueStr='';if(t.due){if(t.due<today&&!t.done)dueStr='<span class="tdue ov">过期</span>';else if(t.due===today)dueStr='<span class="tdue">今天</span>';else dueStr='<span class="tdue">'+t.due+'</span>'}let cl=(t.checklist||[]),clHtml='';if(cl.length){let dc=cl.filter(c=>c.done).length;clHtml='<div class="chkl"><div class="progress">'+dc+'/'+cl.length+'</div>'+cl.map((c,i)=>'<div class="ci'+(c.done?" done":"")+'" onclick="event.stopPropagation();toggleChkItem(\''+t.id+'\','+i+')"><div class="cb'+(c.done?" done":"")+'"></div><span class="ct">'+esc(c.text)+'</span></div>').join("")+'</div>'}return'<div class="tcard-wrap"><div class="tcard'+(t.done?" done":"")+'"><div class="main-row"><div class="tcheck'+(t.done?" done":"")+'" onclick="toggleTask(\''+t.id+'\')"></div><div class="ttxt" onclick="openEdit(\''+t.id+'\')">'+esc(t.text)+'</div>'+dueStr+'<div class="tprio tprio-'+({high:3,mid:2,low:1}[t.priority])+'"></div>'+(t.done?"":'<button class="tpomo'+(run?" on":"")+'" onclick="event.stopPropagation();tap();startPomo(\''+t.id+'\')">🍅</button>')+'<button class="tdel" onclick="event.stopPropagation();tap();delTask(\''+t.id+'\')">✕</button></div>'+clHtml+'</div></div>'}).join("")}
 }
 
 let editId=null,tmpChkl=[];
@@ -322,121 +364,137 @@ function cycleExpCat(){eCat=(eCat+1)%eCats.length;document.getElementById("exp-c
 function cycleExpType(){eType=eType==="expense"?"income":"expense";document.getElementById("exp-type").textContent=eType==="expense"?"💸 支出":"💰 收入"}
 function chMonth(d){eMonth+=d;renderExpenses()}function setExpView(v){eView=v;document.getElementById("eb-m").classList.toggle("on",v==="month");document.getElementById("eb-a").classList.toggle("on",v==="all");renderExpenses()}
 function getMonth(){let d=new Date();d.setMonth(d.getMonth()+eMonth);return d.toISOString().slice(0,7)}
-function addExpense(){let a=parseFloat(document.getElementById("exp-amount").value);if(!a||a<=0)return;let c=eCats[eCat],uc=eType==="income"?"income":c.k;DB.expenses.push({id:uid(),amount:a,type:eType,category:uc,date:new Date().toISOString().split("T")[0],createdAt:new Date().toISOString()});save();document.getElementById("exp-amount").value="";renderExpenses();tap()}
-function delExpense(id){let i=DB.expenses.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"expense",d:DB.expenses[i],i:i};DB.expenses.splice(i,1);save();renderExpenses();showUndo("已删除账单")}
+function addExpense(){let a=parseFloat(document.getElementById("exp-amount").value);if(!a||a<=0)return;let c=eCats[eCat],uc=eType==="income"?"income":c.k;DB.expenses.push({id:uid(),amount:a,type:eType,category:uc,date:new Date().toISOString().split("T")[0],createdAt:new Date().toISOString()});save();document.getElementById("exp-amount").value="";renderExpenses()}
+function delExpense(id){tap();let i=DB.expenses.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"expense",d:DB.expenses[i],i:i};DB.expenses.splice(i,1);save();renderExpenses();showUndo("已删除账单")}
 function renderExpenses(){
   if(mode!=="expense")return;let ym=getMonth();document.getElementById("e-month").textContent=ym.replace("-","年")+"月";let exps=DB.expenses.slice().sort((a,b)=>b.date.localeCompare(a.date));if(eView==="month")exps=exps.filter(e=>e.date.slice(0,7)===ym);let inc=0,sp=0;exps.forEach(e=>{if(e.type==="income")inc+=e.amount;else sp+=e.amount});document.getElementById("e-income").textContent="¥"+inc.toFixed(2);document.getElementById("e-spent").textContent="¥"+sp.toFixed(2);document.getElementById("e-bal").textContent="¥"+(inc-sp).toFixed(2);
-  let el=document.getElementById("exp-list");if(!exps.length){el.innerHTML='<div class="empty"><div class="ei">💸</div>暂无记录</div>'}else{let gr={};exps.forEach(e=>{let d=e.date;if(!gr[d])gr[d]=[];gr[d].push(e)});let dates=Object.keys(gr).sort().reverse();el.innerHTML=dates.map(dt=>{let items=gr[dt],dtotal=items.reduce((s,e)=>s+(e.type==="income"?e.amount:-e.amount),0);return'<div><div class="edate">📅 '+dt+' <span style="color:'+(dtotal>=0?'var(--success)':'var(--danger)')+'">'+(dtotal>=0?"+":"")+dtotal.toFixed(2)+'</span></div>'+items.map(e=>{let c=eCats.find(x=>x.k===e.category)||eCats[7],isIn=e.type==="income";return'<div class="eitem"><div class="eii" style="background:rgba(236,72,153,0.08)">'+c.i+'</div><div class="einfo"><div class="ein">'+(isIn?"收入":c.n)+'</div><div class="eid">'+dt+'</div></div><div class="eia '+(isIn?"in":"out")+'">'+(isIn?"+":"-")+'¥'+e.amount.toFixed(2)+'</div><span class="eix" onclick="event.stopPropagation();delExpense(\''+e.id+'\')">✕</span></div>'}).join("")+'</div>'}).join("")}
+  let el=document.getElementById("exp-list");if(!exps.length){el.innerHTML='<div class="empty"><div class="ei">💸</div>暂无记录</div>'}else{let gr={};exps.forEach(e=>{let d=e.date;if(!gr[d])gr[d]=[];gr[d].push(e)});let dates=Object.keys(gr).sort().reverse();el.innerHTML=dates.map(dt=>{let items=gr[dt],dtotal=items.reduce((s,e)=>s+(e.type==="income"?e.amount:-e.amount),0);return'<div><div class="edate">📅 '+dt+' <span style="color:'+(dtotal>=0?'var(--success)':'var(--danger)')+'">'+(dtotal>=0?"+":"")+dtotal.toFixed(2)+'</span></div>'+items.map(e=>{let c=eCats.find(x=>x.k===e.category)||eCats[7],isIn=e.type==="income";return'<div class="eitem"><div class="eii">'+c.i+'</div><div class="einfo"><div class="ein">'+(isIn?"收入":c.n)+'</div><div class="eid">'+dt+'</div></div><div class="eia '+(isIn?"in":"out")+'">'+(isIn?"+":"-")+'¥'+e.amount.toFixed(2)+'</div><span class="eix" onclick="event.stopPropagation();delExpense(\''+e.id+'\')">✕</span></div>'}).join("")+'</div>'}).join("")}
 }
 
-// ==================== JOURNAL ====================
-let jPhotos=[],jView="week";
-function onPhotos(){let fs=document.getElementById("j-text").nextElementSibling.querySelector("input").files;if(!fs.length)return;Array.from(fs).forEach(f=>{let r=new FileReader();r.onload=function(e){let img=new Image();img.onload=function(){let s=1;if(img.width>800)s=800/img.width;let w=Math.round(img.width*s),h=Math.round(img.height*s);let c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(img,0,0,w,h);jPhotos.push(c.toDataURL("image/jpeg",0.7));rPP()};img.src=e.target.result};r.readAsDataURL(f)});document.getElementById("j-text").nextElementSibling.querySelector("input").value=""}
-function rPP(){document.getElementById("pprev").innerHTML=jPhotos.map((p,i)=>'<div class="pp" style="background-image:url('+p+')"><button class="px" onclick="rmP('+i+')">✕</button></div>').join("")}
-function rmP(i){jPhotos.splice(i,1);rPP()}
-function addJournal(){let tx=document.getElementById("j-text").value.trim();if(!tx&&!jPhotos.length)return;DB.journals.push({id:uid(),text:tx,photos:jPhotos.slice(),createdAt:new Date().toISOString()});save();document.getElementById("j-text").value="";jPhotos=[];rPP();renderJournals();tap()}
-function delJournal(id){let i=DB.journals.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"journal",d:DB.journals[i],i:i};DB.journals.splice(i,1);save();renderJournals();showUndo("已删除日记")}
-function setJView(v){jView=v;document.getElementById("jb-w").classList.toggle("on",v==="week");document.getElementById("jb-a").classList.toggle("on",v==="all");renderJournals()}
-function renderJournals(){
-  if(mode!=="journal")return;let js=DB.journals.slice().sort((a,b)=>b.createdAt.localeCompare(a.createdAt));if(jView==="week"){let w=new Date();w.setDate(w.getDate()-7);js=js.filter(e=>e.createdAt>=w.toISOString())}let el=document.getElementById("journal-list");if(!js.length){el.innerHTML='<div class="empty"><div class="ei">📔</div>还没有日记</div>'}else{el.innerHTML=js.map(e=>{let d=new Date(e.createdAt),t=d.getHours()+":"+String(d.getMinutes()).padStart(2,"0"),ds=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();let ph='';if(e.photos&&e.photos.length)ph='<div class="je-p">'+e.photos.map(p=>'<div class="jp" style="width:'+(e.photos.length===1?"120":"70")+'px;background-image:url('+p+')" onclick="event.stopPropagation();openLb(\''+e.id+'\')"></div>').join("")+'</div>';return'<div class="je"><div class="je-h"><span class="je-d">📅 '+ds+'</span><span style="font-size:0.6rem;color:var(--text3)">'+t+'</span></div>'+(e.text?'<div class="je-t">'+esc(e.text)+'</div>':'')+ph+'<div class="je-f"><button onclick="delJournal(\''+e.id+'\')">🗑 删除</button></div></div>'}).join("")}
-}
-function openLb(id){let j=DB.journals.find(x=>x.id===id);if(!j||!j.photos.length)return;document.getElementById("lb-img").src=j.photos[0];document.getElementById("lightbox").classList.add("on")}function closeLightbox(){document.getElementById("lightbox").classList.remove("on")}
+// ==================== WORD TRACK ====================
+let wView="week";
+function addWord(){let nw=parseInt(document.getElementById("word-new").value)||0,rv=parseInt(document.getElementById("word-review").value)||0;if(!nw&&!rv)return;let nt=document.getElementById("word-note").value.trim();DB.wordRecords.push({id:uid(),newWords:nw,reviewWords:rv,note:nt,date:new Date().toISOString().split("T")[0],createdAt:new Date().toISOString()});save();document.getElementById("word-new").value="";document.getElementById("word-review").value="";document.getElementById("word-note").value="";renderWords()}
+function delWord(id){tap();let i=DB.wordRecords.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"word",d:DB.wordRecords[i],i:i};DB.wordRecords.splice(i,1);save();renderWords();showUndo("已删除记录")}
+function setWordView(v){wView=v;document.getElementById("wb-week").classList.toggle("on",v==="week");document.getElementById("wb-all").classList.toggle("on",v==="all");renderWords()}
 
-// ==================== TIME TRACKING ====================
-let trackActIdx=0,trackRunning=false,trackPaused=false,trackStart=0,trackElapsed=0,trackInt=null,trackView="today";
-function pickActivity(i){trackActIdx=i;if(!trackRunning)renderTrack();document.querySelectorAll("#track-picker button.on").forEach(b=>b.classList.remove("on"));document.querySelectorAll("#track-picker button")[i].classList.add("on");updateTrackLabel();tap()}
-function removeActivity(i){if(!i||i<5){alert("内置活动不能删除");return}let acts=DB.activities||[];acts.splice(i,1);DB.activities=acts;save();if(trackActIdx>=i)trackActIdx--;if(trackActIdx<0)trackActIdx=0;renderTrack();showUndo("已删除活动")}
-function updateTrackLabel(){
-  let act=(DB.activities||[])[trackActIdx]||"📌 自定义";
-  document.getElementById("track-emoji").textContent=act.slice(0,2);
-  document.getElementById("track-act-name").textContent=act.slice(2).trim()||act;
-  document.getElementById("track-emoji").className="track-emoji"+(trackRunning?" running":"")
+function renderWords(){
+  if(mode!=="word")return;let today=new Date().toISOString().split("T")[0],recs=DB.wordRecords.slice().sort((a,b)=>b.date.localeCompare(a.date));
+  if(wView==="week"){let w=new Date();w.setDate(w.getDate()-7);recs=recs.filter(r=>r.date>=w.toISOString().split("T")[0])}
+  // Stats
+  let todayRecs=recs.filter(r=>r.date===today),todayNew=todayRecs.reduce((s,r)=>s+(r.newWords||0),0),todayRev=todayRecs.reduce((s,r)=>s+(r.reviewWords||0),0);
+  let totalNew=DB.wordRecords.reduce((s,r)=>s+(r.newWords||0),0);
+  document.getElementById("ws-today").textContent=todayNew;document.getElementById("ws-review").textContent=todayRev;
+  document.getElementById("ws-total").textContent=totalNew;document.getElementById("ws-streak").textContent=calcWordStreak();
+  // List
+  let el=document.getElementById("word-list");
+  if(!recs.length){el.innerHTML='<div class="empty"><div class="ei">📖</div>暂无记录</div>'}
+  else{let gr={};recs.forEach(r=>{let d=r.date;if(!gr[d])gr[d]=[];gr[d].push(r)});let dates=Object.keys(gr).sort().reverse();el.innerHTML=dates.map(dt=>{let items=gr[dt],dtNew=items.reduce((s,r)=>s+(r.newWords||0),0),dtRev=items.reduce((s,r)=>s+(r.reviewWords||0),0);return'<div><div class="edate">📅 '+dt+' <span style="color:var(--accent3)">+'+dtNew+' 新词 | 复习 '+dtRev+'</span></div>'+items.map(r=>{return'<div class="witem"><div class="wii">📖</div><div class="winfo"><div class="win">'+(r.note?esc(r.note):"单词记录")+'</div><div class="wid">'+dt+'</div></div><div class="wia">+'+r.newWords+' | 复'+r.reviewWords+'</div><span class="wix" onclick="event.stopPropagation();delWord(\''+r.id+'\')">✕</span></div>'}).join("")+'</div>'}).join("")}
 }
-function startTrack(){tap();
-  if(trackRunning)return;
-  if(trackPaused){trackPaused=false}else{trackElapsed=0}
-  trackRunning=true;trackStart=Date.now()-trackElapsed*1000;
-  document.getElementById("track-emoji").classList.add("running");
-  document.getElementById("btn-play").style.display="none";document.getElementById("btn-pause").style.display="";
-  updateTrackLabel();updateTrackClock();renderTrack();
-  trackInt=setInterval(updateTrackClock,200)
-}
-function pauseTrack(){tap();
-  if(!trackRunning)return;trackRunning=false;trackPaused=true;trackElapsed=Math.floor((Date.now()-trackStart)/1000);
-  clearInterval(trackInt);trackInt=null;
-  document.getElementById("track-emoji").classList.remove("running");
-  document.getElementById("btn-play").style.display="";document.getElementById("btn-pause").style.display="none";
-  renderTrack()
-}
-function stopTrack(){
-  if(!trackRunning&&!trackPaused)return;
-  let secs=trackPaused?trackElapsed:Math.floor((Date.now()-trackStart)/1000);
-  if(secs<5){trackRunning=false;trackPaused=false;trackElapsed=0;clearInterval(trackInt);document.getElementById("btn-play").style.display="";document.getElementById("btn-pause").style.display="none";document.getElementById("track-clock").textContent="00:00:00";renderTrack();return}
-  let act=(DB.activities||[])[trackActIdx]||"自定义";
-  DB.timeRecords.push({id:uid(),activity:act,seconds:secs,date:new Date().toISOString().split("T")[0],createdAt:new Date().toISOString()});
-  trackRunning=false;trackPaused=false;trackElapsed=0;clearInterval(trackInt);trackInt=null;
-  save();document.getElementById("btn-play").style.display="";document.getElementById("btn-pause").style.display="none";document.getElementById("track-clock").textContent="00:00:00";document.getElementById("track-emoji").classList.remove("running");
-  renderTrack();vib([50,30,50])
-}
-function updateTrackClock(){
-  let secs=trackPaused?trackElapsed:Math.floor((Date.now()-trackStart)/1000);
-  let h=Math.floor(secs/3600),m=Math.floor((secs%3600)/60),s=secs%60;
+function calcWordStreak(){let dates=[...new Set(DB.wordRecords.map(r=>r.date))].sort().reverse();if(!dates.length)return 0;let s=0,today=new Date();for(let i=0;i<100;i++){let d=new Date(today);d.setDate(d.getDate()-i);let ds=d.toISOString().split("T")[0];if(dates.includes(ds))s++;else if(i===0)continue;else break}return s}
+
+// ==================== TIME TRACK (Background-Safe) ====================
+let trkActIdx=0,trkRunning=false,trkPaused=false,trkStartTime=null,trkElapsedStored=0,trkInt=null,trkView="today";
+let remindInt=null,remindStart=0;
+
+function pickActivity(i){trkActIdx=i;document.querySelectorAll("#track-picker button.on").forEach(b=>b.classList.remove("on"));document.querySelectorAll("#track-picker button")[i].classList.add("on");updateTrkLabel();if(!trkRunning)renderTrack()}
+function removeActivity(i){tap();if(!i||i<5){alert("内置活动不能删除");return}let acts=DB.activities||[];acts.splice(i,1);DB.activities=acts;save();if(trkActIdx>=i)trkActIdx--;if(trkActIdx<0)trkActIdx=0;renderTrack();showUndo("已删除活动")}
+
+function updateTrkLabel(){let act=(DB.activities||[])[trkActIdx]||"📌 自定义";document.getElementById("track-emoji").textContent=act.slice(0,2);document.getElementById("track-act-name").textContent=act.slice(2).trim()||act;document.getElementById("track-emoji").className="track-emoji"+(trkRunning?" running":"")}
+
+function getTrkElapsed(){if(trkPaused)return trkElapsedStored;return Math.floor((Date.now()-trkStartTime)/1000)}
+
+function updateTrkClock(){
+  let secs=getTrkElapsed(),h=Math.floor(secs/3600),m=Math.floor((secs%3600)/60),s=secs%60;
   document.getElementById("track-clock").textContent=String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")
 }
-function addActivity(){
-  let name=prompt("输入活动名称（如：画画）");if(!name||!name.trim())return;
-  let act="📌 "+name.trim();DB.activities.push(act);save();renderTrackActBtns();pickActivity(DB.activities.length-1)
+
+function updateTrkRange(){
+  if(!trkRunning&&!trkPaused){document.getElementById("track-range").textContent="—:— 至 —:—";return}
+  let st=(trkRunning?trkStartTime:Date.now()-(trkElapsedStored*1000));
+  let stD=new Date(st),enD=trkRunning?new Date():new Date(stD.getTime()+trkElapsedStored*1000);
+  let fh=(x)=>{let h=x.getHours().toString().padStart(2,"0"),m=x.getMinutes().toString().padStart(2,"0");return h+":"+m};
+  document.getElementById("track-range").textContent=fh(stD)+" 至 "+fh(enD)
 }
-function delTrackRecord(id){let i=DB.timeRecords.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"track",d:DB.timeRecords[i],i:i};DB.timeRecords.splice(i,1);save();renderTrack();showUndo("已删除记录")}
-function setTrackView(v){trackView=v;document.getElementById("tb-today").classList.toggle("on",v==="today");document.getElementById("tb-week").classList.toggle("on",v==="week");document.getElementById("tb-all").classList.toggle("on",v==="all");renderTrack()}
-function renderTrackActBtns(){
+
+function startTrkReminder(){remindStart=Date.now();remindInt=setInterval(()=>{if(trkRunning&&Date.now()-remindStart>300000){loudBeep();vib([500,200,300,200,500]);let act=(DB.activities||[])[trkActIdx]||"专注中";let t=document.getElementById("remind-toast");t.textContent="⏰ "+act+" — 已经5分钟了，回来专注！";t.classList.add("show");setTimeout(()=>t.classList.remove("show"),3000);remindStart=Date.now()}},60000)}
+
+function stopTrkReminder(){if(remindInt){clearInterval(remindInt);remindInt=null}}
+
+function startTrack(){
+  if(trkRunning)return;
+  if(trkPaused){trkPaused=false;trkElapsedStored=getTrkElapsed()}else{trkElapsedStored=0}
+  trkRunning=true;trkStartTime=Date.now()-trkElapsedStored*1000;
+  document.getElementById("track-emoji").classList.add("running");
+  document.getElementById("btn-play").style.display="none";document.getElementById("btn-pause").style.display="";
+  updateTrkLabel();updateTrkClock();updateTrkRange();renderTrack();
+  trkInt=setInterval(()=>{updateTrkClock();updateTrkRange()},200);
+  startTrkReminder();nfy("⏱ 开始计时",(DB.activities||[])[trkActIdx]||"专注中")
+}
+
+function pauseTrack(){
+  if(!trkRunning)return;trkRunning=false;trkPaused=true;trkElapsedStored=Math.floor((Date.now()-trkStartTime)/1000);clearInterval(trkInt);trkInt=null;stopTrkReminder();
+  document.getElementById("track-emoji").classList.remove("running");
+  document.getElementById("btn-play").style.display="";document.getElementById("btn-pause").style.display="none";updateTrkRange();renderTrack()
+}
+
+function stopTrack(){
+  if(!trkRunning&&!trkPaused)return;
+  let secs=trkPaused?trkElapsedStored:Math.floor((Date.now()-trkStartTime)/1000);
+  if(secs<5){trkRunning=false;trkPaused=false;trkElapsedStored=0;trkStartTime=null;clearInterval(trkInt);trkInt=null;stopTrkReminder();document.getElementById("btn-play").style.display="";document.getElementById("btn-pause").style.display="none";document.getElementById("track-clock").textContent="00:00:00";document.getElementById("track-range").textContent="—:— 至 —:—";renderTrack();return}
+  let act=(DB.activities||[])[trkActIdx]||"自定义";
+  let startDt=trkRunning?new Date(trkStartTime):new Date(Date.now()-trkElapsedStored*1000);
+  let endDt=new Date(startDt.getTime()+secs*1000);
+  DB.timeRecords.push({id:uid(),activity:act,seconds:secs,startTime:startDt.toISOString(),endTime:endDt.toISOString(),date:new Date().toISOString().split("T")[0],createdAt:new Date().toISOString()});
+  trkRunning=false;trkPaused=false;trkElapsedStored=0;trkStartTime=null;clearInterval(trkInt);trkInt=null;stopTrkReminder();
+  save();document.getElementById("btn-play").style.display="";document.getElementById("btn-pause").style.display="none";document.getElementById("track-clock").textContent="00:00:00";document.getElementById("track-range").textContent="—:— 至 —:—";document.getElementById("track-emoji").classList.remove("running");
+  renderTrack();vib([50,30,50]);loudBeep();
+}
+
+function addActivity(){tap();let name=prompt("输入活动名称（如：画画）");if(!name||!name.trim())return;let act="📌 "+name.trim();DB.activities.push(act);save();renderTrkBtns();pickActivity(DB.activities.length-1)}
+function delTrackRecord(id){tap();let i=DB.timeRecords.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"track",d:DB.timeRecords[i],i:i};DB.timeRecords.splice(i,1);save();renderTrack();showUndo("已删除记录")}
+function setTrackView(v){trkView=v;document.getElementById("tb-today").classList.toggle("on",v==="today");document.getElementById("tb-week").classList.toggle("on",v==="week");document.getElementById("tb-all").classList.toggle("on",v==="all");renderTrack()}
+
+function renderTrkBtns(){
   let el=document.getElementById("track-picker"),acts=DB.activities||[];
-  el.innerHTML=acts.map((a,i)=>'<button'+(i===trackActIdx?' class="on"':'')+' onclick="pickActivity('+i+')" style="position:relative;">'+a+(i>=5?'<span style="position:absolute;top:-4px;right:-4px;width:14px;height:14px;border-radius:50%;background:var(--danger);color:#fff;font-size:0.45rem;display:flex;align-items:center;justify-content:center;z-index:1" onclick="event.stopPropagation();removeActivity('+i+')">✕</span>':'')+'</button>').join("")+'<button class="add-act" onclick="addActivity()">+自定义</button>';
+  el.innerHTML=acts.map((a,i)=>'<button'+(i===trkActIdx?' class="on"':'')+' onclick="tap();pickActivity('+i+')" style="position:relative;">'+a+(i>=5?'<span style="position:absolute;top:-4px;right:-4px;width:14px;height:14px;border-radius:50%;background:var(--danger);color:#fff;font-size:0.45rem;display:flex;align-items:center;justify-content:center;z-index:1" onclick="event.stopPropagation();tap();removeActivity('+i+')">✕</span>':'')+'</button>').join("")+'<button class="add-act" onclick="tap();addActivity()">+自定义</button>';
 }
+
 function renderTrack(){
   if(mode!=="track")return;
   let today=new Date().toISOString().split("T")[0],recs=DB.timeRecords.slice().sort((a,b)=>b.createdAt.localeCompare(a.createdAt));
-  if(trackView==="today")recs=recs.filter(r=>r.date===today);else if(trackView==="week"){let w=new Date();w.setDate(w.getDate()-7);recs=recs.filter(r=>r.createdAt>=w.toISOString())}
-  // Stats
+  if(trkView==="today")recs=recs.filter(r=>r.date===today);else if(trkView==="week"){let w=new Date();w.setDate(w.getDate()-7);recs=recs.filter(r=>r.createdAt>=w.toISOString())}
   let todayRecs=DB.timeRecords.filter(r=>r.date===today),todaySecs=todayRecs.reduce((s,r)=>s+r.seconds,0);
   let wkRecs=DB.timeRecords.filter(r=>{let w=new Date();w.setDate(w.getDate()-7);return r.createdAt>=w.toISOString()}),wkSecs=wkRecs.reduce((s,r)=>s+r.seconds,0);
-  let todaySessions=todayRecs.length;
-  document.getElementById("ts-today").textContent=fmtTime(todaySecs);document.getElementById("ts-week").textContent=fmtTime(wkSecs);document.getElementById("ts-sessions").textContent=todaySessions;
-  // List
+  document.getElementById("ts-today").textContent=fmtTime(todaySecs);document.getElementById("ts-week").textContent=fmtTime(wkSecs);document.getElementById("ts-sessions").textContent=todayRecs.length;
   let el=document.getElementById("track-list");
-  if(!recs.length){el.innerHTML='<div class="empty"><div class="ei">⏱</div>暂无记录</div>'}else{let gr={};recs.forEach(r=>{let d=r.date;if(!gr[d])gr[d]=[];gr[d].push(r)});let dates=Object.keys(gr).sort().reverse();el.innerHTML=dates.map(dt=>{let items=gr[dt],dtotal=items.reduce((s,r)=>s+r.seconds,0);return'<div><div class="edate">📅 '+dt+' <span style="color:var(--accent4)">'+fmtTime(dtotal)+'</span></div>'+items.map(r=>{let emoji=r.activity.slice(0,2),name=r.activity.slice(2).trim()||r.activity;return'<div class="titem"><div class="tii" style="background:rgba(249,115,22,0.08)">'+emoji+'</div><div class="tinfo"><div class="tin">'+esc(name)+'</div><div class="tid">'+dt+'</div></div><div class="tia">'+fmtTime(r.seconds)+'</div><span class="tix" onclick="event.stopPropagation();delTrackRecord(\''+r.id+'\')">✕</span></div>'}).join("")+'</div>'}).join("")}
-  renderTrackActBtns();updateTrackLabel();if(!trackRunning&&!trackPaused)document.getElementById("track-clock").textContent="00:00:00"
+  if(!recs.length){el.innerHTML='<div class="empty"><div class="ei">⏱</div>暂无安排记录</div>'}
+  else{let gr={};recs.forEach(r=>{let d=r.date;if(!gr[d])gr[d]=[];gr[d].push(r)});let dates=Object.keys(gr).sort().reverse();el.innerHTML=dates.map(dt=>{let items=gr[dt],dtotal=items.reduce((s,r)=>s+r.seconds,0);return'<div><div class="edate">📅 '+dt+' <span style="color:var(--accent)">'+fmtTime(dtotal)+'</span></div>'+items.map(r=>{let em=r.activity.slice(0,2),nm=r.activity.slice(2).trim()||r.activity;let timeRange='';if(r.startTime){let st=new Date(r.startTime),et=new Date(r.endTime||r.startTime),f=(x)=>{let h=x.getHours().toString().padStart(2,"0"),m=x.getMinutes().toString().padStart(2,"0");return h+":"+m};timeRange='<span style="font-size:0.58rem;color:var(--text3);margin-left:4px">'+f(st)+' - '+f(et)+'</span>'}return'<div class="titem"><div class="tii">'+em+'</div><div class="tinfo"><div class="tin">'+esc(nm)+timeRange+'</div><div class="tid">'+dt+'</div></div><div class="tia">'+fmtTime(r.seconds)+'</div><span class="tix" onclick="event.stopPropagation();delTrackRecord(\''+r.id+'\')">✕</span></div>'}).join("")+'</div>'}).join("")}
+  renderTrkBtns();updateTrkLabel();if(!trkRunning&&!trkPaused)document.getElementById("track-clock").textContent="00:00:00"
 }
-function fmtTime(s){s=s||0;let h=Math.floor(s/3600),m=Math.floor((s%3600)/60);return h>0?h+"h"+m+"m":m+"m"}
+function fmtTime(s){s=s||0;let h=Math.floor(s/3600),m=Math.floor((s%3600)/60);return h>0?h+"h"+m+"m":m>0?m+"m":"<1m"}
 
 // ==================== UNDO ====================
 let lastDel=null,undoTm=null;
 function showUndo(msg){clearTimeout(undoTm);document.getElementById("undo-msg").textContent=msg;document.getElementById("undo").classList.add("on");undoTm=setTimeout(()=>{lastDel=null;document.getElementById("undo").classList.remove("on")},4000)}
-function undo(){if(!lastDel)return;if(lastDel.t==="batch"){lastDel.d.forEach(t=>DB.tasks.push(t))}else if(lastDel.t==="task")DB.tasks.splice(lastDel.i,0,lastDel.d);else if(lastDel.t==="expense")DB.expenses.splice(lastDel.i,0,lastDel.d);else if(lastDel.t==="journal")DB.journals.splice(lastDel.i,0,lastDel.d);else if(lastDel.t==="track")DB.timeRecords.splice(lastDel.i,0,lastDel.d);lastDel=null;save();if(mode==="task")renderTasks();else if(mode==="expense")renderExpenses();else if(mode==="journal")renderJournals();else if(mode==="track")renderTrack();document.getElementById("undo").classList.remove("on")}
+function undo(){if(!lastDel)return;if(lastDel.t==="batch"){lastDel.d.forEach(t=>DB.tasks.push(t))}else if(lastDel.t==="task")DB.tasks.splice(lastDel.i,0,lastDel.d);else if(lastDel.t==="expense")DB.expenses.splice(lastDel.i,0,lastDel.d);else if(lastDel.t==="word")DB.wordRecords.splice(lastDel.i,0,lastDel.d);else if(lastDel.t==="track")DB.timeRecords.splice(lastDel.i,0,lastDel.d);lastDel=null;save();if(mode==="task")renderTasks();else if(mode==="expense")renderExpenses();else if(mode==="word")renderWords();else renderTrack();document.getElementById("undo").classList.remove("on")}
 
 // ==================== IO ====================
-function exportAll(){let b=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="data-"+new Date().toISOString().split("T")[0]+".json";a.click()}
-function importAll(){let inp=document.createElement("input");inp.type="file";inp.accept=".json";inp.onchange=function(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=function(ev){try{let d=JSON.parse(ev.target.result);if(confirm("导入 "+(d.tasks||[]).length+" 任务 / "+(d.expenses||[]).length+" 账单 / "+(d.journals||[]).length+" 日记 / "+(d.timeRecords||[]).length+" 记录？")){if(d.tasks){let ids=new Set(DB.tasks.map(x=>x.id));d.tasks.forEach(x=>{if(!ids.has(x.id))DB.tasks.push(x)})}if(d.expenses){let ids=new Set(DB.expenses.map(x=>x.id));d.expenses.forEach(x=>{if(!ids.has(x.id))DB.expenses.push(x)})}if(d.journals){let ids=new Set(DB.journals.map(x=>x.id));d.journals.forEach(x=>{if(!ids.has(x.id))DB.journals.push(x)})}if(d.timeRecords){let ids=new Set(DB.timeRecords.map(x=>x.id));d.timeRecords.forEach(x=>{if(!ids.has(x.id))DB.timeRecords.push(x)})}DB.pomos=Math.max(DB.pomos||0,d.pomos||0);if(d.activities)DB.activities=d.activities;save();if(mode==="task")renderTasks();else if(mode==="expense")renderExpenses();else if(mode==="journal")renderJournals();else if(mode==="track")renderTrack()}}catch(ex){alert("格式错误")}};r.readAsText(f)};inp.click()}
+function exportAll(){let b=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="daily-"+new Date().toISOString().split("T")[0]+".json";a.click()}
+function importAll(){let inp=document.createElement("input");inp.type="file";inp.accept=".json";inp.onchange=function(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=function(ev){try{let d=JSON.parse(ev.target.result);if(confirm("导入 "+(d.tasks||[]).length+" 任务 / "+(d.expenses||[]).length+" 账单 / "+(d.wordRecords||[]).length+" 单词 / "+(d.timeRecords||[]).length+" 安排？")){if(d.tasks){let ids=new Set(DB.tasks.map(x=>x.id));d.tasks.forEach(x=>{if(!ids.has(x.id))DB.tasks.push(x)})}if(d.expenses){let ids=new Set(DB.expenses.map(x=>x.id));d.expenses.forEach(x=>{if(!ids.has(x.id))DB.expenses.push(x)})}if(d.wordRecords){let ids=new Set(DB.wordRecords.map(x=>x.id));d.wordRecords.forEach(x=>{if(!ids.has(x.id))DB.wordRecords.push(x)})}if(d.timeRecords){let ids=new Set(DB.timeRecords.map(x=>x.id));d.timeRecords.forEach(x=>{if(!ids.has(x.id))DB.timeRecords.push(x)})}DB.pomos=Math.max(DB.pomos||0,d.pomos||0);if(d.activities)DB.activities=d.activities;save();if(mode==="task")renderTasks();else if(mode==="expense")renderExpenses();else if(mode==="word")renderWords();else renderTrack()}}catch(ex){alert("格式错误")}};r.readAsText(f)};inp.click()}
 
-// ==================== HELPERS ====================
 function esc(s){let d={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"};return s.replace(/[&<>"']/g,c=>d[c])}
 function escAttr(s){return s.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
-function nfy(t,b){if("Notification"in window&&Notification.permission==="granted")new Notification(t,{body:b,icon:"./icons/icon-192.png",tag:"pomo"})}
-function vib(p){if(navigator.vibrate)navigator.vibrate(p)}
-// 点击音效 - Web Audio API
-let _actx=null;
-function beep(){try{if(!_actx)_actx=new(window.AudioContext||window.webkitAudioContext)();let o=_actx.createOscillator(),g=_actx.createGain();o.connect(g);g.connect(_actx.destination);o.frequency.value=1800;o.type='sine';g.gain.setValueAtTime(0.15,_actx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,_actx.currentTime+0.08);o.start(_actx.currentTime);o.stop(_actx.currentTime+0.08)}catch(e){}}
-// 统一的点击反馈
-function tap(){vib(8);beep()}
+function nfy(t,b){if("Notification"in window&&Notification.permission==="granted")new Notification(t,{body:b,icon:"./icons/icon-192.png",tag:"daily"})}
 function tickClock(){let n=new Date();document.getElementById("live-time").textContent=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0")}tickClock();setInterval(tickClock,30000);
 
 // ==================== INIT ====================
-load();renderTasks();renderExpenses();renderJournals();renderTrack();
-if("serviceWorker"in navigator){navigator.serviceWorker.register("./sw.js").then(reg=>{reg.addEventListener("updatefound",()=>{let nw=reg.installing;nw.addEventListener("statechange",()=>{if(nw.state==="installed"&&navigator.serviceWorker.controller){nw.postMessage("skipWaiting");setTimeout(()=>location.reload(),300)}})})})};
-document.getElementById("task-input").addEventListener("keydown",e=>{if(e.key==="Enter")addTask()});
+load();renderTasks();renderExpenses();renderWords();renderTrack();
+if("serviceWorker"in navigator){navigator.serviceWorker.register("./sw.js").then(reg=>{reg.addEventListener("updatefound",()=>{let nw=reg.installing;nw.addEventListener("statechange",()=>{if(nw.state==="installed"&&navigator.serviceWorker.controller){nw.postMessage("skipWaiting");setTimeout(()=>location.reload(),300)}})})})}
+document.getElementById("task-input").addEventListener("keydown",e=>{if(e.key==="Enter"){tap();addTask()}});
 document.getElementById("edit-sheet").addEventListener("click",function(e){if(e.target===this)closeEdit()});
-document.getElementById("exp-amount").addEventListener("keydown",e=>{if(e.key==="Enter")addExpense()});
-document.getElementById("j-text").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();addJournal()}});
+document.getElementById("exp-amount").addEventListener("keydown",e=>{if(e.key==="Enter"){tap();addExpense()}});
+document.getElementById("word-new").addEventListener("keydown",e=>{if(e.key==="Enter"){tap();addWord()}});
+document.getElementById("word-review").addEventListener("keydown",e=>{if(e.key==="Enter"){tap();addWord()}});
 </script>
 </body>
 </html>
