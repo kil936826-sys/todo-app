@@ -274,7 +274,7 @@ function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2
 
 // ==================== MODE SWITCH ====================
 let mode="task";
-function switchMode(m){
+function switchMode(m){tap();
   mode=m;["task","expense","journal","track"].forEach(k=>document.getElementById("p-"+k).classList.toggle("on",k===m));
   ["task","expense","journal","track"].forEach(k=>document.getElementById("nav-"+k).classList.toggle("on",k===m));
   let t={task:["任务","dot-task"],expense:["记账","dot-expense"],journal:["日记","dot-journal"],track:["计时","dot-track"]}[m];
@@ -286,17 +286,17 @@ function switchMode(m){
 // ==================== POMODORO ====================
 let pi=null,pt=null,pl=0,pb=false;
 function togglePomo(){let w=prompt("设置番茄钟时长（分钟）","25");if(!w)return;DB.workTime=parseInt(w)||25;save();alert("番茄钟已设为 "+DB.workTime+" 分钟")}
-function startPomo(id){let t=DB.tasks.find(x=>x.id===id);if(!t||t.done)return;if(pt)stopPomo();pi=id;pb=false;pl=(DB.workTime||25)*60;document.getElementById("pomo-bar").classList.add("on");document.getElementById("pomo-label").textContent=t.text;tickPomo();renderTasks();pt=setInterval(()=>{pl--;tickPomo();if(pl<=0){if(!pb){DB.pomos++;save();pb=true;pl=300;document.getElementById("pomo-label").textContent="☕ 休息";nfy("🍅 完成！","休息 5 分钟");vib([200,100,200])}else{pb=false;pl=(DB.workTime||25)*60;document.getElementById("pomo-label").textContent=t.text}tickPomo();renderTasks()}},1000);if("Notification"in window&&Notification.permission==="default")Notification.requestPermission()}
+function startPomo(id){let t=DB.tasks.find(x=>x.id===id);if(!t||t.done)return;if(pt)stopPomo();pi=id;pb=false;pl=(DB.workTime||25)*60;document.getElementById("pomo-bar").classList.add("on");document.getElementById("pomo-label").textContent=t.text;tickPomo();renderTasks();tap();pt=setInterval(()=>{pl--;tickPomo();if(pl<=0){if(!pb){DB.pomos++;save();pb=true;pl=300;document.getElementById("pomo-label").textContent="☕ 休息";nfy("🍅 完成！","休息 5 分钟");vib([200,100,200])}else{pb=false;pl=(DB.workTime||25)*60;document.getElementById("pomo-label").textContent=t.text}tickPomo();renderTasks()}},1000);if("Notification"in window&&Notification.permission==="default")Notification.requestPermission()}
 function stopPomo(){if(pt){clearInterval(pt);pt=null}pi=null;document.getElementById("pomo-bar").classList.remove("on");renderTasks()}
 function tickPomo(){let m=Math.floor(pl/60),s=pl%60;document.getElementById("pomo-timer").textContent=m+":"+String(s).padStart(2,"0")}
 
 // ==================== TASK ====================
 let tPrio="low",tTab="active";let pe={high:"🔴",mid:"🟡",low:"🟢"};
-function cyclePrio(){let o=["low","mid","high"],i=o.indexOf(tPrio);tPrio=o[(i+1)%3];document.getElementById("prio-btn").textContent=pe[tPrio]}
+function cyclePrio(){let o=["low","mid","high"],i=o.indexOf(tPrio);tPrio=o[(i+1)%3];document.getElementById("prio-btn").textContent=pe[tPrio];tap()}
 function setTaskTab(t){tTab=t;document.getElementById("tab-active").classList.toggle("on",t==="active");document.getElementById("tab-done").classList.toggle("on",t==="done");renderTasks()}
-function addTask(){let txt=document.getElementById("task-input").value.trim();if(!txt)return;let due="",today=new Date().toISOString().split("T")[0];if(/今天/.test(txt)){due=today;txt=txt.replace(/今天/g,"").trim()}else if(/明天/.test(txt)){let d=new Date();d.setDate(d.getDate()+1);due=d.toISOString().split("T")[0];txt=txt.replace(/明天/g,"").trim()}DB.tasks.push({id:uid(),text:txt||document.getElementById("task-input").value.trim(),priority:tPrio,due:due,done:false,checklist:[],createdAt:new Date().toISOString()});save();document.getElementById("task-input").value="";tPrio="low";document.getElementById("prio-btn").textContent="🟢";renderTasks();vib(10)}
-function toggleTask(id){let t=DB.tasks.find(x=>x.id===id);if(t){t.done=!t.done;save();renderTasks();vib(10)}}
-function toggleChkItem(tid,i){let t=DB.tasks.find(x=>x.id===tid);if(t&&t.checklist[i]){t.checklist[i].done=!t.checklist[i].done;save();renderTasks()}}
+function addTask(){let txt=document.getElementById("task-input").value.trim();if(!txt)return;let due="",today=new Date().toISOString().split("T")[0];if(/今天/.test(txt)){due=today;txt=txt.replace(/今天/g,"").trim()}else if(/明天/.test(txt)){let d=new Date();d.setDate(d.getDate()+1);due=d.toISOString().split("T")[0];txt=txt.replace(/明天/g,"").trim()}DB.tasks.push({id:uid(),text:txt||document.getElementById("task-input").value.trim(),priority:tPrio,due:due,done:false,checklist:[],createdAt:new Date().toISOString()});save();document.getElementById("task-input").value="";tPrio="low";document.getElementById("prio-btn").textContent="🟢";renderTasks();tap()}
+function toggleTask(id){let t=DB.tasks.find(x=>x.id===id);if(t){t.done=!t.done;save();renderTasks();tap()}}
+function toggleChkItem(tid,i){let t=DB.tasks.find(x=>x.id===tid);if(t&&t.checklist[i]){t.checklist[i].done=!t.checklist[i].done;save();renderTasks();tap()}}
 function delTask(id){let i=DB.tasks.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"task",d:DB.tasks[i],i:i};DB.tasks.splice(i,1);save();renderTasks();showUndo("已删除")}
 function clearDone(){let td=DB.tasks.filter(t=>t.done);if(!td.length)return;lastDel={t:"batch",d:td};DB.tasks=DB.tasks.filter(t=>!t.done);save();renderTasks();showUndo("已清除 "+td.length+" 个")}
 
@@ -322,7 +322,7 @@ function cycleExpCat(){eCat=(eCat+1)%eCats.length;document.getElementById("exp-c
 function cycleExpType(){eType=eType==="expense"?"income":"expense";document.getElementById("exp-type").textContent=eType==="expense"?"💸 支出":"💰 收入"}
 function chMonth(d){eMonth+=d;renderExpenses()}function setExpView(v){eView=v;document.getElementById("eb-m").classList.toggle("on",v==="month");document.getElementById("eb-a").classList.toggle("on",v==="all");renderExpenses()}
 function getMonth(){let d=new Date();d.setMonth(d.getMonth()+eMonth);return d.toISOString().slice(0,7)}
-function addExpense(){let a=parseFloat(document.getElementById("exp-amount").value);if(!a||a<=0)return;let c=eCats[eCat],uc=eType==="income"?"income":c.k;DB.expenses.push({id:uid(),amount:a,type:eType,category:uc,date:new Date().toISOString().split("T")[0],createdAt:new Date().toISOString()});save();document.getElementById("exp-amount").value="";renderExpenses();vib(10)}
+function addExpense(){let a=parseFloat(document.getElementById("exp-amount").value);if(!a||a<=0)return;let c=eCats[eCat],uc=eType==="income"?"income":c.k;DB.expenses.push({id:uid(),amount:a,type:eType,category:uc,date:new Date().toISOString().split("T")[0],createdAt:new Date().toISOString()});save();document.getElementById("exp-amount").value="";renderExpenses();tap()}
 function delExpense(id){let i=DB.expenses.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"expense",d:DB.expenses[i],i:i};DB.expenses.splice(i,1);save();renderExpenses();showUndo("已删除账单")}
 function renderExpenses(){
   if(mode!=="expense")return;let ym=getMonth();document.getElementById("e-month").textContent=ym.replace("-","年")+"月";let exps=DB.expenses.slice().sort((a,b)=>b.date.localeCompare(a.date));if(eView==="month")exps=exps.filter(e=>e.date.slice(0,7)===ym);let inc=0,sp=0;exps.forEach(e=>{if(e.type==="income")inc+=e.amount;else sp+=e.amount});document.getElementById("e-income").textContent="¥"+inc.toFixed(2);document.getElementById("e-spent").textContent="¥"+sp.toFixed(2);document.getElementById("e-bal").textContent="¥"+(inc-sp).toFixed(2);
@@ -334,7 +334,7 @@ let jPhotos=[],jView="week";
 function onPhotos(){let fs=document.getElementById("j-text").nextElementSibling.querySelector("input").files;if(!fs.length)return;Array.from(fs).forEach(f=>{let r=new FileReader();r.onload=function(e){let img=new Image();img.onload=function(){let s=1;if(img.width>800)s=800/img.width;let w=Math.round(img.width*s),h=Math.round(img.height*s);let c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(img,0,0,w,h);jPhotos.push(c.toDataURL("image/jpeg",0.7));rPP()};img.src=e.target.result};r.readAsDataURL(f)});document.getElementById("j-text").nextElementSibling.querySelector("input").value=""}
 function rPP(){document.getElementById("pprev").innerHTML=jPhotos.map((p,i)=>'<div class="pp" style="background-image:url('+p+')"><button class="px" onclick="rmP('+i+')">✕</button></div>').join("")}
 function rmP(i){jPhotos.splice(i,1);rPP()}
-function addJournal(){let tx=document.getElementById("j-text").value.trim();if(!tx&&!jPhotos.length)return;DB.journals.push({id:uid(),text:tx,photos:jPhotos.slice(),createdAt:new Date().toISOString()});save();document.getElementById("j-text").value="";jPhotos=[];rPP();renderJournals();vib(10)}
+function addJournal(){let tx=document.getElementById("j-text").value.trim();if(!tx&&!jPhotos.length)return;DB.journals.push({id:uid(),text:tx,photos:jPhotos.slice(),createdAt:new Date().toISOString()});save();document.getElementById("j-text").value="";jPhotos=[];rPP();renderJournals();tap()}
 function delJournal(id){let i=DB.journals.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"journal",d:DB.journals[i],i:i};DB.journals.splice(i,1);save();renderJournals();showUndo("已删除日记")}
 function setJView(v){jView=v;document.getElementById("jb-w").classList.toggle("on",v==="week");document.getElementById("jb-a").classList.toggle("on",v==="all");renderJournals()}
 function renderJournals(){
@@ -344,14 +344,15 @@ function openLb(id){let j=DB.journals.find(x=>x.id===id);if(!j||!j.photos.length
 
 // ==================== TIME TRACKING ====================
 let trackActIdx=0,trackRunning=false,trackPaused=false,trackStart=0,trackElapsed=0,trackInt=null,trackView="today";
-function pickActivity(i){trackActIdx=i;if(!trackRunning)renderTrack();document.querySelectorAll("#track-picker button.on").forEach(b=>b.classList.remove("on"));document.querySelectorAll("#track-picker button")[i].classList.add("on");updateTrackLabel()}
+function pickActivity(i){trackActIdx=i;if(!trackRunning)renderTrack();document.querySelectorAll("#track-picker button.on").forEach(b=>b.classList.remove("on"));document.querySelectorAll("#track-picker button")[i].classList.add("on");updateTrackLabel();tap()}
+function removeActivity(i){if(!i||i<5){alert("内置活动不能删除");return}let acts=DB.activities||[];acts.splice(i,1);DB.activities=acts;save();if(trackActIdx>=i)trackActIdx--;if(trackActIdx<0)trackActIdx=0;renderTrack();showUndo("已删除活动")}
 function updateTrackLabel(){
   let act=(DB.activities||[])[trackActIdx]||"📌 自定义";
   document.getElementById("track-emoji").textContent=act.slice(0,2);
   document.getElementById("track-act-name").textContent=act.slice(2).trim()||act;
   document.getElementById("track-emoji").className="track-emoji"+(trackRunning?" running":"")
 }
-function startTrack(){
+function startTrack(){tap();
   if(trackRunning)return;
   if(trackPaused){trackPaused=false}else{trackElapsed=0}
   trackRunning=true;trackStart=Date.now()-trackElapsed*1000;
@@ -360,7 +361,7 @@ function startTrack(){
   updateTrackLabel();updateTrackClock();renderTrack();
   trackInt=setInterval(updateTrackClock,200)
 }
-function pauseTrack(){
+function pauseTrack(){tap();
   if(!trackRunning)return;trackRunning=false;trackPaused=true;trackElapsed=Math.floor((Date.now()-trackStart)/1000);
   clearInterval(trackInt);trackInt=null;
   document.getElementById("track-emoji").classList.remove("running");
@@ -389,8 +390,8 @@ function addActivity(){
 function delTrackRecord(id){let i=DB.timeRecords.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"track",d:DB.timeRecords[i],i:i};DB.timeRecords.splice(i,1);save();renderTrack();showUndo("已删除记录")}
 function setTrackView(v){trackView=v;document.getElementById("tb-today").classList.toggle("on",v==="today");document.getElementById("tb-week").classList.toggle("on",v==="week");document.getElementById("tb-all").classList.toggle("on",v==="all");renderTrack()}
 function renderTrackActBtns(){
-  let el=document.getElementById("track-picker");let acts=DB.activities||[];
-  el.innerHTML=acts.map((a,i)=>'<button'+(i===trackActIdx?' class="on"':'')+' onclick="pickActivity('+i+')">'+a+'</button>').join("")+'<button class="add-act" onclick="addActivity()">+自定义</button>';
+  let el=document.getElementById("track-picker"),acts=DB.activities||[];
+  el.innerHTML=acts.map((a,i)=>'<button'+(i===trackActIdx?' class="on"':'')+' onclick="pickActivity('+i+')" style="position:relative;">'+a+(i>=5?'<span style="position:absolute;top:-4px;right:-4px;width:14px;height:14px;border-radius:50%;background:var(--danger);color:#fff;font-size:0.45rem;display:flex;align-items:center;justify-content:center;z-index:1" onclick="event.stopPropagation();removeActivity('+i+')">✕</span>':'')+'</button>').join("")+'<button class="add-act" onclick="addActivity()">+自定义</button>';
 }
 function renderTrack(){
   if(mode!=="track")return;
@@ -422,6 +423,11 @@ function esc(s){let d={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;
 function escAttr(s){return s.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
 function nfy(t,b){if("Notification"in window&&Notification.permission==="granted")new Notification(t,{body:b,icon:"./icons/icon-192.png",tag:"pomo"})}
 function vib(p){if(navigator.vibrate)navigator.vibrate(p)}
+// 点击音效 - Web Audio API
+let _actx=null;
+function beep(){try{if(!_actx)_actx=new(window.AudioContext||window.webkitAudioContext)();let o=_actx.createOscillator(),g=_actx.createGain();o.connect(g);g.connect(_actx.destination);o.frequency.value=1800;o.type='sine';g.gain.setValueAtTime(0.15,_actx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,_actx.currentTime+0.08);o.start(_actx.currentTime);o.stop(_actx.currentTime+0.08)}catch(e){}}
+// 统一的点击反馈
+function tap(){vib(8);beep()}
 function tickClock(){let n=new Date();document.getElementById("live-time").textContent=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0")}tickClock();setInterval(tickClock,30000);
 
 // ==================== INIT ====================
