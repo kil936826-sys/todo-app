@@ -426,7 +426,7 @@ function tickClock(){let n=new Date();document.getElementById("live-time").textC
 
 // ==================== INIT ====================
 load();renderTasks();renderExpenses();renderJournals();renderTrack();
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
+if("serviceWorker"in navigator){navigator.serviceWorker.register("./sw.js").then(reg=>{reg.addEventListener("updatefound",()=>{let nw=reg.installing;nw.addEventListener("statechange",()=>{if(nw.state==="installed"&&navigator.serviceWorker.controller){nw.postMessage("skipWaiting");setTimeout(()=>location.reload(),300)}})})})};
 document.getElementById("task-input").addEventListener("keydown",e=>{if(e.key==="Enter")addTask()});
 document.getElementById("edit-sheet").addEventListener("click",function(e){if(e.target===this)closeEdit()});
 document.getElementById("exp-amount").addEventListener("keydown",e=>{if(e.key==="Enter")addExpense()});

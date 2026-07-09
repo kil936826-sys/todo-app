@@ -1,42 +1,39 @@
-// Service Worker - 离线缓存 + 后台同步
-const CACHE_NAME = 'todo-app-v2';
-const FILES = [
-  './',
-  './index.html',
-  './manifest.json',
-  './icons/icon-192.png',
-  './icons/icon-512.png'
-];
+// Service Worker — 网络优先（始终最新）+ 离线兜底
+const CACHE = 'daily-v3';
 
-// 安装：预缓存核心文件
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then(c => c.addAll(FILES))
-  );
   self.skipWaiting();
 });
 
-// 激活：清理旧缓存
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    )
+    caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
   );
   self.clients.claim();
 });
 
-// 请求：缓存优先，失败则网络
 self.addEventListener('fetch', e => {
+  // 图片 / 图标：缓存优先
+  if (e.request.url.match(/\.(png|jpg|jpeg|gif|svg|ico)/)) {
+    e.respondWith(
+      caches.match(e.request).then(c => c || fetch(e.request).then(r => {
+        if (r.ok) { let cl = r.clone(); caches.open(CACHE).then(c2 => c2.put(e.request, cl)); }
+        return r;
+      }))
+    );
+    return;
+  }
+
+  // HTML / JS / CSS / 其他：网络优先
   e.respondWith(
-    caches.match(e.request).then(cached =>
-      cached || fetch(e.request).then(resp => {
-        if (resp.ok) {
-          const clone = resp.clone();
-          caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
-        }
-        return resp;
-      })
-    )
+    fetch(e.request).then(r => {
+      if (r.ok) { let cl = r.clone(); caches.open(CACHE).then(c => c.put(e.request, cl)); }
+      return r;
+    }).catch(() => caches.match(e.request))
   );
+});
+
+// 发现新版本时通知所有页面刷新
+self.addEventListener('message', e => {
+  if (e.data === 'skipWaiting') self.skipWaiting();
 });
