@@ -1,5 +1,5 @@
 // Service Worker — 网络优先（始终最新）+ 离线兜底
-const CACHE = 'daily-v3';
+const CACHE = 'daily-v4';
 
 self.addEventListener('install', e => {
   self.skipWaiting();
