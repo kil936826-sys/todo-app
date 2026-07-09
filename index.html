@@ -396,6 +396,10 @@ function calcWordStreak(){let dates=[...new Set(DB.wordRecords.map(r=>r.date))].
 let trkActIdx=0,trkRunning=false,trkPaused=false,trkStartTime=null,trkElapsedStored=0,trkInt=null,trkView="today";
 let remindInt=null,remindStart=0;
 
+let _actPressTm=null;
+function handleActDown(e,i){
+  _actPressTm=setTimeout(()=>{let el=document.getElementById("act-del-"+i);if(el)el.style.display="block";vib(15);beep()},500)}
+function handleActUp(e,i){clearTimeout(_actPressTm);setTimeout(()=>{let el=document.getElementById("act-del-"+i);if(el)el.style.display="none"},2000)}
 function pickActivity(i){trkActIdx=i;document.querySelectorAll("#track-picker button.on").forEach(b=>b.classList.remove("on"));document.querySelectorAll("#track-picker button")[i].classList.add("on");updateTrkLabel();if(!trkRunning)renderTrack()}
 function removeActivity(i){tap();let acts=DB.activities||[];if(acts.length<=1){alert("至少保留一个活动");return}acts.splice(i,1);DB.activities=acts;save();if(trkActIdx>=i)trkActIdx--;if(trkActIdx<0)trkActIdx=0;renderTrack();showUndo("已删除活动")}
 
@@ -456,7 +460,7 @@ function setTrackView(v){trkView=v;document.getElementById("tb-today").classList
 
 function renderTrkBtns(){
   let el=document.getElementById("track-picker"),acts=DB.activities||[];
-  el.innerHTML=acts.map((a,i)=>'<button'+(i===trkActIdx?' class="on"':'')+' onclick="tap();pickActivity('+i+')" style="position:relative;padding-right:8px">'+a+'<span style="position:absolute;top:1px;right:2px;font-size:0.4rem;color:var(--text3);opacity:0.4;line-height:1" onclick="event.stopPropagation();tap();removeActivity('+i+')">✕</span></button>').join("")+'<button class="add-act" onclick="tap();addActivity()">+自定义</button>';
+  el.innerHTML=acts.map((a,i)=>'<button'+(i===trkActIdx?' class="on"':'')+' onclick="tap();pickActivity('+i+')" style="position:relative;" oncontextmenu="return false" onpointerdown="handleActDown(event,'+i+')" onpointerup="handleActUp(event,'+i+')" onpointerleave="handleActUp(event,'+i+')">'+a+'<span style="position:absolute;top:1px;right:2px;font-size:0.4rem;color:var(--text3);line-height:1;display:none" id="act-del-'+i+'" onclick="event.stopPropagation();tap();removeActivity('+i+')">✕</span></button>').join("")+'<button class="add-act" onclick="tap();addActivity()">+自定义</button>';
 }
 
 function renderTrack(){
