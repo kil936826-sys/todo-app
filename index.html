@@ -397,7 +397,7 @@ let trkActIdx=0,trkRunning=false,trkPaused=false,trkStartTime=null,trkElapsedSto
 let remindInt=null,remindStart=0;
 
 function pickActivity(i){trkActIdx=i;document.querySelectorAll("#track-picker button.on").forEach(b=>b.classList.remove("on"));document.querySelectorAll("#track-picker button")[i].classList.add("on");updateTrkLabel();if(!trkRunning)renderTrack()}
-function removeActivity(i){tap();if(!i||i<5){alert("内置活动不能删除");return}let acts=DB.activities||[];acts.splice(i,1);DB.activities=acts;save();if(trkActIdx>=i)trkActIdx--;if(trkActIdx<0)trkActIdx=0;renderTrack();showUndo("已删除活动")}
+function removeActivity(i){tap();let acts=DB.activities||[];if(acts.length<=1){alert("至少保留一个活动");return}acts.splice(i,1);DB.activities=acts;save();if(trkActIdx>=i)trkActIdx--;if(trkActIdx<0)trkActIdx=0;renderTrack();showUndo("已删除活动")}
 
 function updateTrkLabel(){let act=(DB.activities||[])[trkActIdx]||"📌 自定义";document.getElementById("track-emoji").textContent=act.slice(0,2);document.getElementById("track-act-name").textContent=act.slice(2).trim()||act;document.getElementById("track-emoji").className="track-emoji"+(trkRunning?" running":"")}
 
@@ -456,7 +456,7 @@ function setTrackView(v){trkView=v;document.getElementById("tb-today").classList
 
 function renderTrkBtns(){
   let el=document.getElementById("track-picker"),acts=DB.activities||[];
-  el.innerHTML=acts.map((a,i)=>'<button'+(i===trkActIdx?' class="on"':'')+' onclick="tap();pickActivity('+i+')" style="position:relative;">'+a+(i>=5?'<span style="position:absolute;top:-4px;right:-4px;width:14px;height:14px;border-radius:50%;background:var(--danger);color:#fff;font-size:0.45rem;display:flex;align-items:center;justify-content:center;z-index:1" onclick="event.stopPropagation();tap();removeActivity('+i+')">✕</span>':'')+'</button>').join("")+'<button class="add-act" onclick="tap();addActivity()">+自定义</button>';
+  el.innerHTML=acts.map((a,i)=>'<button'+(i===trkActIdx?' class="on"':'')+' onclick="tap();pickActivity('+i+')" style="position:relative;padding-right:8px">'+a+'<span style="position:absolute;top:1px;right:2px;font-size:0.4rem;color:var(--text3);opacity:0.4;line-height:1" onclick="event.stopPropagation();tap();removeActivity('+i+')">✕</span></button>').join("")+'<button class="add-act" onclick="tap();addActivity()">+自定义</button>';
 }
 
 function renderTrack(){
