@@ -8,10 +8,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="日常">
 <link rel="apple-touch-icon" href="./icons/apple-icon.png">
-<meta name="theme-color" content="#0C0C14">
+<meta name="theme-color" content="#1A1A1E">
 <link rel="manifest" href="./manifest.json">
 <style>
-:root{--bg:#0C0C14;--surface:#14141F;--surface2:#1A1A28;--border:rgba(255,255,255,0.05);--text:#E8E8F0;--text2:#8A8AA0;--text3:#555;--accent:#7C6FF7;--accent2:#F472B6;--accent3:#38BDF8;--accent4:#FB923C;--danger:#FF5B5B;--success:#34D399;--warn:#FBBF24;--font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--radius:14px;--safe-b:env(safe-area-inset-bottom,10px);--safe-t:env(safe-area-inset-top,0px)}
+:root{--bg:#1A1A1E;--surface:#242428;--surface2:#2E2E34;--border:rgba(255,255,255,0.07);--text:#F5F5F7;--text2:#98989E;--text3:#636368;--accent:#A78BFA;--accent2:#F9A8D4;--accent3:#7DD3FC;--accent4:#FDBA74;--danger:#F87171;--success:#6EE7B7;--warn:#FDE68A;--font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--radius:14px;--safe-b:env(safe-area-inset-bottom,10px);--safe-t:env(safe-area-inset-top,0px)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden}
 body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100vh;user-select:none;-webkit-user-select:none}
@@ -19,11 +19,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 header{padding:10px 18px;padding-top:calc(10px + var(--safe-t));display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 header h1{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:8px}
 header h1 .dot{width:7px;height:7px;border-radius:50%;transition:all 0.3s}
-.dot-task{background:var(--accent)}.dot-expense{background:var(--accent2)}.dot-journal{background:var(--accent3)}.dot-track{background:var(--accent4)}
+.dot-task{background:var(--accent);box-shadow:0 0 8px rgba(167,139,250,0.3)}.dot-expense{background:var(--accent2);box-shadow:0 0 8px rgba(249,168,212,0.3)}.dot-journal{background:var(--accent3);box-shadow:0 0 8px rgba(125,211,252,0.3)}.dot-track{background:var(--accent4);box-shadow:0 0 8px rgba(253,186,116,0.3)}
 header .time{font-size:0.9rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--text2)}
 header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
 
-.pomo-bar{margin:0 16px 6px;padding:8px 12px;border-radius:var(--radius);background:rgba(124,111,247,0.08);border:1px solid rgba(124,111,247,0.15);display:none;align-items:center;gap:8px;flex-shrink:0}
+.pomo-bar{margin:0 16px 6px;padding:8px 12px;border-radius:var(--radius);background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.12);display:none;align-items:center;gap:8px;flex-shrink:0}
 .pomo-bar.on{display:flex}
 .pomo-timer{font-size:1.3rem;font-weight:800;font-variant-numeric:tabular-nums}
 .pomo-label{font-size:0.62rem;color:var(--text2);margin-left:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
@@ -86,7 +86,7 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
 .exp-add button:last-child{width:40px;height:40px;border-radius:var(--radius);border:none;background:var(--accent2);color:#fff;font-size:1.05rem;cursor:pointer;flex-shrink:0}
 .exp-bot{padding:6px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
 .exp-bot button{flex:1;padding:7px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.68rem;cursor:pointer}
-.exp-bot button.on{color:var(--accent2);border-color:rgba(244,114,182,0.2)}
+.exp-bot button.on{color:var(--accent2);border-color:rgba(249,168,212,0.25)}
 .eitem{display:flex;align-items:center;gap:7px;padding:9px 10px;background:var(--surface);border-radius:var(--radius);margin-bottom:3px;border:1px solid var(--border)}
 .eitem .eii{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0}
 .eitem .einfo{flex:1;min-width:0}.eitem .ein{font-size:0.76rem;font-weight:500}.eitem .eid{font-size:0.58rem;color:var(--text3)}
@@ -106,7 +106,7 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
 .pprev .pp .px{position:absolute;top:-4px;right:-4px;width:14px;height:14px;border-radius:50%;background:var(--danger);color:#fff;border:none;font-size:0.45rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .jbot{padding:6px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
 .jbot button{flex:1;padding:7px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.68rem;cursor:pointer}
-.jbot button.on{color:var(--accent3);border-color:rgba(56,189,248,0.2)}
+.jbot button.on{color:var(--accent3);border-color:rgba(125,211,252,0.25)}
 .je{background:var(--surface);border-radius:var(--radius);margin-bottom:6px;border:1px solid var(--border);overflow:hidden}
 .je-h{display:flex;align-items:center;justify-content:space-between;padding:7px 12px 1px}
 .je-d{font-size:0.62rem;color:var(--text3)}
@@ -126,13 +126,13 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
 .track-label .act-name{color:var(--text);font-weight:600}
 .track-ctrl{display:flex;gap:10px;margin-bottom:8px}
 .track-ctrl button{width:52px;height:52px;border-radius:50%;border:none;font-size:1.3rem;cursor:pointer;transition:all 0.15s;font-family:var(--font)}
-.track-ctrl .btn-play{background:var(--accent4);color:#fff;box-shadow:0 3px 12px rgba(251,146,60,0.3)}
+.track-ctrl .btn-play{background:var(--accent4);color:#fff;box-shadow:0 3px 12px rgba(253,186,116,0.25)}
 .track-ctrl .btn-pause{background:var(--warn);color:#111}
 .track-ctrl .btn-stop{background:var(--danger);color:#fff;font-size:0.9rem}
 .track-ctrl button:active{transform:scale(0.9)}
 .track-picker{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:6px}
 .track-picker button{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;transition:all 0.15s;white-space:nowrap}
-.track-picker button.on{border-color:var(--accent4);color:var(--accent4);background:rgba(251,146,60,0.08);font-weight:600}
+.track-picker button.on{border-color:var(--accent4);color:var(--accent4);background:rgba(253,186,116,0.1);font-weight:600}
 .track-picker .add-act{padding:5px 10px;border-radius:20px;border:1px dashed var(--border);background:transparent;color:var(--text3);font-family:var(--font);font-size:0.68rem;cursor:pointer}
 .track-stats{display:flex;gap:5px;padding:0 16px 6px;flex-shrink:0}
 .track-stats .ts{flex:1;background:var(--surface);border-radius:var(--radius);padding:9px 6px;text-align:center;border:1px solid var(--border)}
@@ -145,7 +145,7 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
 .titem .tix{font-size:0.58rem;color:var(--text3);cursor:pointer;padding:3px;opacity:0}.titem:active .tix{opacity:1}
 .track-bot{padding:6px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
 .track-bot button{flex:1;padding:7px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.68rem;cursor:pointer}
-.track-bot button.on{color:var(--accent4);border-color:rgba(251,146,60,0.2)}
+.track-bot button.on{color:var(--accent4);border-color:rgba(253,186,116,0.25)}
 
 /* Shared */
 .undo{position:fixed;bottom:calc(var(--safe-b) + 80px);left:50%;transform:translateX(-50%);z-index:300;background:var(--surface);border:1px solid var(--border);padding:7px 13px;border-radius:20px;font-size:0.74rem;display:none;gap:7px;align-items:center;box-shadow:0 8px 32px rgba(0,0,0,0.5)}
@@ -172,7 +172,7 @@ header .icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(-
 </head>
 <body>
 
-<svg style="position:absolute;width:0;height:0"><defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7C6FF7"/><stop offset="100%" stop-color="#34D399"/></linearGradient></defs></svg>
+<svg style="position:absolute;width:0;height:0"><defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#A78BFA"/><stop offset="100%" stop-color="#FDBA74"/></linearGradient></defs></svg>
 
 <header>
   <h1><span class="dot dot-task" id="logo-dot"></span><span id="logo-text">任务</span></h1>
@@ -326,7 +326,7 @@ function addExpense(){let a=parseFloat(document.getElementById("exp-amount").val
 function delExpense(id){let i=DB.expenses.findIndex(x=>x.id===id);if(i===-1)return;lastDel={t:"expense",d:DB.expenses[i],i:i};DB.expenses.splice(i,1);save();renderExpenses();showUndo("已删除账单")}
 function renderExpenses(){
   if(mode!=="expense")return;let ym=getMonth();document.getElementById("e-month").textContent=ym.replace("-","年")+"月";let exps=DB.expenses.slice().sort((a,b)=>b.date.localeCompare(a.date));if(eView==="month")exps=exps.filter(e=>e.date.slice(0,7)===ym);let inc=0,sp=0;exps.forEach(e=>{if(e.type==="income")inc+=e.amount;else sp+=e.amount});document.getElementById("e-income").textContent="¥"+inc.toFixed(2);document.getElementById("e-spent").textContent="¥"+sp.toFixed(2);document.getElementById("e-bal").textContent="¥"+(inc-sp).toFixed(2);
-  let el=document.getElementById("exp-list");if(!exps.length){el.innerHTML='<div class="empty"><div class="ei">💸</div>暂无记录</div>'}else{let gr={};exps.forEach(e=>{let d=e.date;if(!gr[d])gr[d]=[];gr[d].push(e)});let dates=Object.keys(gr).sort().reverse();el.innerHTML=dates.map(dt=>{let items=gr[dt],dtotal=items.reduce((s,e)=>s+(e.type==="income"?e.amount:-e.amount),0);return'<div><div class="edate">📅 '+dt+' <span style="color:'+(dtotal>=0?'var(--success)':'var(--danger)')+'">'+(dtotal>=0?"+":"")+dtotal.toFixed(2)+'</span></div>'+items.map(e=>{let c=eCats.find(x=>x.k===e.category)||eCats[7],isIn=e.type==="income";return'<div class="eitem"><div class="eii" style="background:rgba(244,114,182,0.1)">'+c.i+'</div><div class="einfo"><div class="ein">'+(isIn?"收入":c.n)+'</div><div class="eid">'+dt+'</div></div><div class="eia '+(isIn?"in":"out")+'">'+(isIn?"+":"-")+'¥'+e.amount.toFixed(2)+'</div><span class="eix" onclick="event.stopPropagation();delExpense(\''+e.id+'\')">✕</span></div>'}).join("")+'</div>'}).join("")}
+  let el=document.getElementById("exp-list");if(!exps.length){el.innerHTML='<div class="empty"><div class="ei">💸</div>暂无记录</div>'}else{let gr={};exps.forEach(e=>{let d=e.date;if(!gr[d])gr[d]=[];gr[d].push(e)});let dates=Object.keys(gr).sort().reverse();el.innerHTML=dates.map(dt=>{let items=gr[dt],dtotal=items.reduce((s,e)=>s+(e.type==="income"?e.amount:-e.amount),0);return'<div><div class="edate">📅 '+dt+' <span style="color:'+(dtotal>=0?'var(--success)':'var(--danger)')+'">'+(dtotal>=0?"+":"")+dtotal.toFixed(2)+'</span></div>'+items.map(e=>{let c=eCats.find(x=>x.k===e.category)||eCats[7],isIn=e.type==="income";return'<div class="eitem"><div class="eii" style="background:rgba(249,168,212,0.1)">'+c.i+'</div><div class="einfo"><div class="ein">'+(isIn?"收入":c.n)+'</div><div class="eid">'+dt+'</div></div><div class="eia '+(isIn?"in":"out")+'">'+(isIn?"+":"-")+'¥'+e.amount.toFixed(2)+'</div><span class="eix" onclick="event.stopPropagation();delExpense(\''+e.id+'\')">✕</span></div>'}).join("")+'</div>'}).join("")}
 }
 
 // ==================== JOURNAL ====================
@@ -403,7 +403,7 @@ function renderTrack(){
   document.getElementById("ts-today").textContent=fmtTime(todaySecs);document.getElementById("ts-week").textContent=fmtTime(wkSecs);document.getElementById("ts-sessions").textContent=todaySessions;
   // List
   let el=document.getElementById("track-list");
-  if(!recs.length){el.innerHTML='<div class="empty"><div class="ei">⏱</div>暂无记录</div>'}else{let gr={};recs.forEach(r=>{let d=r.date;if(!gr[d])gr[d]=[];gr[d].push(r)});let dates=Object.keys(gr).sort().reverse();el.innerHTML=dates.map(dt=>{let items=gr[dt],dtotal=items.reduce((s,r)=>s+r.seconds,0);return'<div><div class="edate">📅 '+dt+' <span style="color:var(--accent4)">'+fmtTime(dtotal)+'</span></div>'+items.map(r=>{let emoji=r.activity.slice(0,2),name=r.activity.slice(2).trim()||r.activity;return'<div class="titem"><div class="tii" style="background:rgba(251,146,60,0.1)">'+emoji+'</div><div class="tinfo"><div class="tin">'+esc(name)+'</div><div class="tid">'+dt+'</div></div><div class="tia">'+fmtTime(r.seconds)+'</div><span class="tix" onclick="event.stopPropagation();delTrackRecord(\''+r.id+'\')">✕</span></div>'}).join("")+'</div>'}).join("")}
+  if(!recs.length){el.innerHTML='<div class="empty"><div class="ei">⏱</div>暂无记录</div>'}else{let gr={};recs.forEach(r=>{let d=r.date;if(!gr[d])gr[d]=[];gr[d].push(r)});let dates=Object.keys(gr).sort().reverse();el.innerHTML=dates.map(dt=>{let items=gr[dt],dtotal=items.reduce((s,r)=>s+r.seconds,0);return'<div><div class="edate">📅 '+dt+' <span style="color:var(--accent4)">'+fmtTime(dtotal)+'</span></div>'+items.map(r=>{let emoji=r.activity.slice(0,2),name=r.activity.slice(2).trim()||r.activity;return'<div class="titem"><div class="tii" style="background:rgba(253,186,116,0.1)">'+emoji+'</div><div class="tinfo"><div class="tin">'+esc(name)+'</div><div class="tid">'+dt+'</div></div><div class="tia">'+fmtTime(r.seconds)+'</div><span class="tix" onclick="event.stopPropagation();delTrackRecord(\''+r.id+'\')">✕</span></div>'}).join("")+'</div>'}).join("")}
   renderTrackActBtns();updateTrackLabel();if(!trackRunning&&!trackPaused)document.getElementById("track-clock").textContent="00:00:00"
 }
 function fmtTime(s){s=s||0;let h=Math.floor(s/3600),m=Math.floor((s%3600)/60);return h>0?h+"h"+m+"m":m+"m"}
