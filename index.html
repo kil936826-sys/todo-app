@@ -199,7 +199,7 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 <div class="remind-toast" id="remind-toast"></div>
 
 <!-- DASHBOARD -->
-<div class="panel" id="p-dash">
+<div class="panel on" id="p-dash">
   <div class="dash-summary" style="padding-top:8px">
     <div class="ds-card" onclick="switchMode('task')"><div class="dv" id="d-tasks" style="color:var(--accent)">0</div><div class="dl">待办任务</div><div class="df" id="d-tasks-sub"></div></div>
     <div class="ds-card" onclick="switchMode('expense')"><div class="dv" id="d-spend" style="color:var(--danger)">¥0</div><div class="dl">今日支出</div><div class="df" id="d-spend-sub"></div></div>
@@ -224,7 +224,7 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 </div>
 
 <!-- TASK -->
-<div class="panel on" id="p-task">
+<div class="panel" id="p-task">
   <div class="tabs">
     <button class="on" onclick="tap();S.task.setTab('active')" id="tab-active">⏳ 待办</button>
     <button onclick="tap();S.task.setTab('done')" id="tab-done">✅ 已完成</button>
@@ -393,7 +393,7 @@ function renderDateGrouped(recs,renderItem,cv,totalFn){
 }
 
 /* MODE */
-let curM="task";
+let curM="dash";
 const P=["dash","task","expense","word","track"];
 const MI={dash:["今日摘要","dot-dash"],task:["任务","dot-task"],expense:["记账","dot-expense"],word:["单词","dot-word"],track:["安排","dot-track"]};
 function switchMode(m){tap();curM=m;let mi=MI[m];
@@ -534,7 +534,7 @@ S.word.render=()=>{
   },false,(s,r)=>s+(r.newWords||0));
 };
 
-S.word.drawChart=recs=>{let c=$("wchart");if(!c)return;let w=c.width=c.offsetWidth*2,h=c.height=c.offsetHeight*2;let ctx=c.getContext("2d");ctx.clearRect(0,0,w,h);if(!recs.length)return;
+S.word.drawChart=recs=>{let c=$("wchart");if(!c||curM!=="word")return;let w=c.width=c.offsetWidth*2,h=c.height=c.offsetHeight*2;let ctx=c.getContext("2d");ctx.clearRect(0,0,w,h);if(!recs.length)return;
   let days=[];for(let i=6;i>=0;i--){let d=n();d.setDate(d.getDate()-i);let ds=d.toISOString().split("T")[0];let v=recs.filter(r=>r.date===ds).reduce((s,r)=>s+(r.newWords||0),0);days.push({label:(d.getMonth()+1)+"/"+d.getDate(),val:v})}
   let mx=Math.max.apply(null,days.map(d=>d.val))||1,bw=(w-60)/days.length-8,px=40;
   ctx.fillStyle="var(--text2)";ctx.font="18px sans-serif";ctx.textAlign="right";
@@ -582,7 +582,7 @@ tk.render=()=>{
   tk.rBtns();tk.updLbl();if(!tk.running&&!tk.paused)$("track-clock").textContent="00:00:00"
 };
 
-tk.drawChart=recs=>{let c=$("tchart");if(!c)return;let w=c.width=c.offsetWidth*2,h=c.height=c.offsetHeight*2,ctx=c.getContext("2d");ctx.clearRect(0,0,w,h);if(!recs.length)return;
+tk.drawChart=recs=>{let c=$("tchart");if(!c||curM!=="track")return;let w=c.width=c.offsetWidth*2,h=c.height=c.offsetHeight*2,ctx=c.getContext("2d");ctx.clearRect(0,0,w,h);if(!recs.length)return;
   let days=[];for(let i=6;i>=0;i--){let d=n();d.setDate(d.getDate()-i);let ds=d.toISOString().split("T")[0];let v=recs.filter(r=>r.date===ds).reduce((s,r)=>s+r.seconds,0);days.push({label:(d.getMonth()+1)+"/"+d.getDate(),val:Math.round(v/60)})}
   let mx=Math.max.apply(null,days.map(d=>d.val))||1,bw=(w-60)/days.length-8,px=40;
   days.forEach((d,i)=>{let x=px+i*(bw+8),bh=Math.max(4,(d.val/mx)*(h-60));ctx.fillStyle="rgba(194,101,58,0.5)";ctx.fillRect(x,h-40-bh,bw,bh);ctx.fillStyle="#8C8882";ctx.font="14px sans-serif";ctx.textAlign="center";ctx.fillText(d.label,x+bw/2,h-10);if(d.val>0){ctx.fillStyle="#2D2926";ctx.font="12px sans-serif";ctx.fillText(d.val+"m",x+bw/2,h-44-bh)})
