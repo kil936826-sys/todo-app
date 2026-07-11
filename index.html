@@ -8,13 +8,13 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="自律日常">
 <link rel="apple-touch-icon" href="./icons/apple-icon.png">
-<meta name="theme-color" content="#F8F4EE">
+<meta name="theme-color" content="#1E2623">
 <link rel="manifest" href="./manifest.json">
 <style>
-:root{--bg:#F8F4EE;--surface:#EFE9DF;--surface2:#E5DDD0;--border:rgba(0,0,0,0.04);--shadow:0 1px 3px rgba(0,0,0,0.03);--text:#2D2926;--text2:#8C8882;--text3:#B5B0AA;--accent:#C2653A;--accent2:#D4956A;--accent3:#7D9B5A;--accent4:#5B8C9E;--danger:#D14343;--success:#5B9B6F;--warn:#D4952A;--font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--radius:14px;--safe-b:env(safe-area-inset-bottom,10px);--safe-t:env(safe-area-inset-top,0px)}
+:root{--bg:#1E2623;--surface:#26302C;--surface2:#2E3834;--border:rgba(255,255,255,0.04);--shadow:0 1px 3px rgba(0,0,0,0.15);--text:#E2E6E4;--text2:#8A9690;--text3:#5A6660;--accent:#D4A853;--accent2:#C98B7A;--accent3:#7BA890;--accent4:#7BA0B8;--danger:#E05555;--success:#6BAF7A;--warn:#D4A040;--font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--radius:14px;--safe-b:env(safe-area-inset-bottom,10px);--safe-t:env(safe-area-inset-top,0px)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden}
-body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100vh;user-select:none;-webkit-user-select:none;background:linear-gradient(180deg,#FDFAF5 0%,#F8F4EE 30%,#F3EDE2 100%)}
+body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100vh;user-select:none;-webkit-user-select:none;background:linear-gradient(180deg,#1A221F 0%,#1E2623 30%,#222B27 100%)}
 
 header{padding:12px 18px;padding-top:calc(12px + var(--safe-t));display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 header h1{font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px}
@@ -25,7 +25,7 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .btn-base{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:all 0.12s}
 .btn-base:active{background:var(--surface2);transform:scale(0.92)}
 
-.pomo-bar{margin:0 16px 6px;padding:10px 14px;border-radius:var(--radius);background:rgba(194,101,58,0.04);border:1px solid rgba(194,101,58,0.12);display:none;align-items:center;gap:10px;flex-shrink:0}
+.pomo-bar{margin:0 16px 6px;padding:10px 14px;border-radius:var(--radius);background:rgba(212,168,83,0.04);border:1px solid rgba(212,168,83,0.12);display:none;align-items:center;gap:10px;flex-shrink:0}
 .pomo-bar.on{display:flex}
 .pomo-timer{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent)}
 .pomo-label{font-size:0.62rem;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
@@ -55,7 +55,7 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .bot-bar{padding:5px 16px;border-top:1px solid var(--border);flex-shrink:0;display:flex;gap:5px}
 .bot-bar button{flex:1;padding:6px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:0.65rem;cursor:pointer;transition:all 0.12s}
 .bot-bar button:active{background:var(--surface2)}
-.bot-bar button.on{color:var(--accent);border-color:rgba(194,101,58,0.3);font-weight:600}
+.bot-bar button.on{color:var(--accent);border-color:rgba(212,168,83,0.3);font-weight:600}
 
 .list-item{display:flex;align-items:center;gap:7px;padding:9px 10px;background:var(--surface);border-radius:var(--radius);margin-bottom:3px;border:1px solid var(--border);box-shadow:var(--shadow)}
 .list-item .li-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0}
@@ -89,9 +89,9 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .ttxt{flex:1;font-size:0.82rem;line-height:1.4;word-break:break-word;cursor:pointer}.tcard.done .ttxt{text-decoration:line-through;color:var(--text3)}
 .tprio{width:5px;height:5px;border-radius:50%;flex-shrink:0}.tprio-1{background:var(--success)}.tprio-2{background:var(--warn)}.tprio-3{background:var(--danger)}
 .tdue{font-size:0.62rem;color:var(--text3);flex-shrink:0}.tdue.ov{color:var(--danger)}
-.tag-re{font-size:0.58rem;padding:1px 5px;border-radius:8px;background:rgba(91,140,158,0.1);color:var(--accent4);flex-shrink:0}
+.tag-re{font-size:0.58rem;padding:1px 5px;border-radius:8px;background:rgba(123,160,184,0.1);color:var(--accent4);flex-shrink:0}
 .tpomo{width:24px;height:24px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:0.65rem;flex-shrink:0;color:var(--accent);transition:all 0.12s;display:flex;align-items:center;justify-content:center}
-.tpomo.on{color:var(--success);background:rgba(91,155,111,0.08)}
+.tpomo.on{color:var(--success);background:rgba(107,175,122,0.08)}
 .tdel{width:24px;height:24px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:0.65rem;flex-shrink:0;color:var(--text3);transition:all 0.12s}.tdel:active{color:var(--danger);transform:scale(0.85)}
 .chkl{margin-top:3px;padding-left:25px}.chkl .ci{display:flex;align-items:center;gap:5px;padding:2px 0;font-size:0.73rem;color:var(--text2);cursor:pointer}
 .chkl .ci .cb{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--text3);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.12s}
@@ -128,21 +128,21 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 .track-label{font-size:0.8rem;color:var(--text2);margin-bottom:8px}.track-label .act-name{color:var(--text);font-weight:600}
 .track-ctrl{display:flex;gap:12px;margin-bottom:8px}
 .track-ctrl button{width:52px;height:52px;border-radius:50%;border:none;font-size:1.3rem;cursor:pointer;transition:all 0.12s;font-family:var(--font)}
-.track-ctrl .btn-play{background:var(--accent);color:#fff;box-shadow:0 3px 12px rgba(194,101,58,0.25)}
+.track-ctrl .btn-play{background:var(--accent);color:#fff;box-shadow:0 3px 12px rgba(212,168,83,0.25)}
 .track-ctrl .btn-pause{background:var(--warn);color:#fff}
 .track-ctrl .btn-stop{background:var(--danger);color:#fff;font-size:0.9rem}
 .track-ctrl button:active{transform:scale(0.88)}
 .track-picker{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:6px}
 .track-picker button{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:var(--font);font-size:0.7rem;cursor:pointer;transition:all 0.12s;white-space:nowrap;position:relative}
 .track-picker button:active{background:var(--surface2)}
-.track-picker button.on{border-color:var(--accent);color:var(--accent);background:rgba(194,101,58,0.06);font-weight:600}
+.track-picker button.on{border-color:var(--accent);color:var(--accent);background:rgba(212,168,83,0.06);font-weight:600}
 .track-picker .add-act{padding:5px 10px;border-radius:20px;border:1px dashed var(--border);color:var(--text3);font-size:0.68rem;cursor:pointer}
 .track-stats{display:flex;gap:5px;padding:0 16px 6px;flex-shrink:0}
 .track-stats .ts{flex:1;background:var(--surface);border-radius:var(--radius);padding:9px 6px;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow)}
 .track-stats .ts .tv{font-size:1.15rem;font-weight:800;color:var(--accent)}.track-stats .ts .tl{font-size:0.58rem;color:var(--text2);margin-top:1px}
 .track-records{padding:2px 16px 4px;flex-shrink:0;font-size:0.68rem;color:var(--text2);font-weight:600}
 
-.remind-toast{position:fixed;top:calc(var(--safe-t) + 50px);left:50%;transform:translateX(-50%);z-index:300;background:var(--accent);color:#fff;padding:14px 20px;border-radius:var(--radius);font-size:0.8rem;display:none;white-space:nowrap;box-shadow:0 8px 30px rgba(194,101,58,0.3);animation:ti 0.3s ease-out;font-weight:600}
+.remind-toast{position:fixed;top:calc(var(--safe-t) + 50px);left:50%;transform:translateX(-50%);z-index:300;background:var(--accent);color:#fff;padding:14px 20px;border-radius:var(--radius);font-size:0.8rem;display:none;white-space:nowrap;box-shadow:0 8px 30px rgba(212,168,83,0.3);animation:ti 0.3s ease-out;font-weight:600}
 @keyframes ti{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 .remind-toast.show{display:block}
 
@@ -166,7 +166,7 @@ header .time{font-size:0.9rem;font-weight:600;font-variant-numeric:tabular-nums;
 </head>
 <body>
 
-<svg style="position:absolute;width:0;height:0"><defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#C2653A"/><stop offset="100%" stop-color="#D4956A"/></linearGradient></defs></svg>
+<svg style="position:absolute;width:0;height:0"><defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#D4A853"/><stop offset="100%" stop-color="#C98B7A"/></linearGradient></defs></svg>
 
 <header>
   <h1><span class="dot dot-dash" id="logo-dot"></span><span id="logo-text">今日摘要</span></h1>
@@ -847,7 +847,7 @@ S.expense.render = function(){
   el.innerHTML = renderDateGrouped(exps, function(e){
     var c = self.C.find(function(x){return x.k===e.category;}) || self.C[7];
     var isI = e.type==='income';
-    return '<div class="list-item"><div class="li-icon" style="background:rgba(212,149,106,0.1)">'+c.i+'</div>'+
+    return '<div class="list-item"><div class="li-icon" style="background:rgba(201,139,122,0.1)">'+c.i+'</div>'+
       '<div class="li-info"><div class="li-name">'+(isI?'收入':c.n)+'</div><div class="li-date">'+e.date+'</div></div>'+
       '<div class="li-val '+(isI?'eia in':'eia out')+'">'+(isI?'+':'-')+'¥'+e.amount.toFixed(2)+'</div>'+
       '<span class="li-del" onclick="event.stopPropagation();S.expense.del(\''+e.id+'\')">✕</span></div>';
@@ -921,7 +921,7 @@ S.word.render = function(){
   var el = $('word-list');
   if(!recs.length){ el.innerHTML='<div class="empty"><div class="ei">📖</div>暂无记录</div>'; return; }
   el.innerHTML = renderDateGrouped(recs, function(r){
-    return '<div class="list-item"><div class="li-icon" style="background:rgba(125,155,90,0.1)">📖</div>'+
+    return '<div class="list-item"><div class="li-icon" style="background:rgba(123,168,144,0.1)">📖</div>'+
       '<div class="li-info"><div class="li-name">'+(r.note?QS(r.note):'单词记录')+'</div><div class="li-date">'+r.date+'</div></div>'+
       '<div class="li-val" style="color:var(--accent3)">+'+r.newWords+' | 复'+r.reviewWords+'</div>'+
       '<span class="li-del" onclick="event.stopPropagation();S.word.del(\''+r.id+'\')">✕</span></div>';
@@ -946,7 +946,7 @@ S.word._drawChart = function(recs){
   var bw=(w-60)/days.length-8, px=40;
   days.forEach(function(d,i){
     var x=px+i*(bw+8), bh=Math.max(4,(d.val/mx)*(h-60));
-    ctx.fillStyle='rgba(125,155,90,0.6)'; ctx.fillRect(x,h-40-bh,bw,bh);
+    ctx.fillStyle='rgba(123,168,144,0.6)'; ctx.fillRect(x,h-40-bh,bw,bh);
     ctx.fillStyle='#8C8882'; ctx.font='14px sans-serif'; ctx.textAlign='center'; ctx.fillText(d.label,x+bw/2,h-10);
     if(d.val>0){ ctx.fillStyle='#2D2926'; ctx.font='12px sans-serif'; ctx.fillText(d.val,x+bw/2,h-44-bh); }
   });
@@ -1151,7 +1151,7 @@ tk.render = function(){
         var st = new Date(r.startTime), et = new Date(r.endTime||r.startTime);
         tr = '<span style="font-size:0.58rem;color:var(--text3);margin-left:4px">'+HM(st)+' - '+HM(et)+'</span>';
       }
-      return '<div class="list-item"><div class="li-icon" style="background:rgba(194,101,58,0.08)">'+em+'</div>'+
+      return '<div class="list-item"><div class="li-icon" style="background:rgba(212,168,83,0.08)">'+em+'</div>'+
         '<div class="li-info"><div class="li-name">'+QS(nm)+tr+'</div><div class="li-date">'+r.date+'</div></div>'+
         '<div class="li-val" style="color:var(--accent)">'+HMS(r.seconds)+'</div>'+
         '<span class="li-del" onclick="event.stopPropagation();tk.delRec(\''+r.id+'\')">✕</span></div>';
@@ -1180,7 +1180,7 @@ tk._drawChart = function(recs){
   var bw=(w-60)/days.length-8, px=40;
   days.forEach(function(d,i){
     var x=px+i*(bw+8), bh=Math.max(4,(d.val/mx)*(h-60));
-    ctx.fillStyle='rgba(194,101,58,0.5)'; ctx.fillRect(x,h-40-bh,bw,bh);
+    ctx.fillStyle='rgba(212,168,83,0.5)'; ctx.fillRect(x,h-40-bh,bw,bh);
     ctx.fillStyle='#8C8882'; ctx.font='14px sans-serif'; ctx.textAlign='center'; ctx.fillText(d.label,x+bw/2,h-10);
     if(d.val>0){ ctx.fillStyle='#2D2926'; ctx.font='12px sans-serif'; ctx.fillText(d.val+'m',x+bw/2,h-44-bh); }
   });
