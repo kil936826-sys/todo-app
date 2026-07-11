@@ -20,15 +20,9 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Setup Android SDK
+      - name: Accept SDK licenses
         run: |
-          mkdir -p "$HOME/android-sdk"
-          cd "$HOME/android-sdk"
-          curl -s -O https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-          unzip -q commandlinetools-linux-11076708_latest.zip
-          yes | cmdline-tools/bin/sdkmanager --sdk_root="$HOME/android-sdk" --licenses
-          cmdline-tools/bin/sdkmanager --sdk_root="$HOME/android-sdk" "platforms;android-35" "build-tools;35.0.0"
-          echo "ANDROID_SDK_ROOT=$HOME/android-sdk" >> "$GITHUB_ENV"
+          yes | "$ANDROID_HOME"/cmdline-tools/latest/bin/sdkmanager --licenses
 
       - name: Install npm dependencies
         run: npm install
